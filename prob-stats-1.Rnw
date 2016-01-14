@@ -1,0 +1,302 @@
+ESEUR - Probability & Statistics
+================================
+:author:    Derek M. Jones
+:copyright: Somebody
+:backend:   slidy
+:max-width: 45em
+
+Probability vs. Statistics
+--------------------------
+
+{nbsp}
+
+Probability makes inferences about individual events based on the
+characteristics of the population
+
+{nbsp}
+
+Statistics makes inferences about the population based on the
+characteristics of a sample of the population
+
+{nbsp}
+
+Probability makes use of deductive reasoning
+
+{nbsp}
+
+Statistics makes use of inferential reasoning
+
+Probability distributions
+-------------------------
+
+Mathematical descriptions of the properties of values obtained by
+following a consistent pattern of behavior
+
+* the flipping a coin pattern of behavior
+** generates one of two results
+** fixed probability of either result
+** each result is independent of the previous one
+
+* a count of the number of heads and tails has a binomial probability
+distribution
+
+Fit a sample of measurements to a known probability distribution
+
+* infer behavior of underlying process based on what is known about
+generating values having that particular distribution
+
+Relationships between distributions
+----------------------------------
+
+image::not_R/disc-cont.jpg[]
+
+Cullen and Frey graph
+---------------------
+
+.A Cullen and Frey graph for the <equ>3n+1</equ> program length data.
+<<echo=FALSE,results=hide,label=3np1-dist,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/probability/3np1-dist.R")
+@
+
+Length of programs
+------------------
+
+.Number of <code>3n+1</code> programs containing a given number of lines and four distributions fitted to this data.
+<<echo=FALSE,results=hide,label=3np1,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/probability/3np1.R")
+@
+
+Life is rarely simple
+---------------------
+
+.Density plot of MPI micro-benchmark runtime performance for calls to <code>MPI_Scan</code> with 10,000 Bytes (left) and to <code>MPI_Allreduce</code> with 1,000 Bytes (right).
+<<echo=FALSE,results=hide,label=mpi_data_fig,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/probability/mpi_data_fig.R")
+@
+
+Fit multiple distributions
+--------------------------
+
+.Mixture model fitted by the rfunc[normalmixEM] function to the performance data from calls to <code>MPI_Allreduce</code>.
+<<echo=FALSE,results=hide,label=mpi_data_fit,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/probability/mpi_data_fit.R")
+@
+
+/////////////////
+Measurement scales
+------------------
+
+{nbsp}
+
+Measured values have a position on a scale
+
+{nbsp}
+
+Scales come in two basic forms:
+
+* discrete
+* continuous
+
+Discrete
+--------
+
+* Nominal scale: value has an arbitrary number or name
+
+** no ordering relationship exists between different numbers/names
+** not really a scale in the usual sense of the word
+** numbers on the back of footballers' shirt or the various sales
+regions in which a product is sold
+
+* Ordinal scale: value is a number or name of an item
+
+** an ordering relationship exists between the numbers/names
+** distance between distinct values need not be the same
+** classifying faults by their severity, e.g., minor, moderate, serious
+** address of the members of a structure type increases for successive members
+
+Continuous
+----------
+
+* Interval scale: each value is a number
+
+** a relative ordering exists
+** a fixed length interval of the scale denotes the same amount of quantity being measured
+** a data point of zero does not indicate the absence of what is being measured
+** addition and subtraction can be applied to values, but not multiplication or division
+** the start date of some event is an interval scale.  If the
+start date of events <equ>A</equ>, <equ>B</equ> and <equ>C</equ> are
+known, and difference in start date between events <equ>A</equ> and
+<equ>B</equ> is the same as between events <equ>C</equ> and
+<equ>D</equ>, then it is possible to calculate the start date of
+event <equ>D</equ>.
+
+* Ratio scale: each value is a number
+
+** the ordering of items is preserved
+** the size of the interval between items
+** the ratios between items
+** zero denotes the lack of the attribute being measured
+** time difference between two events is a ratio scale
+/////////////////
+
+Sampling
+--------
+
+.Example of a sample drawn from a population.
+<<echo=FALSE,label=pop-sample,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/statistics/pop-sample.R")
+@
+
+Sample size
+-----------
+
+{nbsp}
+
+More measurements
+
+* more accurate analysis: uncertainty -> <equ>\frac{1}{\sqrt{N}}</equ>
+
+* may cost more
+
+* may take longer to obtain
+
+* may have to made do with what is available
+
+Small samples are not smooth
+----------------------------
+
+.Samples of randomly selected values drawn from the same normal distribution (100 points in each plot in top row, 1,000 in bottom).
+<<echo=FALSE,results=hide,label=two-norm,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/group-compare/two-norm.R")
+@
+
+Sampling SPEC CPU2006
+---------------------
+
+.Mean (red) and standard deviation (grey lines; they are not symmetrical because of the log scaling) of samples of 3 items drawn from a population of 1,000 items (blue line mean, green line standard deviation).
+<<echo=FALSE,results=hide,label=sample-3_mean,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/statistics/sample-3_mean.R")
+@
+
+Describing a sample
+-------------------
+
+.Density plot of execution time of 1,000 input data sets, with lines marking the mean, median and mode.
+<<echo=FALSE,results=hide,label=sample-1000,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/statistics/sample-1000.R")
+@
+
+Two value summaries can be misleading
+-------------------------------------
+
+.A Normal distribution with mean=4 and variance=8 and a Chi-squared distribution with four degrees of freedom having the same mean and variance (the vertical lines are at the distributions' median value).
+<<echo=FALSE,results=hide,label=chisq-norm,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/group-compare/chisq-norm.R")
+@
+
+Mixed populations
+-----------------
+
+.A population of items having one of three colors and three strata sampled from it.
+<<echo=FALSE,label=strata-sample,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/statistics/strata-sample.R")
+@
+
+Contaminated Normal
+-------------------
+
+.A contaminated normal, values drawn from two normal distributions with 10% of values drawn from a distribution having a standard deviation five times greater than the other.
+<<echo=FALSE,results=hide,label=contam-norm,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/statistics/contam-norm.R")
+@
+
+Testing small samples
+---------------------
+
+.Probability, with 95% confidence, that rfunc[shapiro.test] correctly reports that samples drawn from various distributions are not drawn from a Normal distribution, and probability of an incorrect report when the sample is drawn from a Normal distribution.
+<<echo=FALSE,results=hide,label=SW-check,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/group-compare/SW-check.R")
+@
+
+Statistical error
+-----------------
+
+.The four combinations of circumstances and their outcomes in hypothesis testing.
+[label="null-hypoth-table", width="65%", cols="<2s,<2d,2*<3d"]
+[options="header", frame="none", grid="none", align="center"]
+|===============================
+|          | 2+^s| Decision made
+|          |                   | Reject <equ>H</equ> | Fail to reject <equ>H</equ>
+.2+.^s| Actual |<equ>H</equ> true  | Type I error | Correct
+              |<equ>H</equ> false | Correct      | Type II error
+|===============================
+
+Who pays for the error?
+-----------------------
+
+.Finish/do more testing decision and likely outcomes depending on actual situation.
+[label="more-testing-table", width="75%", cols="<s,<3d,2*<2d"]
+[options="header", frame="none", grid="none", align="center"]
+|===============================
+|          | 2+^s| Decision made
+|          |                      | Finish testing | Do more testing
+.2+.^s| Actual |More testing needed   | Customer loss | Ok
+              |Testing is sufficient | Ok        | Vendor loss
+|===============================
+
+Null hypothesis
+---------------
+
+[source,C]
+----------
+void null_hypothesis_test(void *result_data, float p_value)
+{
+// H set by reality, only accessible by running experiment
+if ((probability_of_seeing_data_when_H_true(result_data)
+                                            < p_value) ||
+     !H)
+   printf("Willing to assume that H is false\n");
+else
+   printf("H might be true\n");
+}
+
+null_hypothesis_test(run_experiment(), 0.05);
+----------
+
+Statistically significant
+-------------------------
+
+{nbsp}
+
+A test statistic is said to be <phrase>statistically
+significant</phrase> when it allows the null hypothesis to be rejected
+
+{nbsp}
+
+"statistically significant" is often shortened to just "significant"
+
+* common usage meaning very different from statistical one
+
+{nbsp}
+
+Have not rejected the Null hypothesis
+
+Effect size
+-----------
+
+.Examples of the impact of population prevalence, statistical power and p-value on number of false positives and false negatives.
+<<echo=FALSE,results=hide,label=true-false-tree,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/statistics/true-false-tree.R")
+@
+
+Statistical power
+-----------------
+
+.The four related quantities in design power analysis.
+<<echo=FALSE,results=hide,label=design-power,fig=TRUE,align="center">>=
+source("/usr1/rbook/examples/statistics/design-power.R")
+@
+
+Data to play with
+-----------------
+
