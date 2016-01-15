@@ -16,12 +16,12 @@ The following script is one possibility:
 
 * Start R and type:
 
- source("ascii-slides.R")
- quit()
+   source("ascii-slides.R")
+   quit()
 
 * At the Linux command line:
 
- ./mkslides intro-1.txt
- ./mkslides prob-stats-1.txt
- ./mkslides regression-1.txt
+   ./mkslides intro-1.txt
+   ./mkslides prob-stats-1.txt
+   ./mkslides regression-1.txt
 
