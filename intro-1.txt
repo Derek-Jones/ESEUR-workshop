@@ -231,6 +231,8 @@ x = c(x, 12, 14)
 y = vector(length=5)    # vector created by function call
 y = 3:8                 # same as c(3, 4, 5, 6, 7, 8)
 z = seq(from=3, to=13, by=3)      # sequence of values
+# All elements must have the same type
+z = c(1, 2, "3")        # String has greatest conversion precedence
 -----
 
 [source,R]
@@ -418,6 +420,8 @@ Data patterns
 image::intro-1-data-plot.jpg[]
 
 
+rexample[data-plot.R]
+
 Simple visualization options
 ----------------------------
 
@@ -461,6 +465,8 @@ Three way pairs
 image::intro-1-pub-fs-fp.jpg[]
 
 
+rexample[pub-fs-fp.R]
+
 Ada vs. Fortran
 ---------------
 
@@ -468,12 +474,16 @@ Ada vs. Fortran
 image::intro-1-nasa-ada-fortran.jpg[]
 
 
+rexample[nasa-ada-fortran.R]
+
 Pull request correlations
 -------------------------
 
 .Correlations between pairs of attributes of 12,799 Github pull requests to the Homebrew repo.
 image::intro-1-pull-req-cor.jpg[]
 
+
+rexample[pull-req-cor.R]
 
 Trend line
 ----------
@@ -497,12 +507,16 @@ Methods can give the same answer
 image::intro-1-cpu-freq-over-time.jpg[]
 
 
+rexample[cpu-freq-over-time.R]
+
 NASA effort pattern
 -------------------
 
 .Effort invested in project definition (as percentage of original estimate) against cost overrun (as percentage of original estimate).
 image::intro-1-NASA_gruhl.jpg[]
 
+
+rexample[NASA_gruhl.R]
 
 Don't have to be half-way point
 -------------------------------
@@ -520,6 +534,8 @@ Reduce rapid variations in the data
 image::intro-1-SPEC-hist.jpg[]
 
 
+rexample[SPEC-hist.R]
+
 Histogram vs density
 --------------------
 
@@ -532,12 +548,16 @@ Histogram output depends on
 image::intro-1-kernel.jpg[]
 
 
+rexample[kernel.R]
+
 Density plot of SPEC
 --------------------
 
 .Kernel density plot of the number of computers having the same SPECint result.
 image::intro-1-SPEC-density.jpg[]
 
+
+rexample[SPEC-density.R]
 
 Densely packed measurements
 ---------------------------
@@ -546,9 +566,16 @@ Densely packed measurements
 image::intro-1-maint-est.jpg[]
 
 
+rexample[maint-est.R]
+
+Density of points
+-----------------
+
 .Number of files and lines of code in 3,782 projects on Sourceforge.
 image::intro-1-herraiz-projects.jpg[]
 
+
+rexample[herraiz-projects.R]
 
 Boxplots
 --------
@@ -557,6 +584,8 @@ Boxplots
 image::intro-1-boxplot-10-cscw.jpg[]
 
 
+rexample[boxplot-10-cscw.R]
+
 Violin plots
 ------------
 
@@ -564,12 +593,16 @@ Violin plots
 image::intro-1-violinplot-10-cscw.jpg[]
 
 
+rexample[violinplot-10-cscw.R]
+
 Paired connections
 ------------------
 
 .Pairs of languages used together in the same GitHub project with connecting line width, color and transparency related to number of occurrences.
 image::intro-1-github-lang-pairs.jpg[]
 
+
+rexample[github-lang-pairs.R]
 
 3-Dimensions
 ------------
@@ -589,10 +622,14 @@ Heatmaps
 image::intro-1-heatmap-hotpower.jpg[]
 
 
+rexample[heatmap-hotpower.R]
+
 Contour plots
 -------------
 
 .Contour plot of the number of sessions executed on a computer having a given processor speed and memory capacity.
 image::intro-1-thereska_sipew-procspeed-memsize.jpg[]
 
+
+rexample[thereska_sipew-procspeed-memsize.R]
 

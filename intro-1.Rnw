@@ -231,6 +231,8 @@ x = c(x, 12, 14)
 y = vector(length=5)    # vector created by function call
 y = 3:8                 # same as c(3, 4, 5, 6, 7, 8)
 z = seq(from=3, to=13, by=3)      # sequence of values
+# All elements must have the same type
+z = c(1, 2, "3")        # String has greatest conversion precedence
 -----
 
 [source,R]
@@ -405,6 +407,8 @@ Data patterns
 source("/usr1/rbook/examples/communicating/data-plot.R")
 @
 
+rexample[data-plot.R]
+
 Simple visualization options
 ----------------------------
 
@@ -449,6 +453,8 @@ Three way pairs
 source("/usr1/rbook/examples/communicating/pub-fs-fp.R")
 @
 
+rexample[pub-fs-fp.R]
+
 Ada vs. Fortran
 ---------------
 
@@ -457,6 +463,8 @@ Ada vs. Fortran
 source("/usr1/rbook/examples/projects/nasa-ada-fortran.R")
 @
 
+rexample[nasa-ada-fortran.R]
+
 Pull request correlations
 -------------------------
 
@@ -464,6 +472,8 @@ Pull request correlations
 <<echo=FALSE,results=hide,label=pull-req-cor,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/communicating/pull-req-cor.R")
 @
+
+rexample[pull-req-cor.R]
 
 Trend line
 ----------
@@ -488,6 +498,8 @@ Methods can give the same answer
 source("/usr1/rbook/examples/ecosystem/cpudb/cpu-freq-over-time.R")
 @
 
+rexample[cpu-freq-over-time.R]
+
 NASA effort pattern
 -------------------
 
@@ -495,6 +507,8 @@ NASA effort pattern
 <<echo=FALSE,results=hide,label=NASA_gruhl,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/regression/NASA_gruhl.R")
 @
+
+rexample[NASA_gruhl.R]
 
 Don't have to be half-way point
 -------------------------------
@@ -514,6 +528,8 @@ Reduce rapid variations in the data
 source("/usr1/rbook/examples/communicating/SPEC-hist.R")
 @
 
+rexample[SPEC-hist.R]
+
 Histogram vs density
 --------------------
 
@@ -527,6 +543,8 @@ Histogram output depends on
 source("/usr1/rbook/examples/communicating/kernel.R")
 @
 
+rexample[kernel.R]
+
 Density plot of SPEC
 --------------------
 
@@ -534,6 +552,8 @@ Density plot of SPEC
 <<echo=FALSE,results=hide,label=SPEC-density,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/communicating/SPEC-density.R")
 @
+
+rexample[SPEC-density.R]
 
 Densely packed measurements
 ---------------------------
@@ -543,10 +563,17 @@ Densely packed measurements
 source("/usr1/rbook/examples/economics/maint-est.R")
 @
 
+rexample[maint-est.R]
+
+Density of points
+-----------------
+
 .Number of files and lines of code in 3,782 projects on Sourceforge.
 <<echo=FALSE,results=hide,label=herraiz-projects,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/communicating/herraiz-projects.R")
 @
+
+rexample[herraiz-projects.R]
 
 Boxplots
 --------
@@ -556,6 +583,8 @@ Boxplots
 source("/usr1/rbook/examples/communicating/boxplot-10-cscw.R")
 @
 
+rexample[boxplot-10-cscw.R]
+
 Violin plots
 ------------
 
@@ -564,6 +593,8 @@ Violin plots
 source("/usr1/rbook/examples/communicating/violinplot-10-cscw.R")
 @
 
+rexample[violinplot-10-cscw.R]
+
 Paired connections
 ------------------
 
@@ -571,6 +602,8 @@ Paired connections
 <<echo=FALSE,results=hide,label=github-lang-pairs,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/communicating/github-lang-pairs.R")
 @
+
+rexample[github-lang-pairs.R]
 
 3-Dimensions
 ------------
@@ -591,6 +624,8 @@ Heatmaps
 source("/usr1/rbook/examples/communicating/heatmap-hotpower.R")
 @
 
+rexample[heatmap-hotpower.R]
+
 Contour plots
 -------------
 
@@ -598,4 +633,6 @@ Contour plots
 <<echo=FALSE,results=hide,label=thereska_sipew-procspeed-memsize,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/ecosystem/thereska_sipew-procspeed-memsize.R")
 @
+
+rexample[thereska_sipew-procspeed-memsize.R]
 

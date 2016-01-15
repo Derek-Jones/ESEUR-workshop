@@ -5378,7 +5378,9 @@ x = c<span style="color: #990000">(</span><span style="color: #993399">2</span><
 x = c<span style="color: #990000">(</span>x<span style="color: #990000">,</span> <span style="color: #993399">12</span><span style="color: #990000">,</span> <span style="color: #993399">14</span><span style="color: #990000">)</span>
 y = vector<span style="color: #990000">(</span>length=<span style="color: #993399">5</span><span style="color: #990000">)</span>    <span style="font-style: italic"><span style="color: #9A1900"># vector created by function call</span></span>
 y = <span style="color: #993399">3</span><span style="color: #990000">:</span><span style="color: #993399">8</span>                 <span style="font-style: italic"><span style="color: #9A1900"># same as c(3, 4, 5, 6, 7, 8)</span></span>
-z = seq<span style="color: #990000">(</span>from=<span style="color: #993399">3</span><span style="color: #990000">,</span> to=<span style="color: #993399">13</span><span style="color: #990000">,</span> by=<span style="color: #993399">3</span><span style="color: #990000">)</span>      <span style="font-style: italic"><span style="color: #9A1900"># sequence of values</span></span></tt></pre></div></div>
+z = seq<span style="color: #990000">(</span>from=<span style="color: #993399">3</span><span style="color: #990000">,</span> to=<span style="color: #993399">13</span><span style="color: #990000">,</span> by=<span style="color: #993399">3</span><span style="color: #990000">)</span>      <span style="font-style: italic"><span style="color: #9A1900"># sequence of values</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"># All elements must have the same type</span></span>
+z = c<span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #FF0000">"3"</span><span style="color: #990000">)</span>        <span style="font-style: italic"><span style="color: #9A1900"># String has greatest conversion precedence</span></span></tt></pre></div></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
@@ -5575,6 +5577,7 @@ suspicious behavior seem
 </div>
 <div class="title">Figure 1. Plots of sample values having various patterns.</div>
 </div>
+<div class="paragraph"><p>rexample[data-plot.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5649,6 +5652,7 @@ seL4_TCB_SetPriority,7,219,187,121</code></pre>
 </div>
 <div class="title">Figure 2. Various measurements of work performed implementing the same functionality, number of lines of Haskell and C implementing functionality, CFP (COSMIC function points; based on user manual) and length of formal specification.</div>
 </div>
+<div class="paragraph"><p>rexample[pub-fs-fp.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5660,6 +5664,7 @@ seL4_TCB_SetPriority,7,219,187,121</code></pre>
 </div>
 <div class="title">Figure 3. Effort, in hours (log scale), spent in various development phases of projects written in Ada (blue) and Fortran (red).</div>
 </div>
+<div class="paragraph"><p>rexample[nasa-ada-fortran.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5671,6 +5676,7 @@ seL4_TCB_SetPriority,7,219,187,121</code></pre>
 </div>
 <div class="title">Figure 4. Correlations between pairs of attributes of 12,799 Github pull requests to the Homebrew repo.</div>
 </div>
+<div class="paragraph"><p>rexample[pull-req-cor.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5708,6 +5714,7 @@ splines
 </div>
 <div class="title">Figure 5. Relative frequency of cpus when first launched (1970 == 1).</div>
 </div>
+<div class="paragraph"><p>rexample[cpu-freq-over-time.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5719,6 +5726,7 @@ splines
 </div>
 <div class="title">Figure 6. Effort invested in project definition (as percentage of original estimate) against cost overrun (as percentage of original estimate).</div>
 </div>
+<div class="paragraph"><p>rexample[NASA_gruhl.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5742,6 +5750,7 @@ splines
 </div>
 <div class="title">Figure 8. SPECint results, summed over all distinct values (left) and summed within equal width bins (right).</div>
 </div>
+<div class="paragraph"><p>rexample[SPEC-hist.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5766,6 +5775,7 @@ bin starting point
 </div>
 <div class="title">Figure 9. Three commonly used kernel density smoothing functions: gaussian, rectangular and triangular.</div>
 </div>
+<div class="paragraph"><p>rexample[kernel.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5777,6 +5787,7 @@ bin starting point
 </div>
 <div class="title">Figure 10. Kernel density plot of the number of computers having the same SPECint result.</div>
 </div>
+<div class="paragraph"><p>rexample[SPEC-density.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5788,12 +5799,19 @@ bin starting point
 </div>
 <div class="title">Figure 11. Developer estimated effort against actual effort (in hours), for various maintenance tasks, e.g., adaptive, corrective and perfective; left as-is, middle jittered values and right size proportional to the log of the number measurements.</div>
 </div>
+<div class="paragraph"><p>rexample[maint-est.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_density_of_points">Density of points</h1>
+<div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
 <div class="content">
 <img src="intro-1-herraiz-projects.jpg" alt="intro-1-herraiz-projects.jpg" />
 </div>
 <div class="title">Figure 12. Number of files and lines of code in 3,782 projects on Sourceforge.</div>
 </div>
+<div class="paragraph"><p>rexample[herraiz-projects.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5805,6 +5823,7 @@ bin starting point
 </div>
 <div class="title">Figure 13. Boxplot of time between a bug in Eclipse being reported and the first response to the report; right plot is notched.</div>
 </div>
+<div class="paragraph"><p>rexample[boxplot-10-cscw.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5816,6 +5835,7 @@ bin starting point
 </div>
 <div class="title">Figure 14. Violin plots (left using <code>vioplot</code>, right using <code>beanplot</code>) of time between bug being reported in Eclipse and first response to the report; right plot is notched.</div>
 </div>
+<div class="paragraph"><p>rexample[violinplot-10-cscw.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5827,6 +5847,7 @@ bin starting point
 </div>
 <div class="title">Figure 15. Pairs of languages used together in the same GitHub project with connecting line width, color and transparency related to number of occurrences.</div>
 </div>
+<div class="paragraph"><p>rexample[github-lang-pairs.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5847,6 +5868,7 @@ bin starting point
 </div>
 <div class="title">Figure 16. Intel Sandy Bridge L3 cache bandwidth in GB/s at various clock frequencies and using combinations of cores (0-3 denotes cores zero-through-three, 0,2,4 denotes the three cores zero, two and four).</div>
 </div>
+<div class="paragraph"><p>rexample[heatmap-hotpower.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5858,6 +5880,7 @@ bin starting point
 </div>
 <div class="title">Figure 17. Contour plot of the number of sessions executed on a computer having a given processor speed and memory capacity.</div>
 </div>
+<div class="paragraph"><p>rexample[thereska_sipew-procspeed-memsize.R]</p></div>
 </div>
 </div>
 </body>

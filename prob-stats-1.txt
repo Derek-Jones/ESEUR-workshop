@@ -57,12 +57,16 @@ Cullen and Frey graph
 image::prob-stats-1-3np1-dist.jpg[]
 
 
+rexample[3np1-dist.R]
+
 Length of programs
 ------------------
 
 .Number of <code>3n+1</code> programs containing a given number of lines and four distributions fitted to this data.
 image::prob-stats-1-3np1.jpg[]
 
+
+rexample[3np1.R]
 
 Life is rarely simple
 ---------------------
@@ -71,12 +75,16 @@ Life is rarely simple
 image::prob-stats-1-mpi_data_fig.jpg[]
 
 
+rexample[mpi_data_fig.R]
+
 Fit multiple distributions
 --------------------------
 
 .Mixture model fitted by the rfunc[normalmixEM] function to the performance data from calls to <code>MPI_Allreduce</code>.
 image::prob-stats-1-mpi_data_fit.jpg[]
 
+
+rexample[mpi_data_fit.R]
 
 /////////////////
 Measurement scales
@@ -142,6 +150,8 @@ Sampling
 image::prob-stats-1-pop-sample.jpg[]
 
 
+rexample[pop-sample.R]
+
 Sample size
 -----------
 
@@ -164,12 +174,16 @@ Small samples are not smooth
 image::prob-stats-1-two-norm.jpg[]
 
 
+rexample[two-norm.R]
+
 Sampling SPEC CPU2006
 ---------------------
 
 .Mean (red) and standard deviation (grey lines; they are not symmetrical because of the log scaling) of samples of 3 items drawn from a population of 1,000 items (blue line mean, green line standard deviation).
 image::prob-stats-1-sample-3_mean.jpg[]
 
+
+rexample[sample-3_mean.R]
 
 Describing a sample
 -------------------
@@ -178,12 +192,16 @@ Describing a sample
 image::prob-stats-1-sample-1000.jpg[]
 
 
+rexample[sample-1000.R]
+
 Two value summaries can be misleading
 -------------------------------------
 
 .A Normal distribution with mean=4 and variance=8 and a Chi-squared distribution with four degrees of freedom having the same mean and variance (the vertical lines are at the distributions' median value).
 image::prob-stats-1-chisq-norm.jpg[]
 
+
+rexample[chisq-norm.R]
 
 Mixed populations
 -----------------
@@ -192,6 +210,8 @@ Mixed populations
 image::prob-stats-1-strata-sample.jpg[]
 
 
+rexample[strata-sample.R]
+
 Contaminated Normal
 -------------------
 
@@ -199,12 +219,16 @@ Contaminated Normal
 image::prob-stats-1-contam-norm.jpg[]
 
 
+rexample[contam-norm.R]
+
 Testing small samples
 ---------------------
 
 .Probability, with 95% confidence, that rfunc[shapiro.test] correctly reports that samples drawn from various distributions are not drawn from a Normal distribution, and probability of an incorrect report when the sample is drawn from a Normal distribution.
 image::prob-stats-1-SW-check.jpg[]
 
+
+rexample[SW-check.R]
 
 Statistical error
 -----------------
@@ -276,12 +300,16 @@ Effect size
 image::prob-stats-1-true-false-tree.jpg[]
 
 
+rexample[true-false-tree.R]
+
 Statistical power
 -----------------
 
 .The four related quantities in design power analysis.
 image::prob-stats-1-design-power.jpg[]
 
+
+rexample[design-power.R]
 
 Data to play with
 -----------------

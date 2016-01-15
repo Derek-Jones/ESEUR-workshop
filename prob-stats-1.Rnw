@@ -58,6 +58,8 @@ Cullen and Frey graph
 source("/usr1/rbook/examples/probability/3np1-dist.R")
 @
 
+rexample[3np1-dist.R]
+
 Length of programs
 ------------------
 
@@ -65,6 +67,8 @@ Length of programs
 <<echo=FALSE,results=hide,label=3np1,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/probability/3np1.R")
 @
+
+rexample[3np1.R]
 
 Life is rarely simple
 ---------------------
@@ -74,6 +78,8 @@ Life is rarely simple
 source("/usr1/rbook/examples/probability/mpi_data_fig.R")
 @
 
+rexample[mpi_data_fig.R]
+
 Fit multiple distributions
 --------------------------
 
@@ -81,6 +87,8 @@ Fit multiple distributions
 <<echo=FALSE,results=hide,label=mpi_data_fit,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/probability/mpi_data_fit.R")
 @
+
+rexample[mpi_data_fit.R]
 
 /////////////////
 Measurement scales
@@ -147,6 +155,8 @@ Sampling
 source("/usr1/rbook/examples/statistics/pop-sample.R")
 @
 
+rexample[pop-sample.R]
+
 Sample size
 -----------
 
@@ -170,6 +180,8 @@ Small samples are not smooth
 source("/usr1/rbook/examples/group-compare/two-norm.R")
 @
 
+rexample[two-norm.R]
+
 Sampling SPEC CPU2006
 ---------------------
 
@@ -177,6 +189,8 @@ Sampling SPEC CPU2006
 <<echo=FALSE,results=hide,label=sample-3_mean,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/statistics/sample-3_mean.R")
 @
+
+rexample[sample-3_mean.R]
 
 Describing a sample
 -------------------
@@ -186,6 +200,8 @@ Describing a sample
 source("/usr1/rbook/examples/statistics/sample-1000.R")
 @
 
+rexample[sample-1000.R]
+
 Two value summaries can be misleading
 -------------------------------------
 
@@ -193,6 +209,8 @@ Two value summaries can be misleading
 <<echo=FALSE,results=hide,label=chisq-norm,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/group-compare/chisq-norm.R")
 @
+
+rexample[chisq-norm.R]
 
 Mixed populations
 -----------------
@@ -202,6 +220,8 @@ Mixed populations
 source("/usr1/rbook/examples/statistics/strata-sample.R")
 @
 
+rexample[strata-sample.R]
+
 Contaminated Normal
 -------------------
 
@@ -210,6 +230,8 @@ Contaminated Normal
 source("/usr1/rbook/examples/statistics/contam-norm.R")
 @
 
+rexample[contam-norm.R]
+
 Testing small samples
 ---------------------
 
@@ -217,6 +239,8 @@ Testing small samples
 <<echo=FALSE,results=hide,label=SW-check,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/group-compare/SW-check.R")
 @
+
+rexample[SW-check.R]
 
 Statistical error
 -----------------
@@ -289,6 +313,8 @@ Effect size
 source("/usr1/rbook/examples/statistics/true-false-tree.R")
 @
 
+rexample[true-false-tree.R]
+
 Statistical power
 -----------------
 
@@ -296,6 +322,8 @@ Statistical power
 <<echo=FALSE,results=hide,label=design-power,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/statistics/design-power.R")
 @
+
+rexample[design-power.R]
 
 Data to play with
 -----------------

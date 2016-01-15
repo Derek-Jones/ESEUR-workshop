@@ -59,6 +59,8 @@ FreeBSD sloc over time
 source("/usr1/rbook/examples/regression/Herraiz-BSD.R")
 @
 
+rexample[Herraiz-BSD.R]
+
 Groovy compiler classes over time
 ---------------------------------
 
@@ -66,6 +68,8 @@ Groovy compiler classes over time
 <<echo=FALSE,results=hide,label=Groovy_change-prop2,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/regression/Groovy_change-prop2.R")
 @
+
+rexample[Groovy_change-prop2.R]
 
 How it works
 ------------
@@ -190,6 +194,8 @@ The BSD data
 source("/usr1/rbook/examples/regression/Herraiz-BSD.R")
 @
 
+rexample[Herraiz-BSD.R]
+
 Scattered measurement points
 ----------------------------
 
@@ -197,6 +203,8 @@ Scattered measurement points
 <<echo=FALSE,results=hide,label=federal_IT-cost_dur,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/regression/federal_IT-cost_dur.R")
 @
+
+rexample[federal_IT-cost_dur.R]
 
 Confidence intervals
 --------------------
@@ -254,10 +262,17 @@ Visualizing general trend
 source("/usr1/rbook/examples/regression/langpop-corger-nl.R")
 @
 
+rexample[langpop-corger-nl.R]
+
+Trend changes later
+-------------------
+
 .Percentage of vulnerabilities detected by developers working a given number of years in security.
 <<echo=FALSE,results=hide,label=acc-sec-experience,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/regression/acc-sec-experience.R")
 @
+
+rexample[acc-sec-experience.R]
 
 Almost any data can be fitted
 -----------------------------
@@ -350,6 +365,8 @@ How much better is a quadratic equation fit, a cubic fit, ...?
 source("/usr1/rbook/examples/regression/Linux-DAYLOC.R")
 @
 
+rexample[Linux-DAYLOC.R]
+
 AIC
 ---
 
@@ -387,6 +404,8 @@ Influential observations and Outliers
 source("/usr1/rbook/examples/regression/lines-per-hour.R")
 @
 
+rexample[lines-per-hour.R]
+
 Ignoring sample size
 --------------------
 
@@ -394,6 +413,8 @@ Ignoring sample size
 <<echo=FALSE,results=hide,label=lines-hour-mininf,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/regression/lines-hour-mininf.R")
 @
+
+rexample[lines-hour-mininf.R]
 
 influenceIndexPlot
 ------------------
@@ -403,6 +424,8 @@ influenceIndexPlot
 source("/usr1/rbook/examples/regression/lines-hour-influence.R")
 @
 
+rexample[lines-hour-influence.R]
+
 Outlier or changepoint?
 -----------------------
 
@@ -411,6 +434,8 @@ Outlier or changepoint?
 source("/usr1/rbook/examples/regression/Alemzadeh-Recalls.R")
 @
 
+rexample[Alemzadeh-Recalls.R]
+
 After 2010 is different
 -----------------------
 
@@ -418,6 +443,8 @@ After 2010 is different
 <<echo=FALSE,results=hide,label=Alemzadeh-mininf,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/regression/Alemzadeh-mininf.R")
 @
+
+rexample[Alemzadeh-mininf.R]
 
 Multiple regression
 -------------------
@@ -437,6 +464,8 @@ SPECint 2006
 <<echo=FALSE,results=hide,label=SPEC-Mhz,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/benchmark/SPEC-Mhz.R")
 @
+
+rexample[SPEC-Mhz.R]
 
 The more the merrier
 --------------------
@@ -495,6 +524,8 @@ Individual variable contribution
 source("/usr1/rbook/examples/benchmark/SPEC-ind-MHz-DDR.R")
 @
 
+rexample[SPEC-ind-MHz-DDR.R]
+
 Residuals
 ---------
 
@@ -502,6 +533,8 @@ Residuals
 <<echo=FALSE,results=hide,label=SPEC-resid-MHz-DDR,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/benchmark/SPEC-resid-MHz-DDR.R")
 @
+
+rexample[SPEC-resid-MHz-DDR.R]
 
 Quadratic SPEC model
 --------------------
@@ -518,6 +551,8 @@ spec_mod=glm(Result ~ Processor.MHz + I(Processor.MHz^2)+
 <<echo=FALSE,results=hide,label=SPEC-quad-MHz-DDR,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/benchmark/SPEC-quad-MHz-DDR.R")
 @
+
+rexample[SPEC-quad-MHz-DDR.R]
 
 Updating fitted models
 ------------------------
@@ -555,6 +590,8 @@ Interaction and shared contribution
 <<echo=FALSE,results=hide,label=shared-contrib,fig=TRUE,align="center">>=
 source("/usr1/rbook/examples/regression/shared-contrib.R")
 @
+
+rexample[shared-contrib.R]
 
 Two models or one?
 ------------------

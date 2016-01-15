@@ -5,18 +5,23 @@ Slides for workshop based on the book Empirical Software Engineering using R
 
 To build the html files:
 
-Start R and type (assuming [ESEUR-code-data](https://github.com/Derek-Jones/ESEUR-code-data) has been downloaded;
-there is also a hardcoded path in the R code):
+* Download code+ data in: [ESEUR-code-data](https://github.com/Derek-Jones/ESEUR-code-data)
 
-source("ascii-slides.R")
+* You will need the program [source-highlight](https://www.gnu.org/software/src-highlite/) (used by asciidoc).  The default r.lang configuration file is very minimal and there is a better one in source-highlight/src.
 
-quit()
+* Configure the hardcoded path in the Rnw files to the ESEUR-code-data
+directory.
+The following script is one possibility:
+ perl -p -i -e 's/usr1\/rbook/Users\/MYUSERNAME\/ESEUR-code-data/g' `grep -ril "usr1/rbook" *`
 
-At the Linux command line:
+* Start R and type:
 
-./mkslides intro-1.txt
+ source("ascii-slides.R")
+ quit()
 
-./mkslides prob-stats-1.txt
+* At the Linux command line:
 
-./mkslides regression-1.txt
+ ./mkslides intro-1.txt
+ ./mkslides prob-stats-1.txt
+ ./mkslides regression-1.txt
 

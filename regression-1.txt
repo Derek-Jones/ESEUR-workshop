@@ -58,12 +58,16 @@ FreeBSD sloc over time
 image::regression-1-BSD-x.jpg[]
 
 
+rexample[Herraiz-BSD.R]
+
 Groovy compiler classes over time
 ---------------------------------
 
 .Number of classes in the Groovy compiler at each release, in days since version 1.0.
 image::regression-1-Groovy_change-prop2.jpg[]
 
+
+rexample[Groovy_change-prop2.R]
 
 How it works
 ------------
@@ -207,12 +211,16 @@ The BSD data
 image::regression-1-BSD-x.jpg[]
 
 
+rexample[Herraiz-BSD.R]
+
 Scattered measurement points
 ----------------------------
 
 .Estimated cost and duration of 73 large Dutch federal IT projects.
 image::regression-1-federal_IT-cost_dur.jpg[]
 
+
+rexample[federal_IT-cost_dur.R]
 
 Confidence intervals
 --------------------
@@ -269,9 +277,16 @@ Visualizing general trend
 image::regression-1-langpop-corger-nl.jpg[]
 
 
+rexample[langpop-corger-nl.R]
+
+Trend changes later
+-------------------
+
 .Percentage of vulnerabilities detected by developers working a given number of years in security.
 image::regression-1-acc-sec-experience.jpg[]
 
+
+rexample[acc-sec-experience.R]
 
 Almost any data can be fitted
 -----------------------------
@@ -404,6 +419,8 @@ How much better is a quadratic equation fit, a cubic fit, ...?
 image::regression-1-linux-DAYLOC.jpg[]
 
 
+rexample[Linux-DAYLOC.R]
+
 AIC
 ---
 
@@ -466,12 +483,16 @@ Influential observations and Outliers
 image::regression-1-lines-per-hour.jpg[]
 
 
+rexample[lines-per-hour.R]
+
 Ignoring sample size
 --------------------
 
 .After removal of overly influential observations.  Left takes into account the Bonferroni p-value of the Studentized residuals while the right plot does not.
 image::regression-1-lines-hour-mininf.jpg[]
 
+
+rexample[lines-hour-mininf.R]
 
 influenceIndexPlot
 ------------------
@@ -480,6 +501,8 @@ influenceIndexPlot
 image::regression-1-lines-influence.jpg[]
 
 
+rexample[lines-hour-influence.R]
+
 Outlier or changepoint?
 -----------------------
 
@@ -487,12 +510,16 @@ Outlier or changepoint?
 image::regression-1-Alemzadeh-Recalls.jpg[]
 
 
+rexample[Alemzadeh-Recalls.R]
+
 After 2010 is different
 -----------------------
 
 .Fitted model after two observations replaced by mean value (left) and two fitted lines, one up to the end of 2010 and one after 2010.
 image::regression-1-Alemzadeh-mininf.jpg[]
 
+
+rexample[Alemzadeh-mininf.R]
 
 Multiple regression
 -------------------
@@ -511,6 +538,8 @@ SPECint 2006
 .SPECint 2006 performance results for processors running at various clock rates, memory chip frequencies and processor family.
 image::regression-1-SPEC-Mhz.jpg[]
 
+
+rexample[SPEC-Mhz.R]
 
 The more the merrier
 --------------------
@@ -590,12 +619,16 @@ Individual variable contribution
 image::regression-1-SPEC-ind-MHz-DDR.jpg[]
 
 
+rexample[SPEC-ind-MHz-DDR.R]
+
 Residuals
 ---------
 
 .Residual of the model of SPECint performance fitted above.
 image::regression-1-SPEC-resid-MHz-DDR.jpg[]
 
+
+rexample[SPEC-resid-MHz-DDR.R]
 
 Quadratic SPEC model
 --------------------
@@ -611,6 +644,8 @@ spec_mod=glm(Result ~ Processor.MHz + I(Processor.MHz^2)+
 .Individual contribution of each explanatory variable to the response variable in a quadratic model of SPECint performance.
 image::regression-1-SPEC-quad-MHz-DDR.jpg[]
 
+
+rexample[SPEC-quad-MHz-DDR.R]
 
 Updating fitted models
 ------------------------
@@ -647,6 +682,8 @@ Interaction and shared contribution
 .Diagram illustrating shared and non-shared contributions made by two variables in explaining Y.
 image::regression-1-shared-contrib.jpg[]
 
+
+rexample[shared-contrib.R]
 
 Two models or one?
 ------------------
