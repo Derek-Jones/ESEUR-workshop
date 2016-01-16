@@ -386,7 +386,7 @@ Derived from domain knowledge
 
 * expectations of behavior
 * hunches
-* suspicious behavior seem
+* suspicious behavior seen
 
 Exploration techniques
 ----------------------
