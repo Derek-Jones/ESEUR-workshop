@@ -1,5 +1,5 @@
 #
-# ESEUR-config.r,  8 Jan 16
+# ESEUR-config.r, 30 Jan 16
 
 # Assume the current directory under told otherwise
 # ESEUR_dir=paste0(getwd(), "/")
@@ -62,16 +62,16 @@ ESEUP_set_par()
 }
 
 
-# In centemeters
-ESEUR_max_width=16
-ESEUR_max_height=14
-ESEUR_default_width=8
-ESEUR_default_height=8
-point_col="brown"
+# In centimeters
+ESEUR_max_width=20
+ESEUR_max_height=17
+ESEUR_default_width=10
+ESEUR_default_height=10
+point_col="tan"
 loess_col="yellow"
 
 # In inches
-par(fin=c(3.5, 3.5))
+par(fin=c(4.5, 4.5))
 # Layout behaves oddly in this case:
 # layout(matrix(1:1, ncol=1), widths=default_width, heights=default_height, TRUE)
 
