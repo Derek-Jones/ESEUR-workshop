@@ -302,6 +302,9 @@ data=read.csv("measurements.csv.xz", as.is=TRUE)
 
 data=read.csv("measurements.csv", sep="|", as.is=TRUE)
 
+data=read.csv("measurements.csv", as.is=TRUE,
+                                          header=FALSE)
+
 data=read.csv("https://github.com/Derek-Jones/ESEUR-code-data/blob/master/benchmark/MSTR10-DIMM.csv.xz")
 -----
 
@@ -606,4 +609,15 @@ source("/usr1/rbook/examples/ecosystem/thereska_sipew-procspeed-memsize.R")
 @
 
 rexample[ecosystem/thereska_sipew-procspeed-memsize.R]
+
+Data to try
+-----------
+
+--------
+c_linelen.csv.xz
+
+c_linetok.csv.xz
+
+turley_02.csv.xz
+--------
 

@@ -1,0 +1,18 @@
+
+Data taken from: Master's thesis of Dmytro Pukhkaiev
+"Energy-efficient BenchmarkingEnergy-efficient Software"
+
+"The research is performed on a test machine equipped with
+two Intel Xeon E5-2690 processors, each with 8 physical cores
+and up to 16 threads (Hyper-Threading), i.e., overall up to 32 threads.
+The utilization of DVFS allows to use one of sixteen CPU frequencies
+(from 1.2 to 2.9 GHz except 1.5, 2.1 and 2.6 GHz with a turbo mode
+of 3.8 GHz)."
+
+The data is a cut down version of that appearing in the original file
+found on Pukhkaiev's webpage.  Recreate using:
+
+nanozip_50=read.csv("csv_10_times/nanozip_50_compress.csv")
+work=ddply(nanozip_50, .(Name, FR, TR),
+                function(df) return(data.frame(energy=mean(df$EN))))
+
