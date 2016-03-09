@@ -1,0 +1,153 @@
+ESEUR Workshop - Binary/proportional data
+=========================================
+:author:    Derek M. Jones
+:copyright: Somebody
+:backend:   slidy
+:max-width: 45em
+
+Response variable bounded by 0/1
+---------------------------------
+
+{nbsp}
+
+Possible response values are:
+
+* binary: 0/1, yes/no
+* a proportion: value between 0..1
+
+Binary response data
+--------------------
+
+.Modeling 0/1 data with a straight line and logistic equation.
+[caption="Figure ", label=binomial-data]
+<<echo=FALSE,results=hide,label=binomial-data,fig=TRUE,align="center">>=
+source("ESEUR_WORK/binomial-data.R")
+@
+
+rexample[binomial-data.R]
+
+Modeling binary data
+--------------------
+
+{nbsp}
+
+[source,R]
+-----
+# default
+# b_sl=glm(y ~ x, data=answer, family=gaussian)
+
+b_sl=glm(y ~ x, data=answer, family=binomial)
+
+pred=predict(b_sl, type="response")
+-----
+
+0/1 cutoff value
+----------------
+
+{nbsp}
+
+rfunc[predict] returns values in the range 0..1
+
+Dividing line between 0/1 chosen by developer
+
+{nbsp}
+
+<<echo=FALSE,label=firefox-data>>=
+source("ESEUR_WORK/binomial-pred.R")
+@
+
+Intermittent faults in Firefox
+------------------------------
+
+{nbsp}
+
+<<echo=FALSE,label=firefox-data>>=
+source("ESEUR_WORK/firefox-data.R")
+@
+
+Maths behind the model
+----------------------
+
+{nbsp}
+
+<equ>\log\frac{p}{q} = \alpha + \beta x</equ>
+
+<equ>p</equ> proportion of successes, <equ>q</equ> proportion of failures
+
+<equ>p = \frac{e^{\alpha+\beta x}}{1+e^{\alpha+\beta x}}</equ>
+
+{nbsp}
+
+<equ>y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n + \epsilon</equ>
+
+<equ>g(y) = \alpha + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n + \epsilon</equ>
+
+<equ>g()</equ> known as the 'link function'
+
+Transforming the response
+-------------------------
+
+[source,R]
+-----
+# pred=predict(b_sl, type="link")
+
+pred=predict(b_sl, type="response")
+-----
+
+<<echo=FALSE,label=binomial-summ>>=
+source("ESEUR_WORK/binomial-summ.R")
+@
+
+rexample[binomial-summ.R]
+
+Proportional response data
+--------------------------
+
+{nbsp}
+
+Sample includes failures+successes of response variable
+
+[source,R]
+-----
+y=cbind(fail_count, 10-fail_count)
+
+b_mod=glm(y ~ (cpu_speed+memory+disk_size)^3, data=ff_data,
+                                             family=binomial)
+-----
+
+Data to try
+-----------
+
+-----
+fuzzer.csv.xz
+prog_len.csv.xz
+-----
+
+[source,R]
+-----
+library("plyr")
+
+prog_len=function(df)
+{
+df$prog_len=prog_lang_len[unique(df$program), unique(df$language)]
+return(df)
+}
+
+fuzz=read.csv("fuzzer.csv.xz", as.is=TRUE)
+prog_lang_len=read.csv("prog_len.csv.xz", as.is=TRUE, row.names=1)
+
+# comp_status -- compiled OK
+# run_status  -- executed without aborting
+# out_status  -- output as expected
+
+# language  -- source language
+# operation -- fuzzing operation performed
+# prog_len  -- LOC (lines of code)
+                
+fuzz=ddply(fuzz, .(program, language), prog_len)
+
+comp_fuzz=subset(fuzz, fuzz_status == "OK")
+
+y=cbind(..., ...)
+comp_mod=glm(y ~ ..., data=..., family=...)
+-----

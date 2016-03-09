@@ -55,7 +55,7 @@ image::../not_R/disc-cont.jpg[]
 
 .Number of <code>3n+1</code> programs containing a given number of lines and four distributions fitted to this data.
 <<echo=FALSE,results=hide,label=3np1,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/probability/3np1.R")
+source("ESEUR/probability/3np1.R")
 @
 
 rexample[probability/3np1.R]
@@ -65,7 +65,7 @@ Cullen and Frey graph
 
 .A Cullen and Frey graph for the <equ>3n+1</equ> program length data.
 <<echo=FALSE,results=hide,label=3np1-dist,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/probability/3np1-dist.R")
+source("ESEUR/probability/3np1-dist.R")
 @
 
 rexample[probability/3np1-dist.R]
@@ -75,7 +75,7 @@ Life is rarely simple
 
 .Density plot of MPI micro-benchmark runtime performance for calls to <code>MPI_Scan</code> with 10,000 Bytes (left) and to <code>MPI_Allreduce</code> with 1,000 Bytes (right).
 <<echo=FALSE,results=hide,label=mpi_data_fig,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/probability/mpi_data_fig.R")
+source("ESEUR/probability/mpi_data_fig.R")
 @
 
 rexample[probability/mpi_data_fig.R]
@@ -85,7 +85,7 @@ Fit multiple distributions
 
 .Mixture model fitted by the rfunc[normalmixEM] function to the performance data from calls to <code>MPI_Allreduce</code>.
 <<echo=FALSE,results=hide,label=mpi_data_fit,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/probability/mpi_data_fit.R")
+source("ESEUR/probability/mpi_data_fit.R")
 @
 
 rexample[probability/mpi_data_fit.R]
@@ -152,7 +152,7 @@ Sampling
 
 .Example of a sample drawn from a population.
 <<echo=FALSE,label=pop-sample,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/statistics/pop-sample.R")
+source("ESEUR/statistics/pop-sample.R")
 @
 
 rexample[statistics/pop-sample.R]
@@ -177,7 +177,7 @@ Small samples are not smooth
 
 .Samples of randomly selected values drawn from the same normal distribution (100 points in each plot in top row, 1,000 in bottom).
 <<echo=FALSE,results=hide,label=two-norm,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/group-compare/two-norm.R")
+source("ESEUR/group-compare/two-norm.R")
 @
 
 rexample[group-compare/two-norm.R]
@@ -187,7 +187,7 @@ Sampling SPEC CPU2006
 
 .Mean (red) and standard deviation (grey lines; they are not symmetrical because of the log scaling) of samples of 3 items drawn from a population of 1,000 items (blue line mean, green line standard deviation).
 <<echo=FALSE,results=hide,label=sample-3_mean,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/statistics/sample-3_mean.R")
+source("ESEUR/statistics/sample-3_mean.R")
 @
 
 rexample[statistics/sample-3_mean.R]
@@ -197,7 +197,7 @@ Two value summaries can be misleading
 
 .A Normal distribution with mean=4 and variance=8 and a Chi-squared distribution with four degrees of freedom having the same mean and variance (the vertical lines are at the distributions' median value).
 <<echo=FALSE,results=hide,label=chisq-norm,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/group-compare/chisq-norm.R")
+source("ESEUR/group-compare/chisq-norm.R")
 @
 
 rexample[group-compare/chisq-norm.R]
@@ -207,7 +207,7 @@ Mixed populations
 
 .A population of items having one of three colors and three strata sampled from it.
 <<echo=FALSE,label=strata-sample,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/statistics/strata-sample.R")
+source("ESEUR/statistics/strata-sample.R")
 @
 
 rexample[statistics/strata-sample.R]
@@ -217,7 +217,7 @@ Contaminated Normal
 
 .A contaminated normal, values drawn from two normal distributions with 10% of values drawn from a distribution having a standard deviation five times greater than the other.
 <<echo=FALSE,results=hide,label=contam-norm,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/statistics/contam-norm.R")
+source("ESEUR/statistics/contam-norm.R")
 @
 
 rexample[statistics/contam-norm.R]
@@ -227,7 +227,7 @@ Testing small samples
 
 .Probability, with 95% confidence, that rfunc[shapiro.test] correctly reports that samples drawn from various distributions are not drawn from a Normal distribution, and probability of an incorrect report when the sample is drawn from a Normal distribution.
 <<echo=FALSE,results=hide,label=SW-check,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/group-compare/SW-check.R")
+source("ESEUR/group-compare/SW-check.R")
 @
 
 rexample[group-compare/SW-check.R]
@@ -289,7 +289,7 @@ Effect size
 
 .Examples of the impact of population prevalence, statistical power and p-value on number of false positives and false negatives.
 <<echo=FALSE,results=hide,label=true-false-tree,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/statistics/true-false-tree.R")
+source("ESEUR/statistics/true-false-tree.R")
 @
 
 rexample[statistics/true-false-tree.R]
@@ -299,7 +299,7 @@ Statistical power
 
 .The four related quantities in design power analysis.
 <<echo=FALSE,results=hide,label=design-power,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/statistics/design-power.R")
+source("ESEUR/statistics/design-power.R")
 @
 
 rexample[statistics/design-power.R]

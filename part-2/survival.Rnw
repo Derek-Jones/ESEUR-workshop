@@ -1,0 +1,230 @@
+ESEUR Workshop - Survival analysis
+==================================
+:author:    Derek M. Jones
+:copyright: Somebody
+:backend:   slidy
+:max-width: 45em
+
+Survival analysis
+-----------------
+
+{nbsp}
+
+Analysis of data having the form of time-to-event
+
+Survival function, <equ>S(t)</equ>
+
+Hazard function, <equ>h(t)</equ>
+
+<equ>h(t) = \frac{f(t)}{S(t)}</equ>
+
+Sample contains censored data
+
+* event occurs before the start of the study
+
+* event occurs after the end of the study
+
+rpackage[survival] package
+
+Survival function
+-----------------
+
+<equ>S(t)</equ>, the probability of surviving a given amount of time
+
+Kaplan-Meier curve
+
+.Survival rate of faults in Linux device drivers and other Linux subsystems...  Data from Palix et al <book Palix_10b>.
+[caption="Figure ", label=linux-bug]
+<<echo=FALSE,results=hide,label=linux-bug,fig=TRUE,align="center">>=
+source("ESEUR/survival/linux/linux-bug.R")
+@
+
+[source,R]
+-----
+d_mod=survfit(Surv(drivers$end-drivers$start+1,
+                               drivers$end == 33) ~ 1)
+plot(d_mod, col=pal_col[1],
+                    xlab="Version", ylab="Survival\n")
+-----
+
+rexample[linux-bug.R]
+
+Hazard function
+---------------
+
+<equ>h(t)</equ>, the hazard rate the probability of surviving to time
+<equ>t</equ> experiencing the event in the next time interval
+
+Having survived 30 years the probability that you die in the next
+month
+
+.Two commonly used hazard functions; Weibull is monotonic (always increases, decreases or remains the same) and Lognormal which can increase and then decrease.
+[caption="Figure ", label=hazard-shape]
+<<echo=FALSE,results=hide,label=hazard-shape,fig=TRUE,align="center">>=
+source("ESEUR/survival/hazard-shape.R")
+@
+
+rexample[hazard-shape.R]
+
+Censored data
+-------------
+
+.Observation period with events inside and outside the study period.
+[caption="Figure ", label=censoring]
+<<echo=FALSE,results=hide,label=censoring,fig=TRUE,align="center">>=
+source("ESEUR/survival/censoring.R")
+@
+
+rexample[censoring.R]
+
+Data format
+-----------
+
+{nbsp}
+
+-----
+id,start_time,end_time,failure_status,explanatory_v1
+-----
+
+Regression modeling
+-------------------
+
+Survival data implicitly contains information not present in ordinary
+regression modeling
+
+* probability of an event occurring at a given time, the hazard function
+
+Model building attempts to model the shape of the hazard function specified
+
+* If the chosen hazard function is incorrect, the returned model may be
+substantially incorrect
+
+* Parametric models have been found to be very sensitive to which
+explanatory variables are included or excluded in the input to the
+model building process
+
+No single statistic for definitively selecting the best model
+
+Cox proportional-hazards model does not require a hazard function to
+be specified
+
+Cox proportional-hazards model
+------------------------------
+
+{nbsp}
+
+<equ>h_i(t) = h_0(t)e^{\beta_1x_{1i}+\cdots+\beta_kx_{ki}}</equ>
+
+{nbsp}
+
+<equ>\log\frac{h_i(t)}{h_0(t)} = \beta_1x_{1i}+\cdots+\beta_kx_{ki}</equ>
+
+{nbsp}
+
+or, as a hazard ratio for two subjects: <equ>i</equ> and <equ>j</equ>
+
+<equ>\frac{h_i(t)}{h_j(t)} = e^{\beta_1(x_{1i}-x_{1j})+\cdots+\beta_k(x_{ki}-x_{kj})}</equ>
+
+Building a Cox model
+--------------------
+
+{nbsp}
+
+[source,R]
+-----
+library("survival")
+
+p_mod=coxph(Surv(patch_days, !is_censored) ~ log(cvss_score)
+                                              +opensource,
+                                               data=ISR_disc)
+-----
+
+Model rfunc[summary]
+--------------------
+
+<<echo=FALSE,label=patch-cph-sum>>=
+source("ESEUR/survival/vulnerabilities/patch-cph-sum.R")
+@
+
+rexample[patch-cph-sum.R]
+
+Interpreting a Cox model
+------------------------
+
+<routput>log(cvss_score)</routput> as an example
+
+{nbsp}
+
+1.26217 appears in its <routput>exp(coef)</routput> column
+
+<equ>\pm1</equ> change in the value of <equ>\log(\mathit{cvss{_}score})</equ>:
+
+* changes response variable by <equ>\pm(1.2621-1)\times100 \to \pm26.21</equ>%
+
+<routput>exp(coef)</routput> column less than 1 reverses the sign of
+the percentage change
+
+Time varying explanatory variables
+----------------------------------
+
+-----
+notify,publish,patch,vendor,employee,os
+2000-10-16,2000-11-18,2000-12-20,"abc",1000,unix
+
+id,start,end,pr_di,notify,publish,patch,event,vendor,os
+1,2000-10-16,2000-11-17,1,2000-10-16,2000-11-18,2000-12-20,0,"abc",unix
+1,2000-11-18,2000-12-20,0,2000-10-16,2000-11-18,2000-12-20,1,"abc",unix
+-----
+
+[source,R]
+-----
+library("survival")
+
+td_mod=coxph(Surv(patch_days, !is_censored) ~ log(cvss_score)
+                                               +opensource
+                                               +cluster(id),
+                                               data=ISR_split)
+-----
+
+Competing risks
+---------------
+
+Multiple events can occur
+
+.Cumulative incidence curves for problems reported by the splint tool in Samba and Squid (time is measured in number of snapshot releases).  Data from Di Penta et al <book Di_penta_09>.
+[caption="Figure ", label=ist-scam08]
+<<echo=FALSE,results=hide,label=ist-scam08,fig=TRUE,align="center">>=
+source("ESEUR/survival/tool_rep/ist-scam08.R")
+@
+
+[source,R]
+-----
+library("cmprsk")
+
+t=cuminc(rats$failtime, rats$type, cencode=0,
+                   subset=(rats$SYSTEM == sys_str))
+
+plot(t, col=pal_col, cex=1.25,
+        curvlab=c("was removed", "disappeared"),
+        xlab="Snapshot", ylab="Proportion flagged issues 'dead'\n")
+-----
+
+rexample[ist-scam08.R]
+
+Data to try
+-----------
+
+[source,R]
+-----
+library("foreign")
+library("survival")
+
+moz=read.arff("mozilla4.arff.xz")
+
+d_mod=survfit(Surv(measured_time, event_0_1) ~ 1)
+plot(d_mod)
+
+cox_mod=coxph(Surv(measured_time, event_0_1) ~ some_variable,
+                                               +cluster(id),
+                                               data=moz)
+-----

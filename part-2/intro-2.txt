@@ -1,0 +1,325 @@
+ESEUR Workshop - Recap+ regression+time
+=======================================
+:author:    Derek M. Jones
+:copyright: Somebody
+:backend:   slidy
+:max-width: 45em
+
+Overview
+--------
+
+{nbsp}
+
+Me talking
+
+You doing
+
+--------
+10:00-10:45 Talking: intro-2.html
+10:45-11:15 Doing
+11:15-12:00 Talking: time-series.html
+12:00-13:30 Doing+lunch
+13:30-14:15 Talking: binary-reg.html
+14:15-15:00 Doing
+15:00-16:00 Talking: survival.html
+16:00-17:00 Doing
+--------
+
+Aims
+----
+
+{nbsp}
+
+Useful to practicing software developer
+
+* analyse your own data
+* understand somebody else's analysis
+* better understanding of software development processes
+
+{nbsp}
+
+Minimise what developers have to know
+
+* developers are part-time data analyzers
+
+Approach
+--------
+
+{nbsp}
+
+A doctor's approach to curing patient problems
+
+* what are the symptoms
+* do this and you should be cured
+
+{nbsp}
+
+A few general techniques covering many cases
+
+* needs a computer
+* uses R
+* try to fit in with existing developer knowledge
+
+{nbsp}
+
+Driven by data
+
+Always remember
+---------------
+
+{nbsp}
+
+<quote>Output of statistical analysis should be treated as a guide and not a mandate</quote>
+
+{nbsp}
+
+<quote>All models are wrong, but some are useful</quote>
+
+Why R?
+------
+
+{nbsp}
+
+It works and is usable
+
+* mostly stats + some programming -> R
+* mostly programming + some stats -> Python
+
+R has much deeper/wider coverage for time series/survival analysis
+
+Language differences
+--------------------
+
+Fortran parentage
+
+* arrays start at 1, not 0
+* row-column order (not column-row) <rcode>df[row, column]</rcode>
+* operator precedence: <rcode>!x == y</rcode>
+
+Identifiers
+
+* Case is significant, <rcode>A_var != a_var</rcode>
+* <rcode>names.can.contain...</rcode>
+
+No scalars, literals are vectors of length one
+
+* <rcode>3</rcode> equivalent to <rcode>c(3)</rcode>
+* <rcode>1:5</rcode>  equivalent to <rcode>c(1, 2, 3, 4, 5)</rcode>
+
+<rcode>\$</rcode> member selection, <rcode>^</rcode> exponentiation
+
+Date and time
+-------------
+
+[source,R]
+-----
+> t=as.Date("01-01-2001", format="%d-%m-%Y")
+> str(t)
+ Date[1:1], format: "2001-01-01"
+> as.numeric(t)
+[1] 11323
+> t=as.POSIXct("01-01-2001", format="%d-%m-%Y")
+# as.POSIXlt
+> str(t)
+ POSIXct[1:1], format: "2001-01-01"
+> as.numeric(t)
+[1] 978307200
+-----
+
+rfunc[strftime] function
+
+rpackage[lubridate] package
+
+Plotting
+--------
+
+[source,R]
+-----
+plot(xvals, yvals)
+plot(yvals) # plot(1:length(yvals), yvals)
+
+plot(xvals, yvals, log="y")
+plot(xvals, yvals, xlim=c(1, 10))
+plot(xvals, yvals, xlab="This is X", ylab="Y here")
+
+plot(xvals, yvals, col="pink")
+points(more_x, more_y, col="green")
+lines(x_lines, y_lines, col="blue")
+-----
+
+Structure of SE programs in R
+-----------------------------
+
+{nbsp}
+
+[source,R]
+-----
+orig_data=read_data()
+
+interesting_data=reshape_data(orig_data)
+
+stat_results=appropriate_statistics(interesting_data)
+
+plot_result(stat_results)
+-----
+
+Regression modeling
+-------------------
+
+Fits various kinds of equations to data
+
+You decide what equations to fit
+
+image::../not_R/reg-models.jpg[]
+
+What is different about time series?
+------------------------------------
+
+{nbsp}
+
+Linear regression modeling
+
+* each measurement independent of previous measurements
+
+{nbsp}
+
+Time series analysis
+
+* each measurement depends on previous measurements
+
+Seasons and Discontinuities
+---------------------------
+
+.Monthly unit sales (in thousands) of 4-bit microprocessors.  Data kindly supplied by Turley <book Turley_02>.
+[caption="Figure ", label=cpu-sales-raw]
+image::intro-2-cpu-sales-raw.jpg[]
+
+
+rexample[cpu-sales-raw.R]
+
+Single discontinuity model
+--------------------------
+
+[source,R]
+-----
+y_1998=as.Date("01-04-1998", format="%d-%m-%Y")
+
+p4=glm(bit.4 ~ date*(date < y_1998)
+               +date*(date >= y_1998), data=proc_sales)
+-----
+
+----
+Call:
+glm(formula = bit.4 ~ date * (date < y_1998) + date * (date >= 
+    y_1998), data = proc_sales)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-19756.9   -6372.8    -558.7    6533.2   19086.4  
+
+Coefficients: (2 not defined because of singularities)
+                          Estimate Std. Error t value Pr(>|t|)  
+(Intercept)              7.050e+04  5.802e+04   1.215   0.2265  
+date                     7.072e-01  5.368e+00   0.132   0.8954  
+date < y_1998TRUE       -8.357e+04  5.873e+04  -1.423   0.1572  
+date >= y_1998TRUE              NA         NA      NA       NA  
+date:date < y_1998TRUE   1.045e+01  5.466e+00   1.912   0.0581 .
+date:date >= y_1998TRUE         NA         NA      NA       NA  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for gaussian family taken to be 80003408)
+
+    Null deviance: 2.0763e+10  on 131  degrees of freedom
+Residual deviance: 1.0240e+10  on 128  degrees of freedom
+AIC: 2782.6
+
+Number of Fisher Scoring iterations: 2
+----
+
+rexample[cpu-sales-summary.R]
+
+Model predictions
+-----------------
+
+[caption="Figure ", label=cpu-sales-disc]
+image::intro-2-cpu-sales-disc.jpg[]
+
+
+rexample[cpu-sales-disc.R]
+
+Seasonal variation
+------------------
+
+<equ>A\sin(2\pi ft+\phi) = \alpha_s\sin(2\pi ft)+\alpha_c\cos(2\pi ft)</equ>
+
+[source,R]
+-----
+rad_per_day=(2*pi)/365
+proc_sales$rad_days=rad_per_day*proc_sales$days
+
+season_p4=glm(bit.4 ~ date*(date < y_1998)
+                       +date*(date >= y_1998)
+                       +I(sin(rad_days))+I(cos(rad_days)),
+                                        data=proc_sales)
+-----
+
+Seasonal model summary
+----------------------
+
+----
+Call:
+glm(formula = bit.4 ~ date * (date < y_1998) + date * (date >= 
+    y_1998) + I(sin(rad_days)) + I(cos(rad_days)), data = proc_sales)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-16416.3   -3733.5     243.7    3698.2   11784.4  
+
+Coefficients: (2 not defined because of singularities)
+                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)              60279.389  37111.820   1.624   0.1068    
+date                         1.585      3.434   0.461   0.6453    
+date < y_1998TRUE       -73666.179  37527.359  -1.963   0.0518 .  
+date >= y_1998TRUE              NA         NA      NA       NA    
+I(sin(rad_days))         -4403.589    703.116  -6.263 5.46e-09 ***
+I(cos(rad_days))         -8630.368    703.497 -12.268  < 2e-16 ***
+date:date < y_1998TRUE       9.646      3.492   2.762   0.0066 ** 
+date:date >= y_1998TRUE         NA         NA      NA       NA    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for gaussian family taken to be 32303160)
+
+    Null deviance: 2.0763e+10  on 131  degrees of freedom
+Residual deviance: 4.0702e+09  on 126  degrees of freedom
+AIC: 2664.8
+
+Number of Fisher Scoring iterations: 2
+----
+
+Seasonal model predictions
+--------------------------
+
+.Monthly unit sales (in thousands) of 4-bit microprocessors.  Data kindly supplied by Turley <book Turley_02>.
+[caption="Figure ", label=cpu-sales]
+image::intro-2-cpu-sales.jpg[]
+
+
+rexample[cpu-sales.R]
+
+Data to try
+-----------
+
+--------
+turley_02.csv.xz
+
+bit.8   # 3 month cycle
+--------
+
+.Monthly unit sales (in thousands) of microprocessors having a given bus width.  Data kindly supplied by Turley <book Turley_02>.
+[caption="Figure ", label=turley_02]
+image::intro-2-turley_02.jpg[]
+
+
+rexample[turley_02.R]

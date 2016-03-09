@@ -56,7 +56,7 @@ FreeBSD sloc over time
 
 .Total lines of source code in FreeBSD by days elapsed since the project started.
 <<echo=FALSE,results=hide,label=BSD-x,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/Herraiz-BSD.R")
+source("ESEUR/regression/Herraiz-BSD.R")
 @
 
 rexample[regression/Herraiz-BSD.R]
@@ -66,7 +66,7 @@ Groovy compiler classes over time
 
 .Number of classes in the Groovy compiler at each release, in days since version 1.0.
 <<echo=FALSE,results=hide,label=Groovy_change-prop2,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/Groovy_change-prop2.R")
+source("ESEUR/regression/Groovy_change-prop2.R")
 @
 
 rexample[regression/Groovy_change-prop2.R]
@@ -136,7 +136,7 @@ summary(BSD_mod)
 -----
 
 <<echo=FALSE,label=summary_linear>>=
-source("/usr1/rbook/examples/regression/summary_BSD-linear.R")
+source("ESEUR/regression/summary_BSD-linear.R")
 @
 
 In mathematics
@@ -191,7 +191,7 @@ The BSD data
 
 .Total lines of source code in FreeBSD by days elapsed since the project started.
 <<echo=FALSE,results=hide,label=BSD-x,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/Herraiz-BSD.R")
+source("ESEUR/regression/Herraiz-BSD.R")
 @
 
 rexample[regression/Herraiz-BSD.R]
@@ -201,7 +201,7 @@ Scattered measurement points
 
 .Estimated cost and duration of 73 large Dutch federal IT projects.
 <<echo=FALSE,results=hide,label=federal_IT-cost_dur,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/federal_IT-cost_dur.R")
+source("ESEUR/regression/federal_IT-cost_dur.R")
 @
 
 rexample[regression/federal_IT-cost_dur.R]
@@ -259,7 +259,7 @@ Visualizing general trend
 
 .For each distinct language, the number of lines committed on Github and the number of questions tagged with that language.
 <<echo=FALSE,results=hide,label=langpop-corger-nl,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/langpop-corger-nl.R")
+source("ESEUR/regression/langpop-corger-nl.R")
 @
 
 rexample[regression/langpop-corger-nl.R]
@@ -269,7 +269,7 @@ Trend changes later
 
 .Percentage of vulnerabilities detected by developers working a given number of years in security.
 <<echo=FALSE,results=hide,label=acc-sec-experience,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/acc-sec-experience.R")
+source("ESEUR/regression/acc-sec-experience.R")
 @
 
 rexample[regression/acc-sec-experience.R]
@@ -279,7 +279,7 @@ Almost any data can be fitted
 
 .Number of updates and fixes in each Linux release between version 2.6.11 and 3.2.
 <<echo=FALSE,results=hide,label=linux-stable,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/linux-stable.R")
+source("ESEUR/regression/linux-stable.R")
 @
 
 rexample[regression/linux-stable]
@@ -291,7 +291,7 @@ Updates rfunc[summary] output
 coefficient in the corresponding row is zero,
 
 <<echo=FALSE,label=summary_linux-stable>>=
-source("/usr1/rbook/examples/regression/summary_linux-stable.R")
+source("ESEUR/regression/summary_linux-stable.R")
 @
 
 Nominal data
@@ -316,7 +316,7 @@ rfunc[summary] output
 ---------------------
 
 <<echo=FALSE,label=comp-mask>>=
-source("/usr1/rbook/examples/faults/comp-mask/comp-mask.R")
+source("ESEUR/faults/comp-mask/comp-mask.R")
 @
 
 In mathematics
@@ -324,7 +324,7 @@ In mathematics
 
 Fitted equation is:
 
-<equ>\mathit{pass.masked} = 28.6 + 9.2\times D_2 + 7.4\times D_2 + 11.6\times D_{osf}</equ>
+<equ>\mathit{pass.masked} = 28.6 + 9.2\times D_2 + 7.4\times D_3 + 11.6\times D_{osf}</equ>
 
 <equ>D_i</equ> is known as dummy variables or indicator variable and
 has one of two values:
@@ -362,7 +362,7 @@ How much better is a quadratic equation fit, a cubic fit, ...?
 
 .Lines of code in every initial release of the Linux kernel since version 1.0.
 <<echo=FALSE,results=hide,label=linux-DAYLOC,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/Linux-DAYLOC.R")
+source("ESEUR/regression/Linux-DAYLOC.R")
 @
 
 rexample[regression/Linux-DAYLOC.R]
@@ -378,7 +378,7 @@ AIC Akaiki Information criteria takes into account:
 improvement in a model's fit to the data
 
 <<echo=FALSE,label=Linux-DAYLOC-AIC>>=
-source("/usr1/rbook/examples/regression/Linux-DAYLOC-AIC.R")
+source("ESEUR/regression/Linux-DAYLOC-AIC.R")
 @
 
 When AIC of two models differ by:
@@ -393,7 +393,7 @@ Cubic model
 -----------
 
 <<echo=FALSE,label=Linux-DAYLOC-cubic>>=
-source("/usr1/rbook/examples/regression/Linux-DAYLOC-cubic.R")
+source("ESEUR/regression/Linux-DAYLOC-cubic.R")
 @
 
 Influential observations and Outliers
@@ -401,7 +401,7 @@ Influential observations and Outliers
 
 .Hours to develop software for 29 embedded consumer products and the amount of code they contain.
 <<echo=FALSE,results=hide,label=lines-per-hour,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/lines-per-hour.R")
+source("ESEUR/regression/lines-per-hour.R")
 @
 
 rexample[regression/lines-per-hour.R]
@@ -411,7 +411,7 @@ Ignoring sample size
 
 .After removal of overly influential observations.  Left takes into account the Bonferroni p-value of the Studentized residuals while the right plot does not.
 <<echo=FALSE,results=hide,label=lines-hour-mininf,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/lines-hour-mininf.R")
+source("ESEUR/regression/lines-hour-mininf.R")
 @
 
 rexample[regression/lines-hour-mininf.R]
@@ -421,7 +421,7 @@ influenceIndexPlot
 
 .rfunc[influenceIndexPlot] for the data.
 <<echo=FALSE,results=hide,label=lines-influence,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/lines-hour-influence.R")
+source("ESEUR/regression/lines-hour-influence.R")
 @
 
 rexample[regression/lines-hour-influence.R]
@@ -431,7 +431,7 @@ Outlier or changepoint?
 
 .Number of medical devices reported recalled by the US Food and Drug Administration, in two week bins.  Fitted straight regression line (red, with blue confidence bounds) and loess fit (green).
 <<echo=FALSE,results=hide,label=Alemzadeh-Recalls,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/Alemzadeh-Recalls.R")
+source("ESEUR/regression/Alemzadeh-Recalls.R")
 @
 
 rexample[regression/Alemzadeh-Recalls.R]
@@ -441,7 +441,7 @@ After 2010 is different
 
 .Fitted model after two observations replaced by mean value (left) and two fitted lines, one up to the end of 2010 and one after 2010.
 <<echo=FALSE,results=hide,label=Alemzadeh-mininf,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/Alemzadeh-mininf.R")
+source("ESEUR/regression/Alemzadeh-mininf.R")
 @
 
 rexample[regression/Alemzadeh-mininf.R]
@@ -462,7 +462,7 @@ SPECint 2006
 
 .SPECint 2006 performance results for processors running at various clock rates, memory chip frequencies and processor family.
 <<echo=FALSE,results=hide,label=SPEC-Mhz,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/benchmark/SPEC-Mhz.R")
+source("ESEUR/benchmark/SPEC-Mhz.R")
 @
 
 rexample[benchmark/SPEC-Mhz.R]
@@ -521,7 +521,7 @@ Individual variable contribution
 
 .Individual contribution of each explanatory variable to the response variable in the model of SPECint performance fitted above.
 <<echo=FALSE,results=hide,label=SPEC-ind-MHz-DDR,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/benchmark/SPEC-ind-MHz-DDR.R")
+source("ESEUR/benchmark/SPEC-ind-MHz-DDR.R")
 @
 
 rexample[benchmark/SPEC-ind-MHz-DDR.R]
@@ -531,7 +531,7 @@ Residuals
 
 .Residual of the model of SPECint performance fitted above.
 <<echo=FALSE,results=hide,label=SPEC-resid-MHz-DDR,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/benchmark/SPEC-resid-MHz-DDR.R")
+source("ESEUR/benchmark/SPEC-resid-MHz-DDR.R")
 @
 
 rexample[benchmark/SPEC-resid-MHz-DDR.R]
@@ -549,7 +549,7 @@ spec_mod=glm(Result ~ Processor.MHz + I(Processor.MHz^2)+
 
 .Individual contribution of each explanatory variable to the response variable in a quadratic model of SPECint performance.
 <<echo=FALSE,results=hide,label=SPEC-quad-MHz-DDR,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/benchmark/SPEC-quad-MHz-DDR.R")
+source("ESEUR/benchmark/SPEC-quad-MHz-DDR.R")
 @
 
 rexample[benchmark/SPEC-quad-MHz-DDR.R]
@@ -588,7 +588,7 @@ Interaction and shared contribution
 
 .Diagram illustrating shared and non-shared contributions made by two variables in explaining Y.
 <<echo=FALSE,results=hide,label=shared-contrib,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/regression/shared-contrib.R")
+source("ESEUR/regression/shared-contrib.R")
 @
 
 rexample[regression/shared-contrib.R]
@@ -598,7 +598,7 @@ Two models or one?
 
 .Estimated and actual effort broken down by communication frequency, along with individually straight fitted lines.
 <<echo=FALSE,results=hide,label=simula_0a,fig=TRUE,align="center">>=
-source("/usr1/rbook/examples/projects/simula_0a.R")
+source("ESEUR/projects/simula_0a.R")
 @
 
 rexample[projects/simula_0a.R]
@@ -648,7 +648,7 @@ simple_sim=stepAIC(sim_mod)
 -----
 
 <<echo=FALSE,label=simula_0a-Anova>>=
-source("/usr1/rbook/examples/projects/simula_0a-Anova.R")
+source("ESEUR/projects/simula_0a-Anova.R")
 @
 
 After following the numbers

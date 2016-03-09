@@ -1,0 +1,277 @@
+ESEUR Workshop - Recap+ regression+time
+=======================================
+:author:    Derek M. Jones
+:copyright: Somebody
+:backend:   slidy
+:max-width: 45em
+
+Overview
+--------
+
+{nbsp}
+
+Me talking
+
+You doing
+
+--------
+10:00-10:45 Talking: intro-2.html
+10:45-11:15 Doing
+11:15-12:00 Talking: time-series.html
+12:00-13:30 Doing+lunch
+13:30-14:15 Talking: binary-reg.html
+14:15-15:00 Doing
+15:00-16:00 Talking: survival.html
+16:00-17:00 Doing
+--------
+
+Aims
+----
+
+{nbsp}
+
+Useful to practicing software developer
+
+* analyse your own data
+* understand somebody else's analysis
+* better understanding of software development processes
+
+{nbsp}
+
+Minimise what developers have to know
+
+* developers are part-time data analyzers
+
+Approach
+--------
+
+{nbsp}
+
+A doctor's approach to curing patient problems
+
+* what are the symptoms
+* do this and you should be cured
+
+{nbsp}
+
+A few general techniques covering many cases
+
+* needs a computer
+* uses R
+* try to fit in with existing developer knowledge
+
+{nbsp}
+
+Driven by data
+
+Always remember
+---------------
+
+{nbsp}
+
+<quote>Output of statistical analysis should be treated as a guide and not a mandate</quote>
+
+{nbsp}
+
+<quote>All models are wrong, but some are useful</quote>
+
+Why R?
+------
+
+{nbsp}
+
+It works and is usable
+
+* mostly stats + some programming -> R
+* mostly programming + some stats -> Python
+
+R has much deeper/wider coverage for time series/survival analysis
+
+Language differences
+--------------------
+
+Fortran parentage
+
+* arrays start at 1, not 0
+* row-column order (not column-row) <rcode>df[row, column]</rcode>
+* operator precedence: <rcode>!x == y</rcode>
+
+Identifiers
+
+* Case is significant, <rcode>A_var != a_var</rcode>
+* <rcode>names.can.contain...</rcode>
+
+No scalars, literals are vectors of length one
+
+* <rcode>3</rcode> equivalent to <rcode>c(3)</rcode>
+* <rcode>1:5</rcode>  equivalent to <rcode>c(1, 2, 3, 4, 5)</rcode>
+
+<rcode>\$</rcode> member selection, <rcode>^</rcode> exponentiation
+
+Date and time
+-------------
+
+[source,R]
+-----
+> t=as.Date("01-01-2001", format="%d-%m-%Y")
+> str(t)
+ Date[1:1], format: "2001-01-01"
+> as.numeric(t)
+[1] 11323
+> t=as.POSIXct("01-01-2001", format="%d-%m-%Y")
+# as.POSIXlt
+> str(t)
+ POSIXct[1:1], format: "2001-01-01"
+> as.numeric(t)
+[1] 978307200
+-----
+
+rfunc[strftime] function
+
+rpackage[lubridate] package
+
+Plotting
+--------
+
+[source,R]
+-----
+plot(xvals, yvals)
+plot(yvals) # plot(1:length(yvals), yvals)
+
+plot(xvals, yvals, log="y")
+plot(xvals, yvals, xlim=c(1, 10))
+plot(xvals, yvals, xlab="This is X", ylab="Y here")
+
+plot(xvals, yvals, col="pink")
+points(more_x, more_y, col="green")
+lines(x_lines, y_lines, col="blue")
+-----
+
+Structure of SE programs in R
+-----------------------------
+
+{nbsp}
+
+[source,R]
+-----
+orig_data=read_data()
+
+interesting_data=reshape_data(orig_data)
+
+stat_results=appropriate_statistics(interesting_data)
+
+plot_result(stat_results)
+-----
+
+Regression modeling
+-------------------
+
+Fits various kinds of equations to data
+
+You decide what equations to fit
+
+image::../not_R/reg-models.jpg[]
+
+What is different about time series?
+------------------------------------
+
+{nbsp}
+
+Linear regression modeling
+
+* each measurement independent of previous measurements
+
+{nbsp}
+
+Time series analysis
+
+* each measurement depends on previous measurements
+
+Seasons and Discontinuities
+---------------------------
+
+.Monthly unit sales (in thousands) of 4-bit microprocessors.  Data kindly supplied by Turley <book Turley_02>.
+[caption="Figure ", label=cpu-sales-raw]
+<<echo=FALSE,results=hide,label=cpu-sales-raw,fig=TRUE,align="center">>=
+source("ESEUR_WORK/cpu-sales-raw.R")
+@
+
+rexample[cpu-sales-raw.R]
+
+Single discontinuity model
+--------------------------
+
+[source,R]
+-----
+y_1998=as.Date("01-04-1998", format="%d-%m-%Y")
+
+p4=glm(bit.4 ~ date*(date < y_1998)
+               +date*(date >= y_1998), data=proc_sales)
+-----
+
+<<echo=FALSE,label=cpu-sales-summary>>=
+source("ESEUR/regression/cpu-sales-summary.R")
+@
+
+rexample[cpu-sales-summary.R]
+
+Model predictions
+-----------------
+
+[caption="Figure ", label=cpu-sales-disc]
+<<echo=FALSE,results=hide,label=cpu-sales-disc,fig=TRUE,align="center">>=
+source("ESEUR_WORK/cpu-sales-disc.R")
+@
+
+rexample[cpu-sales-disc.R]
+
+Seasonal variation
+------------------
+
+<equ>A\sin(2\pi ft+\phi) = \alpha_s\sin(2\pi ft)+\alpha_c\cos(2\pi ft)</equ>
+
+[source,R]
+-----
+rad_per_day=(2*pi)/365
+proc_sales$rad_days=rad_per_day*proc_sales$days
+
+season_p4=glm(bit.4 ~ date*(date < y_1998)
+                       +date*(date >= y_1998)
+                       +I(sin(rad_days))+I(cos(rad_days)),
+                                        data=proc_sales)
+-----
+
+Seasonal model summary
+----------------------
+
+<<echo=FALSE,label=cpu-sales-season-sum>>=
+source("ESEUR_WORK/cpu-sales-season-sum.R")
+@
+
+Seasonal model predictions
+--------------------------
+
+.Monthly unit sales (in thousands) of 4-bit microprocessors.  Data kindly supplied by Turley <book Turley_02>.
+[caption="Figure ", label=cpu-sales]
+<<echo=FALSE,results=hide,label=cpu-sales,fig=TRUE,align="center">>=
+source("ESEUR_WORK/cpu-sales.R")
+@
+
+rexample[cpu-sales.R]
+
+Data to try
+-----------
+
+--------
+turley_02.csv.xz
+
+bit.8   # 3 month cycle
+--------
+
+.Monthly unit sales (in thousands) of microprocessors having a given bus width.  Data kindly supplied by Turley <book Turley_02>.
+[caption="Figure ", label=turley_02]
+<<echo=FALSE,results=hide,label=turley_02,fig=TRUE,align="center">>=
+source("ESEUR/introduction/turley_02.R")
+@
+
+rexample[turley_02.R]

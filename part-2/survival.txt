@@ -1,0 +1,259 @@
+ESEUR Workshop - Survival analysis
+==================================
+:author:    Derek M. Jones
+:copyright: Somebody
+:backend:   slidy
+:max-width: 45em
+
+Survival analysis
+-----------------
+
+{nbsp}
+
+Analysis of data having the form of time-to-event
+
+Survival function, <equ>S(t)</equ>
+
+Hazard function, <equ>h(t)</equ>
+
+<equ>h(t) = \frac{f(t)}{S(t)}</equ>
+
+Sample contains censored data
+
+* event occurs before the start of the study
+
+* event occurs after the end of the study
+
+rpackage[survival] package
+
+Survival function
+-----------------
+
+<equ>S(t)</equ>, the probability of surviving a given amount of time
+
+Kaplan-Meier curve
+
+.Survival rate of faults in Linux device drivers and other Linux subsystems...  Data from Palix et al <book Palix_10b>.
+[caption="Figure ", label=linux-bug]
+image::survival-linux-bug.jpg[]
+
+
+[source,R]
+-----
+d_mod=survfit(Surv(drivers$end-drivers$start+1,
+                               drivers$end == 33) ~ 1)
+plot(d_mod, col=pal_col[1],
+                    xlab="Version", ylab="Survival\n")
+-----
+
+rexample[linux-bug.R]
+
+Hazard function
+---------------
+
+<equ>h(t)</equ>, the hazard rate the probability of surviving to time
+<equ>t</equ> experiencing the event in the next time interval
+
+Having survived 30 years the probability that you die in the next
+month
+
+.Two commonly used hazard functions; Weibull is monotonic (always increases, decreases or remains the same) and Lognormal which can increase and then decrease.
+[caption="Figure ", label=hazard-shape]
+image::survival-hazard-shape.jpg[]
+
+
+rexample[hazard-shape.R]
+
+Censored data
+-------------
+
+.Observation period with events inside and outside the study period.
+[caption="Figure ", label=censoring]
+image::survival-censoring.jpg[]
+
+
+rexample[censoring.R]
+
+Data format
+-----------
+
+{nbsp}
+
+-----
+id,start_time,end_time,failure_status,explanatory_v1
+-----
+
+Regression modeling
+-------------------
+
+Survival data implicitly contains information not present in ordinary
+regression modeling
+
+* probability of an event occurring at a given time, the hazard function
+
+Model building attempts to model the shape of the hazard function specified
+
+* If the chosen hazard function is incorrect, the returned model may be
+substantially incorrect
+
+* Parametric models have been found to be very sensitive to which
+explanatory variables are included or excluded in the input to the
+model building process
+
+No single statistic for definitively selecting the best model
+
+Cox proportional-hazards model does not require a hazard function to
+be specified
+
+Cox proportional-hazards model
+------------------------------
+
+{nbsp}
+
+<equ>h_i(t) = h_0(t)e^{\beta_1x_{1i}+\cdots+\beta_kx_{ki}}</equ>
+
+{nbsp}
+
+<equ>\log\frac{h_i(t)}{h_0(t)} = \beta_1x_{1i}+\cdots+\beta_kx_{ki}</equ>
+
+{nbsp}
+
+or, as a hazard ratio for two subjects: <equ>i</equ> and <equ>j</equ>
+
+<equ>\frac{h_i(t)}{h_j(t)} = e^{\beta_1(x_{1i}-x_{1j})+\cdots+\beta_k(x_{ki}-x_{kj})}</equ>
+
+Building a Cox model
+--------------------
+
+{nbsp}
+
+[source,R]
+-----
+library("survival")
+
+p_mod=coxph(Surv(patch_days, !is_censored) ~ log(cvss_score)
+                                              +opensource,
+                                               data=ISR_disc)
+-----
+
+Model rfunc[summary]
+--------------------
+
+----
+Call:
+coxph(formula = Surv(patch_days, !is_censored) ~ log(cvss_score) + 
+    opensource + y2003 + smallvendor + small_loge + log(cvss_score):y2002 + 
+    y2002:smallvendor + y2003:smallvendor, data = ISR_np)
+
+  n= 945, number of events= 824 
+
+                          coef exp(coef) se(coef)      z Pr(>|z|)    
+log(cvss_score)        0.23283   1.26217  0.08570  2.717  0.00659 ** 
+opensource             0.42235   1.52555  0.09167  4.607 4.08e-06 ***
+y2003                  0.83643   2.30811  0.10459  7.997 1.22e-15 ***
+smallvendor           -0.40940   0.66405  0.17331 -2.362  0.01816 *  
+small_loge             0.02926   1.02969  0.01346  2.173  0.02975 *  
+log(cvss_score):y2002  0.23048   1.25920  0.04961  4.646 3.39e-06 ***
+smallvendor:y2002      0.59685   1.81638  0.19540  3.054  0.00226 ** 
+y2003:smallvendor      0.58999   1.80396  0.22502  2.622  0.00874 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+                      exp(coef) exp(-coef) lower .95 upper .95
+log(cvss_score)           1.262     0.7923    1.0670    1.4930
+opensource                1.526     0.6555    1.2747    1.8258
+y2003                     2.308     0.4333    1.8803    2.8332
+smallvendor               0.664     1.5059    0.4728    0.9326
+small_loge                1.030     0.9712    1.0029    1.0572
+log(cvss_score):y2002     1.259     0.7942    1.1425    1.3878
+smallvendor:y2002         1.816     0.5505    1.2384    2.6640
+y2003:smallvendor         1.804     0.5543    1.1606    2.8039
+
+Concordance= 0.647  (se = 0.012 )
+Rsquare= 0.19   (max possible= 1 )
+Likelihood ratio test= 199  on 8 df,   p=0
+Wald test            = 184.9  on 8 df,   p=0
+Score (logrank) test = 198.3  on 8 df,   p=0
+----
+
+rexample[patch-cph-sum.R]
+
+Interpreting a Cox model
+------------------------
+
+<routput>log(cvss_score)</routput> as an example
+
+{nbsp}
+
+1.26217 appears in its <routput>exp(coef)</routput> column
+
+<equ>\pm1</equ> change in the value of <equ>\log(\mathit{cvss{_}score})</equ>:
+
+* changes response variable by <equ>\pm(1.2621-1)\times100 \to \pm26.21</equ>%
+
+<routput>exp(coef)</routput> column less than 1 reverses the sign of
+the percentage change
+
+Time varying explanatory variables
+----------------------------------
+
+-----
+notify,publish,patch,vendor,employee,os
+2000-10-16,2000-11-18,2000-12-20,"abc",1000,unix
+
+id,start,end,pr_di,notify,publish,patch,event,vendor,os
+1,2000-10-16,2000-11-17,1,2000-10-16,2000-11-18,2000-12-20,0,"abc",unix
+1,2000-11-18,2000-12-20,0,2000-10-16,2000-11-18,2000-12-20,1,"abc",unix
+-----
+
+[source,R]
+-----
+library("survival")
+
+td_mod=coxph(Surv(patch_days, !is_censored) ~ log(cvss_score)
+                                               +opensource
+                                               +cluster(id),
+                                               data=ISR_split)
+-----
+
+Competing risks
+---------------
+
+Multiple events can occur
+
+.Cumulative incidence curves for problems reported by the splint tool in Samba and Squid (time is measured in number of snapshot releases).  Data from Di Penta et al <book Di_penta_09>.
+[caption="Figure ", label=ist-scam08]
+image::survival-ist-scam08.jpg[]
+
+
+[source,R]
+-----
+library("cmprsk")
+
+t=cuminc(rats$failtime, rats$type, cencode=0,
+                   subset=(rats$SYSTEM == sys_str))
+
+plot(t, col=pal_col, cex=1.25,
+        curvlab=c("was removed", "disappeared"),
+        xlab="Snapshot", ylab="Proportion flagged issues 'dead'\n")
+-----
+
+rexample[ist-scam08.R]
+
+Data to try
+-----------
+
+[source,R]
+-----
+library("foreign")
+library("survival")
+
+moz=read.arff("mozilla4.arff.xz")
+
+d_mod=survfit(Surv(measured_time, event_0_1) ~ 1)
+plot(d_mod)
+
+cox_mod=coxph(Surv(measured_time, event_0_1) ~ some_variable,
+                                               +cluster(id),
+                                               data=moz)
+-----

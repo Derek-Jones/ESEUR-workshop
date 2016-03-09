@@ -1,11 +1,13 @@
 #
-# mkslides, 13 Jan 16
+# mkslides, 7 Mar 16
 
 
 base_file=`basename $1 .txt`
 
 sed -e "s/<equ>/latexmath:[$/g" \
     -e "s/<\/equ>/$]/g" \
+    -e "s/<EQU>/latexmath:[$\\\\begin{aligned}/g" \
+    -e "s/<\/EQU>/\\\\end{aligned}$]/g" \
     -e "s/<keyword>/++/g" \
     -e "s/<\/keyword>/++/g" \
     -e "s/<code>/++pass:[/g" \

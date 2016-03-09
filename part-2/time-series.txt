@@ -1,0 +1,328 @@
+ESEUR Workshop - Time series analysis
+=====================================
+:author:    Derek M. Jones
+:copyright: Somebody
+:backend:   slidy
+:max-width: 45em
+
+Time series analysis
+--------------------
+
+Deals with measurements that are sequentially correlated
+
+Time is the common case
+
+{nbsp}
+
+A time series contains one or more of the components:
+
+* underlying trend: changes slowly,
+
+* regular recurring pattern of changes : e.g., expected daytime
+temperature throughout the year
+
+* random, irregular or fluctuating component
+
+Base system includes basic time series functionality
+
+rpackage[forecast] package
+
+Analysis deliverables
+---------------------
+
+{nbsp}
+
+Possible outputs from a time-series analysis include:
+
+* a model of how the value of a quantity at time <equ>t</equ> depends
+on its values at an earlier time, usually <equ>t-1</equ>
+
+* a regression model that takes account of correlation between
+measured values
+
+* power spectrum: shows dominant frequencies present in the data
+
+* relationships between multiple time series
+
+* zero or more change points where the mean and/or variance changes
+
+Three components
+----------------
+
+.The three components of the hourly rate of commits, during a week, to the Linux kernel source tree; components extracted by from the time series by rfunc[stl].  Data from Eyolfson et al <book Eyolfson_11>.
+[caption="Figure ", label=commit-components]
+image::time-series-commit-components.jpg[]
+
+
+[source,R]
+-----
+# A seasonal frequency has to be specified
+hr_ts=ts(linux_hr, start=c(0, 0), frequency=24)
+plot(stl(hr_ts, s.window="periodic"))
+-----
+
+rexample[commit-components.R]
+
+Autoregressive model (AR)
+-------------------------
+
+Models the value at time <equ>t</equ> as:
+
+* a weighted combination of values measured at earlier time steps
+
+* plus some amount of added noise
+
+{nbsp}
+
+<equ>x_t = \phi_1x_{t-1}+\phi_2x_{t-2}+w_t</equ>
+
+An autoregressive model of order 2, abbreviated AR(2)
+
+Uses values from two time steps back, with weights <equ>\phi_1</equ>
+and <equ>\phi_2</equ>
+
+Moving Average model (MA)
+-------------------------
+
+Models the value at time <equ>t</equ> as:
+
+* noise, <equ>w_t</equ>,
+
+* plus a weighted combination of the noise from earlier time steps
+
+{nbsp}
+
+<equ>x_t = w_t+\theta_1 w_{t-1}</equ>
+
+A moving average model of order 1, abbreviated MA(1)
+
+Uses noise (with weight <equ>\theta_1</equ>) from one step back
+
+ARIMA model
+-----------
+
+{nbsp}
+
+Autoregressive Integrated Moving Average
+
+AR + diff + MA
+
+{nbsp}
+
+[source,R]
+-----
+arima(data, order=c(..., 0, ...)) # roll your own
+
+auto.arima(data) # in the forecast package
+-----
+
+Autocorrelation function, rfunc[acf]
+------------------------------------
+
+.Autocorrelation of two AR models (left column) and two MA models (right column).
+[caption="Figure ", label=ARMA-acf]
+image::time-series-ARMA-acf.jpg[]
+
+
+[source,R]
+-----
+acf(data)
+-----
+
+rexample[ARMA-acf.R]
+
+Partial autocorrelation function, rfunc[pacf]
+---------------------------------------------
+
+.Partial autocorrelation of same two AR models (left column) and two MA models (right column) in the previous plot.
+[caption="Figure ", label=ARMA-pacf]
+image::time-series-ARMA-pacf.jpg[]
+
+
+[source,R]
+-----
+pacf(data)
+-----
+
+rexample[ARMA-pacf.R]
+
+Data cleaning
+-------------
+
+People don't work at weekends
+
+.Autocorrelation of number of defects found on a given day, for a development project C.  Data kindly provided by Buettner <book Buettner_08>.
+[caption="Figure ", label=Buettner_T32]
+image::time-series-Buettner_T32.jpg[]
+
+
+rexample[Buettner_T32.R]
+
+Analyse any serially correlated data
+------------------------------------
+
+.Autocorrelation of source code indentation measured in various languages.  Data from Hindle et al <book Hindle_08>.
+[caption="Figure ", label=indentation]
+image::time-series-indentation.jpg[]
+
+
+rexample[indentation.R]
+
+Stationarity
+------------
+
+Mathematics requires time series to be stationary
+
+* expected mean value does not change over successive measurements
+
+* <equ>E[t_i\] \quad \mathit{equals} \quad E[t_{i+k}\]</equ>
+
+* probability of events & processes does not change over time
+
+Remove drift using rfunc[diff]()
+
+.Monthly unit sales (in thousands) of microprocessors having a given bus width.  Data kindly supplied by Turley <book Turley_02>.
+[caption="Figure ", label=turley_02]
+image::time-series-turley_02.jpg[]
+
+
+rexample[turley_02.R]
+
+Predicting the immediate future
+-------------------------------
+
+Immediate future is the next few time periods
+
+Uncertainty grows very quickly
+
+.Predicted daily difference in the number of new feature starts (red) and 95% confidence intervals (blue).  Data kindly supplied by 7Digital <book 7Digital_12>.
+[caption="Figure ", label=agile-arima-pred]
+image::time-series-agile-arima-pred.jpg[]
+
+
+rexample[agile-arima-pred.R]
+
+Spectral analysis
+-----------------
+
+Dominant frequencies in the data
+
+rfunc[spectrum] function
+
+.Power spectrum of electrical power consumed by an app running on a ???.  Data from Saborido et al <book Saborido_15>.
+[caption="Figure ", label=peerj-1219]
+image::time-series-peerj-1219.jpg[]
+
+
+rexample[peerj-1219.R]
+
+Relationships between time series
+---------------------------------
+
+{nbsp}
+
+Cross-correlation is the correlation, at various lags
+
+{nbsp}
+
+Shared subsequences between two series (suggests a shared process)
+
+{nbsp}
+
+Clustering of multiple series
+
+Cross-correlation, rfunc[ccf]
+-----------------------------
+
+.Cross-correlation of source lines added/deleted per week to the glibc library.  Data from Gonz{\'a}lez-Barahona <book Gonzalez-Barahona_14>.
+[caption="Figure ", label=smr-ccf]
+image::time-series-smr-ccf.jpg[]
+
+
+[source,R]
+-----
+ccf(s_1, s_2)
+-----
+
+rexample[smr-ccf.R]
+
+Aligning two time series
+------------------------
+
+.Visualization of alignment between weekly time series of lines code in NetBSD (blue) and FreeBSD (red).  Data from Herraiz <book Herraiz_08>
+[caption="Figure ", label=BSD-dtw]
+image::time-series-BSD-dtw.jpg[]
+
+
+[source,R]
+-----
+bsd_align=dtw(freebsd_weeks, netbsd_weeks, keep=TRUE, 
+                step=asymmetric, open.end=TRUE, open.begin=TRUE)
+plot(bsd_align, type="twoway", offset=1, col=pal_col, xlab="Weeks")
+-----
+
+rexample[BSD-dtw.R]
+
+Clustering time series
+----------------------
+
+.Distribution of effort (person hours) made on the main eight tasks of a development of a project at Rolls-Royce and a hierarchical clustering of each time series based on pair-wise correlation and Euclidean distance metrics.  Data extracted from Powell <book Powell_01>.
+[caption="Figure ", label=proj-t-clust]
+image::time-series-proj-t-clust.jpg[]
+
+
+[source,R]
+----------
+library("TSclust")
+
+eff_dist=diss(t(all_effort), METHOD="COR")
+plot(hclust(eff_dist), main="", sub="",
+        xlab="", ylab="Correlation distance\n")
+----------
+
+rexample[proj-t-clust.R]
+
+Change point detection
+----------------------
+
+Distinct change in behavior
+
+{nbsp}
+
+rpackage[changepoint] package
+
+* change in mean value
+
+* change in variance
+
+* change in mean and variance
+
+Medical device recalls
+----------------------
+
+.Change points detected by rfunc[cpt.mean], left using <roption>method="AMOC"</roption> right using <roption>method="PELT"</roption>.  Data from Alemzadeh et al <book Alemzadeh_13>.
+[caption="Figure ", label=Alemzadeh-CP]
+image::time-series-Alemzadeh-CP.jpg[]
+
+
+[source,R]
+-----
+library("changepoint")
+
+change_at=cpt.mean(as.vector(t2))
+plot(change_at,
+        xlab="Fortnights", ylab="Reported product recalls\n")
+-----
+
+rexample[Alemzadeh-CP.R]
+
+Data to try
+-----------
+
+Predict next months sales
+
+Frequency of cycle
+
+--------
+turley_02.csv.xz
+--------
