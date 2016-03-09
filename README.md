@@ -1,7 +1,7 @@
 
 Slides for workshops based on the book Empirical Software Engineering using R
 
-http://asciidoc.org[Asciidoc] is used to create a slidy presentation.
+[Asciidoc](http://asciidoc.org) is used to create a slidy presentation.
 
 To build the html files:
 
