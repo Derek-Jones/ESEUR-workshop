@@ -12,16 +12,20 @@ Overview
 
 Me talking
 
+* https://github.com/Derek-Jones/ESEUR-workshop
+
 You doing
 
+* data-to-try/
+
 --------
-10:00-10:45 Talking
+10:00-10:45 Introduction, R, data visualization
 10:45-11:15 Doing
-11:15-12:00 Talking
+11:15-12:00 Probability & Statistics
 12:00-13:30 Doing+lunch
-13:30-14:30 Talking
+13:30-14:30 Regression modelling
 14:30-15:30 Doing
-15:30-16:15 Talking
+15:30-16:15 Regression modelling (multiple)
 16:15-17:00 Doing
 --------
 
@@ -30,38 +34,41 @@ Aims
 
 {nbsp}
 
-Useful to practicing software developer
+Useful to software developers
 
 * analyse your own data
-* better understanding of software development processes
+* understand somebody else's analysis
+* better understanding of development processes
 
 {nbsp}
 
-Minimise what developers have to know
+Developers are part-time data analyzers
 
-* developers are part-time data analyzers
+* minimise what developers need to know
+* basic techniques + pointers to the details
 
 Approach
 --------
 
-{nbsp}
-
 A doctor's approach to curing patient problems
 
-* what are the symptoms
-* do this and you should be cured
+* what are the symptoms - assumes that data can be obtained
+
+** requires some domain knowledge
+** visual approach
+
+* form hypothesis - try this and see how you get on
 
 {nbsp}
 
-A few general techniques covering many cases
+A few general techniques covering common cases
 
-* needs a computer
-* uses R
-* try to fit in with existing developer knowledge
+* need a computer
+* use R for convenience, Python for production
 
 {nbsp}
 
-Driven by data
+Minimum of mathematics
 
 Always remember
 ---------------
@@ -79,28 +86,23 @@ Why R?
 
 {nbsp}
 
-It works and is usable
+Interactive system + support by common IDEs
 
 * mostly stats + some programming -> R
 * mostly programming + some stats -> Python
+** <code>statsmodels</code> Python package mimicking some R functionality
 
 {nbsp}
 
-Very large, growing community
+Thriving ecosystem
 
-{nbsp}
+* lots of books
+* wide range of packages - CRAN https://cran.r-project.org
+* active discussion groups:
 
-Active discussion groups:
-
-* https://stats.stackexchange.com/[Cross Validated]
-
-* https://www.r-project.org/mail.html[mailing lists]
-
-Lots of books
-
-{nbsp}
-
-Wide range of library packages
+** Cross Validated: https://stats.stackexchange.com/
+** mailing list: https://www.r-project.org/mail.html
+** newsgroup: comp.lang.r.general
 
 Brief introduction to R
 -----------------------
@@ -128,18 +130,19 @@ R Implementations
 
 {nbsp}
 
-R - The R-project
+R - The R-project https://www.r-project.org
 
-* interpreted
 * interactive command line/batch mode
-* byte code compiler started shipping few years ago
+* interpreted + byte code compiler
+* <rcode>?</rcode> help, <rcode>??</rcode> search
 
 {nbsp}
 
 Go faster efforts focused on packages
 
 * low level maths in C and Fortran
-* custom written parallel-processoring functions
+* custom written parallel-processing functions
+* reseachers working on native code compilers
 
 Language differences
 --------------------
@@ -171,9 +174,9 @@ No statements, only expressions
 x = if (y < 1) 1 else 2
 -----
 
-<rcode>return</rcode>, <rcode>switch</rcode> are function calls
+<rcode>return()</rcode>, <rcode>switch()</rcode>, <rcode>q()</rcode> are function calls
 
-<rcode>for (i in 1:10)</rcode>, <rcode>continue</rcode> -> <rcode>next</rcode>
+<rcode>for (i in 1:10)</rcode>
 
 {nbsp}
 
@@ -181,9 +184,9 @@ Variables are implicitly defined when assigned to
 
 [source,R]
 -----
-x=1  ; x="abc"
+x=1 ; y="abc"
 
-x=function(p1, p2) { return(p1+p2) }
+x=function(p1, p2=2) { return(p1+p2) }
 -----
 
 Types
@@ -193,9 +196,9 @@ Types
 
 boolean, character, integer (32-bit), reals (64-bit), raw
 
-arrays, data.table, lists, function, formula, expression
+array, data.table, list, function, formula, expression
 
-<rcode>as.character</rcode>, <rcode>as.numeric</rcode>, <rcode>as.integer</rcode>, <rcode>as.array</rcode>, <rcode>as.list</rcode>, ...
+<rcode>as.character</rcode>, <rcode>as.numeric</rcode>, <rcode>as.integer</rcode>, <rcode>as.array</rcode>, <rcode>as.Date</rcode>, ...
 
 {nbsp}
 
@@ -204,6 +207,8 @@ Driven by semantics, not underlying representation
 * <rcode>typeof</rcode>, <rcode>mode</rcode>
 * <rcode>as.integer("1"); as.integer("a")</rcode>
 
+{nbsp}
+
 <rcode>NA</rcode>, <rcode>NULL</rcode>
 
 Expressions
@@ -211,19 +216,22 @@ Expressions
 
 {nbsp}
 
-No scalars, literals are vectors of length one
+All literals are vectors of length one, no scalars
 
 * <rcode>3</rcode> equivalent to <rcode>c(3)</rcode>
 * <rcode>1:5</rcode>  equivalent to <rcode>c(1, 2, 3, 4, 5)</rcode>
+* <rcode>seq(3, 20, by=4)</rcode>
 
 {nbsp}
 
-Order of evaluation: left to right
+Left to right order of evaluation
 
-<rcode>\$</rcode> member selection, <rcode>^</rcode> exponentiation
+{nbsp}
 
-Vector operations
------------------
+<rcode>\$</rcode> member selection, <rcode>^</rcode> exponentiation, <rcode>:</rcode> sequence
+
+Vector creation and access
+--------------------------
 
 [source,R]
 -----
@@ -233,7 +241,6 @@ x = c(2, 4, 6, 8, 10)   # vector containing five values
 x = c(x, 12, 14)
 y = vector(length=5)    # vector created by function call
 y = 3:8                 # same as c(3, 4, 5, 6, 7, 8)
-z = seq(from=3, to=13, by=3)      # sequence of values
 # All elements must have the same type
 z = c(1, 2, "3")        # String has greatest conversion precedence
 -----
@@ -243,6 +250,8 @@ z = c(1, 2, "3")        # String has greatest conversion precedence
 > x = 10:19
 > x[2]
 [1] 11
+> x[3:4]
+[1] 12 13
 > x[-1]                        # exclude element 1
 [1] 11 12 13 14 15 16 17 18 19
 > x[12]                        # there is no 12'th element
@@ -250,30 +259,6 @@ z = c(1, 2, "3")        # String has greatest conversion precedence
 > x[12]=100                    # there is now
 > x
  [1]  10  11  12  13  14  15  16  17  18  19  NA 100
-----
-
-Extracting rows
----------------
-
-[source,R]
-----
-> x = data.frame(num=c(1, 2, 3, 4), name=c("a", "b", "c", "d"))
-> x
-  num name
-1   1    a
-2   2    b
-3   3    c
-4   4    d
-> # Have to remember that rows are indexed first and also specify x twice
-> x[x$num > 2, ]
-  num name
-3   3    c
-4   4    d
-> # No need to remember row/column order and only specify x once
-> subset(x, num > 2)
-  num name
-3   3    c
-4   4    d
 ----
 
 Operators work on vectors
@@ -293,12 +278,40 @@ Operators work on vectors
 [1]  TRUE FALSE
 ----
 
+data.frame operations
+---------------------
+
+[source,R]
+----
+> x = data.frame(num=c(1, 2, 3, 4), name=c("a", "b", "c", "d"))
+> x
+  num name
+1   1    a
+2   2    b
+3   3    c
+4   4    d
+> # Extracting subsets of dataframes
+> subset(x, num > 2)
+  num name
+3   3    c
+4   4    d
+> 
+> # x[x\$num > 2, ]
+> # Have to remember that rows are indexed first and specify x twice
+----
+
+[source,R]
+-----
+x = data.frame(num=c(1, 2, 3, 4), name=c("a", "b", "c", "d"))
+x\$val=runif(nrow(x))
+-----
+
 I/O
 ---
 
 {nbsp}
 
-File at a time input/output
+File contents at a time input/output
 
 {nbsp}
 
@@ -317,29 +330,30 @@ read.csv
 -----
 data=read.csv("measurements.csv", as.is=TRUE)
 
-data=read.csv("measurements.csv.xz", as.is=TRUE)
+data=read.csv("measurements.csv.xz")
 
-data=read.csv("measurements.csv", sep="|", as.is=TRUE)
+data=read.csv("measurements.csv", sep="|")
 
-data=read.csv("measurements.csv", as.is=TRUE,
-                                          header=FALSE)
+data=read.csv("measurements.csv", header=FALSE, allowEscapase=TRUE))
 
 data=read.csv("https://github.com/Derek-Jones/ESEUR-code-data/blob/master/benchmark/MSTR10-DIMM.csv.xz")
 -----
 
-Plotting: keep it simple
-------------------------
-
-{nbsp}
-
-<rcode>plot</rcode>
-
-{nbsp}
-
-<rcode>ggplot</rcode>
+[source,R]
+-----
+height,width,date
+2.1,3.6,10-9-2011
+4.2,8.5,11-9-2011
+-----
 
 Plotting
 --------
+
+{nbsp}
+
+<rcode>plot()</rcode> - built in
+
+<rcode>ggplot()</rcode> - popular add-on package <rcode>ggplot2</rcode>
 
 [source,R]
 -----
@@ -350,43 +364,54 @@ plot(xvals, yvals, log="y")
 plot(xvals, yvals, xlim=c(1, 10))
 plot(xvals, yvals, xlab="This is X", ylab="Y here")
 
-plot(xvals, yvals, col="pink")
+plot(xvals, yvals, pch="+", col="pink")
 points(more_x, more_y, col="green")
 lines(x_lines, y_lines, col="blue")
 -----
 
-Base system functions
----------------------
+Built-in functions
+------------------
 
 {nbsp}
 
-<rcode>nrow</rcode>, <rcode>ncol</rcode>, <rcode>length</rcode>,
-<rcode>nchar</rcode>, ...
+<rcode>nrow(df)</rcode>, <rcode>ncol(df)</rcode>, <rcode>length(vec)</rcode>,
+<rcode>nchar(vec)</rcode>, ...
 
 {nbsp}
 
-<rcode>diff</rcode>, <rcode>grep</rcode>, <rcode>order</rcode>,
-<rcode>sort</rcode>, <rcode>rle</rcode>, ...
+<rcode>summary(model)</rcode>, <rcode>sum(vec)</rcode>, <rcode>mean(vec)</rcode>,
+<rcode>max(vec)</rcode>, <rcode>min(vec)</rcode>, ...
 
 {nbsp}
 
-<rcode>summary</rcode>, <rcode>sum</rcode>, <rcode>sd</rcode>,
-<rcode>max</rcode>, <rcode>min</rcode>, ...
+<rcode>diff(vec)</rcode>, <rcode>grep(pat, df\$name)</rcode>, <rcode>order(vec)</rcode>,
+<rcode>sort(vec)</rcode>, ...
+
+{nbsp}
+
+<rcode>log(vec)</rcode>, <rcode>sin(vals)</rcode>,
+<rcode>runif(100)</rcode>, <rcode>rnorm(200, mean=2)</rcode>,
+
+<rcode>glm(y ~ x, data=df)</rcode>, <rcode>predict(model)</rcode>, ...
 
 Useful functions for debugging
 ------------------------------
 
 {nbsp}
 
-<rcode>str</rcode>
+<rcode>str(df)</rcode>
 
 {nbsp}
 
-<rcode>head</rcode>
+<rcode>ls()</rcode>, <rcode>rm(x)</rcode>
 
 {nbsp}
 
-<rcode>table</rcode>
+<rcode>head(df, n=6)</rcode>, <rcode>tail(df, n=6)</rcode>
+
+{nbsp}
+
+<rcode>table(df\$x)</rcode>
 
 Structure of SE programs in R
 -----------------------------
@@ -395,6 +420,8 @@ Structure of SE programs in R
 
 [source,R]
 -----
+# R programs tend to be short
+
 orig_data=read_data()
 
 interesting_data=reshape_data(orig_data)
@@ -404,8 +431,8 @@ stat_results=appropriate_statistics(interesting_data)
 plot_result(stat_results)
 -----
 
-Data analysis
--------------
+Data analysis process
+---------------------
 
 {nbsp}
 
@@ -413,16 +440,16 @@ Clean data
 
 * most time spent here
 
-Find patterns in data
+Specify behavior expected - hypothesis
 
 * knowledge of the subject
-* suggested by the data you have (recursive)
+* suggested by the data you have (data dredging, post-hoc analysis, fishing)
 
-{nbsp}
+Find expected patterns
 
-Fit models to the data
-
-{nbsp}
+* fit regression model
+* survival analysis
+* time series
 
 Communicate the results
 
@@ -431,26 +458,32 @@ Patterns in data
 
 {nbsp}
 
-Known commonly occurring patterns
-
-{nbsp}
-
-Derived from domain knowledge
+Based on domain knowledge
 
 * expectations of behavior
 * hunches
-* suspicious behavior seen
+* unexplained behavior experienced
+
+{nbsp}
+
+Known, commonly occurring patterns
+
+* linear relationship
+* distributions: exponential, power law, gaussian, random
 
 Exploration techniques
 ----------------------
 
 {nbsp}
 
-Visual patterns
+Plot data - visual patterns
 
 {nbsp}
 
 Suck it and see model building
+
+* foolish
+* data dredging, post-hoc analysis, fishing
 
 Data patterns
 -------------
@@ -459,15 +492,14 @@ Data patterns
 image::intro-1-data-plot.jpg[]
 
 
-rexample[communicating/data-plot.R]
+rexample("examples/data-patterns.R")
 
-Simple visualization options
-----------------------------
+Visualization options
+---------------------
 
 Paired relationships
 
 * <rcode>plot</rcode>, <rcode>pairs</rcode>
-* correlations
 
 Plotting trend line
 
@@ -482,10 +514,8 @@ Density plots
 * heatmaps
 * contour plots
 
-pairs function
---------------
-
-Visualise all paired relationships
+Plotting column pairs
+---------------------
 
 -----
 Name,CFP,Haskell,Abstract,C
@@ -497,6 +527,14 @@ seL4_IRQHandler_Clear,7,1555,381,1609
 seL4_TCB_SetPriority,7,219,187,121
 -----
 
+Visualise paired relationships
+
+[source,R]
+-----
+plot( ~ CFP+Haskell+Abstract+C, data=work, col=point_col,
+                                            cex.labels=2.0)
+-----
+
 Three way pairs
 ---------------
 
@@ -504,7 +542,7 @@ Three way pairs
 image::intro-1-pub-fs-fp.jpg[]
 
 
-rexample[communicating/pub-fs-fp.R]
+rexample[examples/pub-fs-fp.R]
 
 Ada vs. Fortran
 ---------------
@@ -513,16 +551,15 @@ Ada vs. Fortran
 image::intro-1-nasa-ada-fortran.jpg[]
 
 
-rexample[projects/nasa-ada-fortran.R]
+[source,R]
+-----
+panel.language=function(x, y, language)
+{ ... }
 
-Pull request correlations
--------------------------
+pairs(log(nasa[-c(28, 30) , 16:19]), panel = panel.language, language=nasa\$language)
+-----
 
-.Correlations between pairs of attributes of 12,799 Github pull requests to the Homebrew repo.
-image::intro-1-pull-req-cor.jpg[]
-
-
-rexample[communicating/pull-req-cor.R]
+rexample[examples/nasa-ada-fortran.R]
 
 Trend line
 ----------
@@ -533,17 +570,17 @@ Values do not always exhibit a discernible direction
 
 {nbsp}
 
-Averaging line through data
+Averaging line through points
 
 * running mean, splines, loess (LOcal regrESSion)
 [source,R]
 -----
+lines(loess.smooth(x_vals, y_vals, span=0.3),
+                                     col="blue")
+
 loess_mod=loess(y_axis ~ x_axis, span=0.3)
 loess_pred=predict(loess_mod)
-lines(x_axis, loess_pred, col="brown")
-
-lines(loess.smooth(x_vals, y_vals, span=0.3),
-                                     col="brown")
+lines(x_axis, loess_pred, col="blue")
 -----
 
 NASA effort/cost pattern
@@ -553,23 +590,19 @@ NASA effort/cost pattern
 image::intro-1-NASA_gruhl.jpg[]
 
 
-rexample[regression/NASA_gruhl.R]
+rexample[examples/NASA_gruhl.R]
 
+////////////////
 Don't have to be half-way point
 -------------------------------
 
-.Year and age at which survey respondents started contributing to FLOSS, i.e., made their first FLOSS contribution.
-image::intro-1-msr14-floss-survey.jpg[]
+# .Year and age at which survey respondents started contributing to FLOSS, i.e., made their first FLOSS contribution.
+# <<echo=FALSE,results=hide,label=msr14-floss-survey,fig=TRUE,align="center">>=
+# source("../examples/msr14-floss-survey.R")
+# @
 
-
-Densely packed measurements
----------------------------
-
-.Developer estimated effort against actual effort (in hours), for various maintenance tasks, e.g., adaptive, corrective and perfective; left as-is, middle jittered values and right size proportional to the log of the number measurements.
-image::intro-1-maint-est.jpg[]
-
-
-rexample[economics/maint-est.R]
+rexample[examples/msr14-floss-survey.R]
+////////////////
 
 Density of points
 -----------------
@@ -578,7 +611,7 @@ Density of points
 image::intro-1-herraiz-projects.jpg[]
 
 
-rexample[communicating/herraiz-projects.R]
+rexample[examples/herraiz-projects.R]
 
 Boxplots
 --------
@@ -587,7 +620,7 @@ Boxplots
 image::intro-1-boxplot-10-cscw.jpg[]
 
 
-rexample[communicating/boxplot-10-cscw.R]
+rexample[examples/boxplot-10-cscw.R]
 
 3-Dimensions
 ------------
@@ -607,7 +640,7 @@ Heatmaps
 image::intro-1-heatmap-hotpower.jpg[]
 
 
-rexample[communicating/heatmap-hotpower.R]
+rexample[examples/heatmap-hotpower.R]
 
 Contour plots
 -------------
@@ -616,16 +649,37 @@ Contour plots
 image::intro-1-thereska_sipew-procspeed-memsize.jpg[]
 
 
-rexample[ecosystem/thereska_sipew-procspeed-memsize.R]
+rexample[examples/thereska_sipew-procspeed-memsize.R]
+
+Books
+-----
+
+Dead trees
+
+* The R book by M. Crawley
+* R in Action by R. Kabacoff
+* Applied Linear Statistical Models by Kutner, Nachtsheim, Neter, Li
+* Introduction to Probability Models by S. Ross, mathematical
+
+{nbsp}
+
+Online pdfs
+
+* From Algorithms to Z-Scores: Probabilistic and Statistical Modelling in Computer Science by N. Matloff 
+* Grinstead and Snell’s Introduction to Probability by Grinstead and Snell
+* R for Programmers by N. Matloff
+* icebreakeR by A. Robinson
 
 Data to try
 -----------
 
 --------
-c_linelen.csv.xz
+C source measurements: c_linelen.csv.xz
 
-c_linetok.csv.xz
+C source measurements: c_linetok.csv.xz
 
-turley_02.csv.xz
+cpu sales: turley_02.csv.xz
+
+debian-src-stats.csv.xz
 --------
 

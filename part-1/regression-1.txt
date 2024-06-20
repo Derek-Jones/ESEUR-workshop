@@ -1,12 +1,12 @@
-ESEUR Workshop - Regression modeling
-====================================
+ESEUR Workshop - Regression modelling
+=====================================
 :author:    Derek M. Jones
 :copyright: Somebody
 :backend:   slidy
 :max-width: 45em
 
-Regression modeling
--------------------
+Regression modelling
+--------------------
 
 {nbsp}
 
@@ -14,78 +14,77 @@ Today's hammer
 
 {nbsp}
 
-<quote>All models are wrong, but some are useful</quote>
+Fits an equation to data
 
-We are using a computer
+* you decide which equation to fit
 
 {nbsp}
 
-Main reasons for building a regression model:
+Reasons for building a regression model
 
 * understanding: willingness to trade-off prediction accuracy for
 simplicity
 
-* prediction: willingness to trade-off understanding for greater
-accuracy
+* prediction: willingness to trade-off understanding for better fit
 
-What is regression modeling?
-----------------------------
+Updating from a pre-computer world
+----------------------------------
 
-Fits an equation to data
-
-You decide what equations to fit
-
-image::../not_R/reg-models.jpg[]
+image::linear_tests_cheat_sheet.png[]
 
 Generalized linear model
 ------------------------
 
-rfunc[glm] a general solution
+{nbsp}
+
+<keyword>glm</keyword> a general solution
 
 * less restrictive requirements on data characteristics
-* can change defaults to handle other error distributions
+* can change default Normal to handle other error distributions
 
-Overkill for many real-life problems: who cares
+{nbsp}
 
-* uses more cpu time than rfunc[lm]
-* uses more memory than rfunc[lm]
-* maths is more complicated
+Overkill for many real-life problems
 
-FreeBSD sloc over time
-----------------------
+* who cares, we are using a computer
+* maths is more complicated than ordinary linear regression, <keyword>lm</keyword>
+* uses more memory/cpu time than <keyword>lm</keyword>
+
+Straightforward case
+--------------------
 
 .Total lines of source code in FreeBSD by days elapsed since the project started.
-image::regression-1-BSD-x.jpg[]
+image::regression-1-Herraiz-BSD-x.jpg[]
 
 
-rexample[regression/Herraiz-BSD.R]
+rexample[examples/Herraiz-BSD.R]
 
-Groovy compiler classes over time
----------------------------------
+Importance of domain knowledge
+------------------------------
 
 .Number of classes in the Groovy compiler at each release, in days since version 1.0.
 image::regression-1-Groovy_change-prop2.jpg[]
 
 
-rexample[regression/Groovy_change-prop2.R]
+rexample[examples/Groovy_change-prop2.R]
 
 How it works
 ------------
 
 Linear model: simplest form of regression
 
-<equ>y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n + \epsilon</equ>
+<equ>\qquad y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n + \epsilon</equ>
 
 {nbsp}
 
-response variable, <equ>y</equ>, modeled as a linear combination of
+<phrase>response variable</phrase>, <equ>y</equ>, modelled as a linear combination of
 
-* explanatory variables, <equ>x_n</equ> (prediction variable or
-predictor are terms used when emphasizing prediction)
+* <phrase>explanatory variables</phrase>, <equ>x_n</equ> (<phrase>prediction variable</phrase> or
+<phrase>predictor</phrase> are terms used when emphasizing prediction)
 
 * additive error, <equ>\epsilon</equ>, behavior not accounted for by
-explanatory variables, assumed to be independent, identically
-distributed
+explanatory variables, assumed to be independent, Normal
+distribution
 
 Linear regression
 -----------------
@@ -94,27 +93,28 @@ Linear refers to the model parameters, i.e., <equ>\beta</equ>
 
 * <equ>y = \alpha + \beta x^2 + \epsilon</equ>
 * <equ>y = \alpha + \beta \log(x) + \epsilon</equ>
+* <equ>y = \alpha + \beta_1 x + \beta_2 x^2 + \epsilon</equ>
+
+{nbsp}
 
 The most commonly used regression model
 
 * many real world problems exhibit linear behavior, or a good enough
 approximation to it for practical purposes, over their input range
 
-* much easier to fit manually than more sophisticated models
+* much easier to fit than non-linear models
 
-* until recently software to build other kinds of models not widely
-available
+** can usually be built with minimal input from the user
+** will converge to the unique solution
 
-* can generally be built with minimal input from the user
-
-Basic technicalities
---------------------
+Code for linear regression
+--------------------------
 
 {nbsp}
 
 The equation:
 
-<equ>E[\mathit{sloc}\] = \alpha + \beta\times\mathit{Number{_}days}</equ>
+<equ>\qquad E[\mathit{sloc}\] = \alpha + \beta\times\mathit{Number{_}days}</equ>
 
 {nbsp}
 
@@ -157,12 +157,14 @@ AIC: 116172
 Number of Fisher Scoring iterations: 2
 ----
 
-In mathematics
---------------
+Fitted equation
+---------------
 
 The fitted equation is:
 
-<equ>\mathit{sloc} = 1.139\times10^5 + 3.937\times10^2 \mathit{Number{_}days}</equ>
+<equ>\qquad \mathit{sloc} = 1.139\times10^5 + 3.937\times10^2 \mathit{Number{_}days}</equ>
+
+{nbsp}
 
 Not a perfect fit between the model and data
 
@@ -189,29 +191,32 @@ used in the model to explain everything:
 \end{eqnarray}</equ>
 ////////////
 
-Using a model to predict
-------------------------
+Predicting from a fitted model
+------------------------------
 
 {nbsp}
 
 [source,R]
 -----
 BSD_pred=predict(BSD_mod)
+lines(bsd_info\$Number_days, BSD_pred, col="red")
+
 # or
+
 BSD_pred=predict(BSD_mod,
 		 newdata=list(Number_days=0:4000))
 
-lines(BSD_pred, col="red")
+lines(0:4000, BSD_pred, col="red")
 -----
 
 The BSD data
 ------------
 
 .Total lines of source code in FreeBSD by days elapsed since the project started.
-image::regression-1-BSD-x.jpg[]
+image::regression-1-Herraiz-BSD-x.jpg[]
 
 
-rexample[regression/Herraiz-BSD.R]
+rexample[examples/Herraiz-BSD.R]
 
 Scattered measurement points
 ----------------------------
@@ -220,7 +225,7 @@ Scattered measurement points
 image::regression-1-federal_IT-cost_dur.jpg[]
 
 
-rexample[regression/federal_IT-cost_dur.R]
+rexample[examples/federal_IT-cost_dur.R]
 
 Confidence intervals
 --------------------
@@ -232,52 +237,56 @@ What is the actual fitted model likely to be?
 [source,R]
 -----
 fed_pred=predict(fed_mod, newdata=list(log.IT=1:7),
-					se.fit=TRUE)
-lines(fed_pred$fit, col="red")
+				se.fit=TRUE)
+lines(fed_pred\$fit, col="red")
 
 # 2.5% above and below the fit
-lines(fed_pred$fit+qnorm(0.975)*fed_pred$se.fit,
+lines(fed_pred\$fit+qnorm(0.975)*fed_pred\$se.fit,
 					col="green")
-lines(fed_pred$fit+qnorm(0.025)*fed_pred$se.fit,
+lines(fed_pred\$fit+qnorm(0.025)*fed_pred\$se.fit,
 					col="green")
 
-# qnorm(0.975) == 1.96   qnorm(0.025) == -1.96
+# qnorm(0.975) == 1.96,  qnorm(0.025) == -1.96
 -----
 
-Prediction intervals
---------------------
+Two confidence bounds
+---------------------
 
 {nbsp}
 
-What is the likely value of a new measurement?
+What is the likely range of values for a new measurement?
 
 {nbsp}
 
 Two sources of uncertainty need to be combined
 
-* uncertainty in the model parameters (i.e., the confidence interval)
+* uncertainty in the model parameters, i.e., the confidence interval
 
 * variance in the data not explained by the fitted model
 
 [source,R]
 -----
-MSE=sum(fed_mod$residuals^2)/(length(fed_mod$residuals)-2)
+MSE=sum(fed_mod\$residuals^2)/(length(fed_mod\$residuals)-2)
 
-pred_se=sqrt(fed_pred$se.fit^2+MSE)
+pred_se=sqrt(fed_pred\$se.fit^2+MSE)
 
 
-lines(fed_pred$fit+1.96*pred_se, col="blue")
-lines(fed_pred$fit-1.96*pred_se, col="blue")
+lines(fed_pred\$fit+1.96*pred_se, col="blue")
+lines(fed_pred\$fit-1.96*pred_se, col="blue")
 -----
 
-Visualizing general trend
--------------------------
+Checking visual trend
+---------------------
+
+Visual trend can be deceptive
+
+* use local regression, <rcode>loess()</rcode>, to check visual trend
 
 .For each distinct language, the number of lines committed on Github and the number of questions tagged with that language.
 image::regression-1-langpop-corger-nl.jpg[]
 
 
-rexample[regression/langpop-corger-nl.R]
+rexample[examples/langpop-corger-nl.R]
 
 Trend changes later
 -------------------
@@ -286,7 +295,7 @@ Trend changes later
 image::regression-1-acc-sec-experience.jpg[]
 
 
-rexample[regression/acc-sec-experience.R]
+rexample[examples/acc-sec-experience.R]
 
 Almost any data can be fitted
 -----------------------------
@@ -295,12 +304,12 @@ Almost any data can be fitted
 image::regression-1-linux-stable.jpg[]
 
 
-rexample[regression/linux-stable]
+rexample[examples/linux-stable]
 
-Updates rfunc[summary] output
------------------------------
+Updates: <keyword>summary</keyword> output
+--------------------------
 
-<rcode>Pr(>|t|)</rcode> the p-value for the hypothesis that the
+<rcode>Pr(&gt;|t|)</rcode> the p-value for the hypothesis that the
 coefficient in the corresponding row is zero,
 
 ----
@@ -330,6 +339,10 @@ Number of Fisher Scoring iterations: 2
 Nominal data
 ------------
 
+Non-numeric data
+
+* compiler flags: <code>O0</code>, <code>O2</code>, <code>O3</code>
+
 Impact of compiler optimization flags on ability to continue
 operating correctly when subject to random bit-flips
 
@@ -338,15 +351,15 @@ Fitted model has:
 * response variable: percentage of correct benchmark program execution
 * explanatory variable: optimization level as the explanatory variable
 
-Call to rfunc[glm]:
+Call to <keyword>glm</keyword>
 
 [source,R]
 -----
 bitflip_mod=glm(pass.masked ~ opt_level, data=bitflip)
 -----
 
-rfunc[summary] output
----------------------
+<keyword>summary</keyword> output
+-------------------
 
 ----
 Call:
@@ -374,19 +387,19 @@ AIC: 249.07
 Number of Fisher Scoring iterations: 2
 ----
 
-In mathematics
+As an equation
 --------------
 
 Fitted equation is:
 
-<equ>\mathit{pass.masked} = 28.6 + 9.2\times D_2 + 7.4\times D_2 + 11.6\times D_{osf}</equ>
+<equ>\qquad \mathit{pass.masked} = 28.6 + 9.2\times \mathit{D_{O2}} + 7.4\times \mathit{D_{O3}} + 11.6\times \mathit{D_{osf}}</equ>
 
-<equ>D_i</equ> is known as dummy variables or indicator variable and
+<equ>\mathit{D_i}</equ> is known as dummy variables or indicator variable and
 has one of two values:
 
 <equ>\qquad \qquad 1\quad\mathrm{optimization flag used} </equ>
 
-<equ>D  = </equ>
+<equ>\qquad \mathit{D_i} =</equ>
 
 <equ>\qquad \qquad 0\quad\mathrm{optimization flag not used} </equ>
 //////////
@@ -397,10 +410,12 @@ D & = & \\
 \end{eqnarray}</equ>
 //////////
 
-<roption>O0</roption> value is implicit
+<code>O0</code> value is implicit, i.e., factored into intercept: 28.6
 
-Standard errors in <roption>O2</roption>/<roption>O3</roption> large
-enough for their respective <routput>Estimate</routput>s to overlap
+{nbsp}
+
+Standard errors in <code>O2</code>/<code>O3</code> large enough
+for their respective <routput>Estimate</routput> coefficients to overlap
 
 Curved data
 -----------
@@ -413,18 +428,18 @@ linux_mod=glm(sloc ~ Number_days+I(Number_days^2),
 					data=linux_info)
 -----
 
-How much better is a quadratic equation fit, a cubic fit, ...?
+How much better is a fitted quadratic equation, a fitted cubic, ...?
 
 .Lines of code in every initial release of the Linux kernel since version 1.0.
 image::regression-1-linux-DAYLOC.jpg[]
 
 
-rexample[regression/Linux-DAYLOC.R]
+rexample[examples/Linux-DAYLOC.R]
 
 AIC
 ---
 
-AIC Akaiki Information criteria takes into account:
+Akaiki Information Criteria, <rcode>AIC()</rcode>, takes into account:
 
 * a measure of how well a model fits the data
 
@@ -476,6 +491,46 @@ AIC: 13221
 Number of Fisher Scoring iterations: 2
 ----
 
+Fitting exponential response variable
+-------------------------------------
+
+image::regression-1-koomeycomputertrends.jpg[]
+
+
+[source,R]
+-----
+A_mod=glm(log(Watts) ~ Year, data=koomey)
+-----
+
+Fitted equation can be written as:
+
+* <equ>\log(\mathit{Watts}) = \alpha + \beta \mathit{Year} + \epsilon</equ>
+* <equ>\mathit{Watts} = e^{\alpha + \beta \mathit{Year} + \epsilon}</equ>
+* <equ>\mathit{Watts} = e^{\alpha}\times e^{\beta \mathit{Year} \times e^{\epsilon}</equ>
+
+rexample[examples/koomeycomputertrendsreleaseversion-v36.R]
+
+Fitting power law response variable
+-----------------------------------
+
+image::regression-1-li2018_app_number.jpg[]
+
+
+[source,R]
+-----
+A_mod=glm(log(Apps) ~ log(Releases), data=li)
+A_mod=glm(log(Apps) ~ log(Releases), data=li,
+				 subset=(Releases <= 20))
+-----
+
+Fitted equation can be written as:
+
+* <equ>\log(\mathit{Apps}) = \alpha + \beta \log(\mathit{Releases}) + \epsilon</equ>
+* <equ>\mathit{Apps} = e^{\alpha + \beta \log(\mathit{Releases}) + \epsilon}</equ>
+* <equ>\mathit{Apps} = e^{\alpha}\times \mathit{Releases}^{\beta} \times e^{\epsilon}</equ>
+
+rexample[examples/li2018_app_number.R]
+
 Influential observations and Outliers
 -------------------------------------
 
@@ -483,34 +538,40 @@ Influential observations and Outliers
 image::regression-1-lines-per-hour.jpg[]
 
 
-rexample[regression/lines-per-hour.R]
+rexample[examples/lines-per-hour.R]
 
-Ignoring sample size
---------------------
+Model diagnostics
+-----------------
 
-.After removal of overly influential observations.  Left takes into account the Bonferroni p-value of the Studentized residuals while the right plot does not.
-image::regression-1-lines-hour-mininf.jpg[]
+[source,R]
+-----
+embed_mod=glm(sloc ~ Effort, data=embedded_info)
+plot(embed_mod)
+-----
+
+.Diagnostics of fitted model
+image::regression-1-lines-hour-diagnostic.jpg[]
 
 
-rexample[regression/lines-hour-mininf.R]
+rexample[examples/lines-hour-diagnostic.R]
 
 influenceIndexPlot
 ------------------
 
-.rfunc[influenceIndexPlot] for the data.
-image::regression-1-lines-influence.jpg[]
+.<keyword>influenceIndexPlot</keyword> for the data.
+image::regression-1-lines-hour-influence.jpg[]
 
 
-rexample[regression/lines-hour-influence.R]
+rexample[examples/lines-hour-influence.R]
 
 Outlier or changepoint?
 -----------------------
 
-.Number of medical devices reported recalled by the US Food and Drug Administration, in two week bins.  Fitted straight regression line (red, with blue confidence bounds) and loess fit (green).
+.Number of medical devices recalled by the US Food and Drug Administration, in two week bins.  Fitted straight regression line (red, with green confidence bounds) and loess fit (green).
 image::regression-1-Alemzadeh-Recalls.jpg[]
 
 
-rexample[regression/Alemzadeh-Recalls.R]
+rexample[examples/Alemzadeh-Recalls.R]
 
 After 2010 is different
 -----------------------
@@ -519,7 +580,16 @@ After 2010 is different
 image::regression-1-Alemzadeh-mininf.jpg[]
 
 
-rexample[regression/Alemzadeh-mininf.R]
+rexample[examples/Alemzadeh-mininf.R]
+
+Data to try
+-----------
+
+Project duration/effort: CSA-duration.csv.xz
+
+C source measurements: c_linelen.csv.xz
+
+C source measurements: c_linetok.csv.xz
 
 Multiple regression
 -------------------
@@ -530,19 +600,25 @@ Multiple - more than one explanatory variable:
 
 {nbsp}
 
+<equ>y = \alpha + \beta_1 x_1 + \epsilon</equ>
+
 <equ>y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n + \epsilon</equ>
 
-SPECint 2006
-------------
+<equ>y = \alpha + \beta_1 x_1 \times x_2 + \epsilon</equ>
+
+<equ>y = \alpha + \beta_1 \log (x_1) + \beta_2 x_2 + \cdots + \beta_n \sqrt{x_n} + \epsilon</equ>
+
+Processor & Memory speed
+------------------------
 
 .SPECint 2006 performance results for processors running at various clock rates, memory chip frequencies and processor family.
 image::regression-1-SPEC-Mhz.jpg[]
 
 
-rexample[benchmark/SPEC-Mhz.R]
+rexample[examples/SPEC-Mhz.R]
 
-The more the merrier
---------------------
+More the merrier?
+-----------------
 
 {nbsp}
 
@@ -557,8 +633,13 @@ R formula notation
 spec_mod=glm(Result ~ ., data=cint)
 -----
 
-Information in <rcode>Processor</rcode> column to create an almost
-perfect model
+{nbsp}
+
+Learn nothing
+
+Overfitting reduces out of band prediction accuracy
+
+Information in <rcode>Processor</rcode> column to create an almost perfect model
 
 Just the important variables
 ----------------------------
@@ -576,8 +657,8 @@ added
 
 Equation fitted:
 
-<equ>\mathit{Result}=-2.4\times 10^1+\mathit{Processor.MHz}7.3\times 10^{-3}+</equ>
-<equ>\qquad \qquad \qquad \mathit{mem{_}rate}2.5\times 10^{-3} + \mathit{mem{_}freq}1.0\times 10^{-2}</equ>
+<equ>\qquad \mathit{Result}=-2.4\times 10^1+\mathit{Processor.MHz}7.3\times 10^{-3}+</equ>
+<equ>\qquad \qquad \qquad \qquad \mathit{mem{_}rate}2.5\times 10^{-3} + \mathit{mem{_}freq}1.0\times 10^{-2}</equ>
 
 //////////
 <equ>\mathit{Result}=-2.4\times 10^1+\mathit{Processor.MHz}7.3\times 10^{-3}+\mathit{mem{_}rate}2.5\times 10^{-3}+\mathit{mem{_}freq}1.0\times 10^{-2}</equ>
@@ -615,20 +696,20 @@ Number of Fisher Scoring iterations: 2
 Individual variable contribution
 --------------------------------
 
-.Individual contribution of each explanatory variable to the response variable in the model of SPECint performance fitted above.
+.Individual contribution of each explanatory variable to the response variable in the fitted model of SPECint performance.
 image::regression-1-SPEC-ind-MHz-DDR.jpg[]
 
 
-rexample[benchmark/SPEC-ind-MHz-DDR.R]
+rexample[examples/SPEC-ind-MHz-DDR.R]
 
 Residuals
 ---------
 
-.Residual of the model of SPECint performance fitted above.
+.Residual of the fitted model of SPECint performance.
 image::regression-1-SPEC-resid-MHz-DDR.jpg[]
 
 
-rexample[benchmark/SPEC-resid-MHz-DDR.R]
+rexample[examples/SPEC-resid-MHz-DDR.R]
 
 Quadratic SPEC model
 --------------------
@@ -645,18 +726,19 @@ spec_mod=glm(Result ~ Processor.MHz + I(Processor.MHz^2)+
 image::regression-1-SPEC-quad-MHz-DDR.jpg[]
 
 
-rexample[benchmark/SPEC-quad-MHz-DDR.R]
+rexample[examples/SPEC-quad-MHz-DDR.R]
 
-Updating fitted models
-------------------------
+Updating a fitted model
+-----------------------
+
+Add/remove a new column to/from an existing model
 
 [source,R]
 -----
 ecc_spec_mod=update(spec_mod, . ~ . + ecc)
------
 
-Data to try
------------
+ecc_spec_mod=update(spec_mod, . ~ . - mem_freq)
+-----
 
 Formula notation
 ----------------
@@ -683,7 +765,7 @@ Interaction and shared contribution
 image::regression-1-shared-contrib.jpg[]
 
 
-rexample[regression/shared-contrib.R]
+rexample[examples/shared-contrib.R]
 
 Two models or one?
 ------------------
@@ -692,7 +774,7 @@ Two models or one?
 image::regression-1-simula_0a.jpg[]
 
 
-rexample[projects/simula_0a.R]
+rexample[examples/simula_0a.R]
 
 Interacting variables
 ---------------------
@@ -707,12 +789,12 @@ sim_mod=glm(Actual ~ Estimated+Estimated:Communication,
 
 Fitted equation:
 
-<equ>\mathit{Actual} = -270.1+1.18\mathit{Estimated}+0.51\mathit{Estimated}\times D </equ>
-<equ>\qquad \qquad =  -270.1+(1.18+0.51 D)\mathit{Estimated}</equ>
+<equ>\qquad \mathit{Actual} = -270.1+1.18\mathit{Estimated}+0.51\mathit{Estimated}\times \mathit{D}</equ>
+<equ>\qquad \qquad \qquad =  -270.1+(1.18+0.51 \mathit{D})\mathit{Estimated}</equ>
 
 <equ>\qquad \qquad 1\quad\mathrm{daily communication} </equ>
 
-<equ>D  = </equ>
+<equ>\qquad \mathit{D} =</equ>
 
 <equ>\qquad \qquad 0\quad\mathrm{not daily communication} </equ>
 
@@ -766,23 +848,27 @@ sim_mod=glm(Actual ~ Estimated+Communication+
 
 Fitted equation is:
 
-<equ>\mathit{Actual} = -274.8+1.21\mathit{Estimated} + 2625\times !D +</equ>
-<equ>\qquad \qquad \qquad \qquad C_{fp}(1862\times !D - 197.6\times D) +</equ>
-<equ>\qquad \qquad \qquad \qquad C_{tp}(-2270\times !D - 462.2\times D) +</equ>
-<equ>\qquad \qquad \qquad \qquad C_{ot}(-2298\times !D - 234.3\times D)</equ>
+<equ>\mathit{Actual} = -274.8+1.21\mathit{Estimated} + 2625\times !\mathit{D} +</equ>
+<equ>\qquad \qquad \qquad \qquad \mathit{C_{fp}}(1862\times !\mathit{D} - 197.6\times \mathit{D}) +</equ>
+<equ>\qquad \qquad \qquad \qquad \mathit{C_{tp}}(-2270\times !\mathit{D} - 462.2\times \mathit{D}) +</equ>
+<equ>\qquad \qquad \qquad \qquad \mathit{C_{ot}}(-2298\times !\mathit{D} - 234.3\times \mathit{D})</equ>
 ////////////////
 <equ>\begin{aligned}
-\mathit{Actual} = -274.8+1.21\mathit{Estimated} + 2625\times !D & + & \\
-					&   & C_{fp}(1862\times !D - 197.6\times D) + \\
-					&   & C_{tp}(-2270\times !D - 462.2\times D) + \\
-					&   & C_{ot}(-2298\times !D - 234.3\times D)
+\mathit{Actual} = -274.8+1.21\mathit{Estimated} + 2625\times !\mathit{D} & + & \\
+					&   & \mathit{C_{fp}}(1862\times !\mathit{D} - 197.6\times \mathit{D}) + \\
+					&   & \mathit{C_{tp}}(-2270\times !\mathit{D} - 462.2\times \mathit{D}) + \\
+					&   & \mathit{C_{ot}}(-2298\times !\mathit{D} - 234.3\times \mathit{D})
 \end{aligned}</equ>
 ////////////////
 
-* <equ>C_{fp}</equ> 0/1 is a fixed price contract
-* <equ>C_{tp}</equ> 0/1 is a target price contract
-* <equ>C_{ot}</equ> 0/1 other kind of contract
+* <equ>\mathit{C_{fp}}</equ> 0/1 is a fixed price contract
+* <equ>\mathit{C_{tp}}</equ> 0/1 is a target price contract
+* <equ>\mathit{C_{ot}}</equ> 0/1 other kind of contract
 
 Data to try
 -----------
+
+Growth of PC-Lint: pclint.csv.xz
+
+Byte benchmark: byte-dos-app-benchmark.csv
 

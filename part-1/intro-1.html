@@ -5,7 +5,7 @@
 <title>ESEUR Workshop - Introduction</title>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="copyright" content="Copyright &#169; Somebody" />
-<meta name="generator" content="AsciiDoc 8.6.9" />
+<meta name="generator" content="AsciiDoc 10.1.2" />
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
 
@@ -436,7 +436,7 @@ thead, p.table.header {
 p.table {
   margin-top: 0;
 }
-/* Because the table frame attribute is overriden by CSS in most browsers. */
+/* Because the table frame attribute is overridden by CSS in most browsers. */
 div.tableblock > table[frame="void"] {
   border-style: none;
 }
@@ -5069,16 +5069,30 @@ else
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Me talking</p></div>
+<ul class="">
+<li>
+<span>
+<a href="https://github.com/Derek-Jones/ESEUR-workshop">https://github.com/Derek-Jones/ESEUR-workshop</a>
+</span>
+</li>
+</ul>
 <div class="paragraph"><p>You doing</p></div>
+<ul class="">
+<li>
+<span>
+data-to-try/
+</span>
+</li>
+</ul>
 <div class="listingblock">
 <div class="content">
-<pre><code>10:00-10:45 Talking
+<pre><code>10:00-10:45 Introduction, R, data visualization
 10:45-11:15 Doing
-11:15-12:00 Talking
+11:15-12:00 Probability &amp; Statistics
 12:00-13:30 Doing+lunch
-13:30-14:30 Talking
+13:30-14:30 Regression modelling
 14:30-15:30 Doing
-15:30-16:15 Talking
+15:30-16:15 Regression modelling (multiple)
 16:15-17:00 Doing</code></pre>
 </div></div>
 </div>
@@ -5087,7 +5101,7 @@ else
 <h1 id="_aims">Aims</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Useful to practicing software developer</p></div>
+<div class="paragraph"><p>Useful to software developers</p></div>
 <ul class="">
 <li>
 <span>
@@ -5096,16 +5110,26 @@ analyse your own data
 </li>
 <li>
 <span>
-better understanding of software development processes
+understand somebody else&#8217;s analysis
+</span>
+</li>
+<li>
+<span>
+better understanding of development processes
 </span>
 </li>
 </ul>
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Minimise what developers have to know</p></div>
+<div class="paragraph"><p>Developers are part-time data analyzers</p></div>
 <ul class="">
 <li>
 <span>
-developers are part-time data analyzers
+minimise what developers need to know
+</span>
+</li>
+<li>
+<span>
+basic techniques + pointers to the details
 </span>
 </li>
 </ul>
@@ -5114,41 +5138,47 @@ developers are part-time data analyzers
 <div class="sect1 slide">
 <h1 id="_approach">Approach</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>A doctor&#8217;s approach to curing patient problems</p></div>
 <ul class="">
 <li>
 <span>
-what are the symptoms
+what are the symptoms - assumes that data can be obtained
 </span>
-</li>
-<li>
-<span>
-do this and you should be cured
-</span>
-</li>
-</ul>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>A few general techniques covering many cases</p></div>
 <ul class="">
 <li>
 <span>
-needs a computer
+requires some domain knowledge
 </span>
 </li>
 <li>
 <span>
-uses R
+visual approach
 </span>
+</li>
+</ul>
 </li>
 <li>
 <span>
-try to fit in with existing developer knowledge
+form hypothesis - try this and see how you get on
 </span>
 </li>
 </ul>
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Driven by data</p></div>
+<div class="paragraph"><p>A few general techniques covering common cases</p></div>
+<ul class="">
+<li>
+<span>
+need a computer
+</span>
+</li>
+<li>
+<span>
+use R for convenience, Python for production
+</span>
+</li>
+</ul>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Minimum of mathematics</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5164,7 +5194,7 @@ try to fit in with existing developer knowledge
 <h1 id="_why_r">Why R?</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>It works and is usable</p></div>
+<div class="paragraph"><p>Interactive system + support by common IDEs</p></div>
 <ul class="">
 <li>
 <span>
@@ -5175,27 +5205,51 @@ mostly stats + some programming &#8594; R
 <span>
 mostly programming + some stats &#8594; Python
 </span>
-</li>
-</ul>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Very large, growing community</p></div>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Active discussion groups:</p></div>
 <ul class="">
 <li>
 <span>
-<a href="https://stats.stackexchange.com/">Cross Validated</a>
+<code>statsmodels</code> Python package mimicking some R functionality
+</span>
+</li>
+</ul>
+</li>
+</ul>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Thriving ecosystem</p></div>
+<ul class="">
+<li>
+<span>
+lots of books
 </span>
 </li>
 <li>
 <span>
-<a href="https://www.r-project.org/mail.html">mailing lists</a>
+wide range of packages - CRAN <a href="https://cran.r-project.org">https://cran.r-project.org</a>
+</span>
+</li>
+<li>
+<span>
+active discussion groups:
+</span>
+<ul class="">
+<li>
+<span>
+Cross Validated: <a href="https://stats.stackexchange.com/">https://stats.stackexchange.com/</a>
+</span>
+</li>
+<li>
+<span>
+mailing list: <a href="https://www.r-project.org/mail.html">https://www.r-project.org/mail.html</a>
+</span>
+</li>
+<li>
+<span>
+newsgroup: comp.lang.r.general
 </span>
 </li>
 </ul>
-<div class="paragraph"><p>Lots of books</p></div>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Wide range of library packages</p></div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5228,13 +5282,8 @@ function overloading
 <h1 id="_r_implementations">R Implementations</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>R - The R-project</p></div>
+<div class="paragraph"><p>R - The R-project <a href="https://www.r-project.org">https://www.r-project.org</a></p></div>
 <ul class="">
-<li>
-<span>
-interpreted
-</span>
-</li>
 <li>
 <span>
 interactive command line/batch mode
@@ -5242,7 +5291,12 @@ interactive command line/batch mode
 </li>
 <li>
 <span>
-byte code compiler started shipping few years ago
+interpreted + byte code compiler
+</span>
+</li>
+<li>
+<span>
+<code>?</code> help, <code>??</code> search
 </span>
 </li>
 </ul>
@@ -5256,7 +5310,12 @@ low level maths in C and Fortran
 </li>
 <li>
 <span>
-custom written parallel-processoring functions
+custom written parallel-processing functions
+</span>
+</li>
+<li>
+<span>
+reseachers working on native code compilers
 </span>
 </li>
 </ul>
@@ -5310,9 +5369,9 @@ Case is significant, <code>A_var != a_var</code>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>x = <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>y <span style="color: #990000">&lt;</span> <span style="color: #993399">1</span><span style="color: #990000">)</span> <span style="color: #993399">1</span> <span style="font-weight: bold"><span style="color: #0000FF">else</span></span> <span style="color: #993399">2</span></tt></pre></div></div>
-<div class="paragraph"><p><code>return</code>, <code>switch</code> are function calls</p></div>
-<div class="paragraph"><p><code>for (i in 1:10)</code>, <code>continue</code> &#8594; <code>next</code></p></div>
+<pre><tt>x = <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> (y &lt; 1) 1 <span style="font-weight: bold"><span style="color: #0000FF">else</span></span> 2</tt></pre></div></div>
+<div class="paragraph"><p><code>return()</code>, <code>switch()</code>, <code>q()</code> are function calls</p></div>
+<div class="paragraph"><p><code>for (i in 1:10)</code></p></div>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Variables are implicitly defined when assigned to</p></div>
 <div class="listingblock">
@@ -5320,9 +5379,9 @@ http://www.gnu.org/software/src-highlite -->
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>x=<span style="color: #993399">1</span>  <span style="color: #990000">;</span> x=<span style="color: #FF0000">"abc"</span>
+<pre><tt>x=1 ; y=<span style="color: #FF0000">"abc"</span>
 
-x=function<span style="color: #990000">(</span>p1<span style="color: #990000">,</span> p2<span style="color: #990000">)</span> { return<span style="color: #990000">(</span>p1<span style="color: #990000">+</span>p2<span style="color: #990000">)</span> }</tt></pre></div></div>
+x=function(p1, p2=2) { return(p1+p2) }</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5330,8 +5389,8 @@ x=function<span style="color: #990000">(</span>p1<span style="color: #990000">,<
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>boolean, character, integer (32-bit), reals (64-bit), raw</p></div>
-<div class="paragraph"><p>arrays, data.table, lists, function, formula, expression</p></div>
-<div class="paragraph"><p><code>as.character</code>, <code>as.numeric</code>, <code>as.integer</code>, <code>as.array</code>, <code>as.list</code>, &#8230;</p></div>
+<div class="paragraph"><p>array, data.table, list, function, formula, expression</p></div>
+<div class="paragraph"><p><code>as.character</code>, <code>as.numeric</code>, <code>as.integer</code>, <code>as.array</code>, <code>as.Date</code>, &#8230;</p></div>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Driven by semantics, not underlying representation</p></div>
 <ul class="">
@@ -5346,6 +5405,7 @@ x=function<span style="color: #990000">(</span>p1<span style="color: #990000">,<
 </span>
 </li>
 </ul>
+<div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p><code>NA</code>, <code>NULL</code></p></div>
 </div>
 </div>
@@ -5353,7 +5413,7 @@ x=function<span style="color: #990000">(</span>p1<span style="color: #990000">,<
 <h1 id="_expressions">Expressions</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>No scalars, literals are vectors of length one</p></div>
+<div class="paragraph"><p>All literals are vectors of length one, no scalars</p></div>
 <ul class="">
 <li>
 <span>
@@ -5365,71 +5425,51 @@ x=function<span style="color: #990000">(</span>p1<span style="color: #990000">,<
 <code>1:5</code>  equivalent to <code>c(1, 2, 3, 4, 5)</code>
 </span>
 </li>
+<li>
+<span>
+<code>seq(3, 20, by=4)</code>
+</span>
+</li>
 </ul>
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Order of evaluation: left to right</p></div>
-<div class="paragraph"><p><code>\$</code> member selection, <code>^</code> exponentiation</p></div>
+<div class="paragraph"><p>Left to right order of evaluation</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p><code>\$</code> member selection, <code>^</code> exponentiation, <code>:</code> sequence</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_vector_operations">Vector operations</h1>
+<h1 id="_vector_creation_and_access">Vector creation and access</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>x = <span style="color: #993399">2</span>                   <span style="font-style: italic"><span style="color: #9A1900"># vector containing one value</span></span>
-x = c<span style="color: #990000">(</span><span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #993399">4</span><span style="color: #990000">,</span> <span style="color: #993399">6</span><span style="color: #990000">,</span> <span style="color: #993399">8</span><span style="color: #990000">,</span> <span style="color: #993399">10</span><span style="color: #990000">)</span>   <span style="font-style: italic"><span style="color: #9A1900"># vector containing five values</span></span>
+<pre><tt>x = 2                   <span style="font-style: italic"><span style="color: #9A1900"># vector containing one value</span></span>
+x = c(2, 4, 6, 8, 10)   <span style="font-style: italic"><span style="color: #9A1900"># vector containing five values</span></span>
 <span style="font-style: italic"><span style="color: #9A1900"># new vector containing the contents of x and two values</span></span>
-x = c<span style="color: #990000">(</span>x<span style="color: #990000">,</span> <span style="color: #993399">12</span><span style="color: #990000">,</span> <span style="color: #993399">14</span><span style="color: #990000">)</span>
-y = vector<span style="color: #990000">(</span>length=<span style="color: #993399">5</span><span style="color: #990000">)</span>    <span style="font-style: italic"><span style="color: #9A1900"># vector created by function call</span></span>
-y = <span style="color: #993399">3</span><span style="color: #990000">:</span><span style="color: #993399">8</span>                 <span style="font-style: italic"><span style="color: #9A1900"># same as c(3, 4, 5, 6, 7, 8)</span></span>
-z = seq<span style="color: #990000">(</span>from=<span style="color: #993399">3</span><span style="color: #990000">,</span> to=<span style="color: #993399">13</span><span style="color: #990000">,</span> by=<span style="color: #993399">3</span><span style="color: #990000">)</span>      <span style="font-style: italic"><span style="color: #9A1900"># sequence of values</span></span>
+x = c(x, 12, 14)
+y = vector(length=5)    <span style="font-style: italic"><span style="color: #9A1900"># vector created by function call</span></span>
+y = 3:8                 <span style="font-style: italic"><span style="color: #9A1900"># same as c(3, 4, 5, 6, 7, 8)</span></span>
 <span style="font-style: italic"><span style="color: #9A1900"># All elements must have the same type</span></span>
-z = c<span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #FF0000">"3"</span><span style="color: #990000">)</span>        <span style="font-style: italic"><span style="color: #9A1900"># String has greatest conversion precedence</span></span></tt></pre></div></div>
+z = c(1, 2, <span style="color: #FF0000">"3"</span>)        <span style="font-style: italic"><span style="color: #9A1900"># String has greatest conversion precedence</span></span></tt></pre></div></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="color: #990000">&gt;</span> x = <span style="color: #993399">10</span><span style="color: #990000">:</span><span style="color: #993399">19</span>
-<span style="color: #990000">&gt;</span> x<span style="color: #990000">[</span><span style="color: #993399">2</span><span style="color: #990000">]</span>
-<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span> <span style="color: #993399">11</span>
-<span style="color: #990000">&gt;</span> x<span style="color: #990000">[-</span><span style="color: #993399">1</span><span style="color: #990000">]</span>                        <span style="font-style: italic"><span style="color: #9A1900"># exclude element 1</span></span>
-<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span> <span style="color: #993399">11</span> <span style="color: #993399">12</span> <span style="color: #993399">13</span> <span style="color: #993399">14</span> <span style="color: #993399">15</span> <span style="color: #993399">16</span> <span style="color: #993399">17</span> <span style="color: #993399">18</span> <span style="color: #993399">19</span>
-<span style="color: #990000">&gt;</span> x<span style="color: #990000">[</span><span style="color: #993399">12</span><span style="color: #990000">]</span>                        <span style="font-style: italic"><span style="color: #9A1900"># there is no 12'th element</span></span>
-<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span> NA
-<span style="color: #990000">&gt;</span> x<span style="color: #990000">[</span><span style="color: #993399">12</span><span style="color: #990000">]</span>=<span style="color: #993399">100</span>                    <span style="font-style: italic"><span style="color: #9A1900"># there is now</span></span>
-<span style="color: #990000">&gt;</span> x
- <span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span>  <span style="color: #993399">10</span>  <span style="color: #993399">11</span>  <span style="color: #993399">12</span>  <span style="color: #993399">13</span>  <span style="color: #993399">14</span>  <span style="color: #993399">15</span>  <span style="color: #993399">16</span>  <span style="color: #993399">17</span>  <span style="color: #993399">18</span>  <span style="color: #993399">19</span>  NA <span style="color: #993399">100</span></tt></pre></div></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_extracting_rows">Extracting rows</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight
-by Lorenzo Bettini
-http://www.lorenzobettini.it
-http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="color: #990000">&gt;</span> x = data.frame<span style="color: #990000">(</span>num=c<span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #990000">,</span> <span style="color: #993399">4</span><span style="color: #990000">),</span> name=c<span style="color: #990000">(</span><span style="color: #FF0000">"a"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"b"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"c"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"d"</span><span style="color: #990000">))</span>
-<span style="color: #990000">&gt;</span> x
-  num name
-<span style="color: #993399">1</span>   <span style="color: #993399">1</span>    a
-<span style="color: #993399">2</span>   <span style="color: #993399">2</span>    b
-<span style="color: #993399">3</span>   <span style="color: #993399">3</span>    c
-<span style="color: #993399">4</span>   <span style="color: #993399">4</span>    d
-<span style="color: #990000">&gt;</span> <span style="font-style: italic"><span style="color: #9A1900"># Have to remember that rows are indexed first and also specify x twice</span></span>
-<span style="color: #990000">&gt;</span> x<span style="color: #990000">[</span>x<span style="color: #990000">\$</span>num <span style="color: #990000">&gt;</span> <span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #990000">]</span>
-  num name
-<span style="color: #993399">3</span>   <span style="color: #993399">3</span>    c
-<span style="color: #993399">4</span>   <span style="color: #993399">4</span>    d
-<span style="color: #990000">&gt;</span> <span style="font-style: italic"><span style="color: #9A1900"># No need to remember row/column order and only specify x once</span></span>
-<span style="color: #990000">&gt;</span> subset<span style="color: #990000">(</span>x<span style="color: #990000">,</span> num <span style="color: #990000">&gt;</span> <span style="color: #993399">2</span><span style="color: #990000">)</span>
-  num name
-<span style="color: #993399">3</span>   <span style="color: #993399">3</span>    c
-<span style="color: #993399">4</span>   <span style="color: #993399">4</span>    d</tt></pre></div></div>
+<pre><tt>&gt; x = 10:19
+&gt; x[2]
+[1] 11
+&gt; x[3:4]
+[1] 12 13
+&gt; x[-1]                        <span style="font-style: italic"><span style="color: #9A1900"># exclude element 1</span></span>
+[1] 11 12 13 14 15 16 17 18 19
+&gt; x[12]                        <span style="font-style: italic"><span style="color: #9A1900"># there is no 12'th element</span></span>
+[1] NA
+&gt; x[12]=100                    <span style="font-style: italic"><span style="color: #9A1900"># there is now</span></span>
+&gt; x
+ [1]  10  11  12  13  14  15  16  17  18  19  NA 100</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5440,23 +5480,55 @@ http://www.gnu.org/software/src-highlite -->
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="color: #990000">&gt;</span> c<span style="color: #990000">(</span><span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #993399">6</span><span style="color: #990000">)</span> <span style="color: #990000">+</span> <span style="color: #993399">1</span>
-<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span> <span style="color: #993399">6</span> <span style="color: #993399">7</span>
-<span style="color: #990000">&gt;</span> c<span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">)</span> <span style="color: #990000">+</span> c<span style="color: #990000">(</span><span style="color: #993399">3</span><span style="color: #990000">,</span> <span style="color: #993399">4</span><span style="color: #990000">)</span>
-<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span> <span style="color: #993399">4</span> <span style="color: #993399">6</span>
-<span style="color: #990000">&gt;</span> c<span style="color: #990000">(</span><span style="color: #993399">7</span><span style="color: #990000">,</span> <span style="color: #993399">8</span><span style="color: #990000">,</span> <span style="color: #993399">9</span><span style="color: #990000">,</span> <span style="color: #993399">10</span><span style="color: #990000">)</span> <span style="color: #990000">+</span> c<span style="color: #990000">(</span><span style="color: #993399">11</span><span style="color: #990000">,</span> <span style="color: #993399">12</span><span style="color: #990000">)</span> <span style="font-style: italic"><span style="color: #9A1900"># vector recycled</span></span>
-<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span> <span style="color: #993399">18</span> <span style="color: #993399">20</span> <span style="color: #993399">20</span> <span style="color: #993399">22</span>
-<span style="color: #990000">&gt;</span> c<span style="color: #990000">(</span><span style="color: #993399">7</span><span style="color: #990000">,</span> <span style="color: #993399">8</span><span style="color: #990000">,</span> <span style="color: #993399">9</span><span style="color: #990000">,</span> <span style="color: #993399">10</span><span style="color: #990000">)</span> <span style="color: #990000">+</span> c<span style="color: #990000">(</span><span style="color: #993399">11</span><span style="color: #990000">,</span> <span style="color: #993399">12</span><span style="color: #990000">,</span> <span style="color: #993399">13</span><span style="color: #990000">)</span>
-<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span> <span style="color: #993399">18</span> <span style="color: #993399">20</span> <span style="color: #993399">22</span> <span style="color: #993399">21</span>
-<span style="color: #990000">&gt;</span> c<span style="color: #990000">(</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">)</span> <span style="color: #990000">&lt;</span> c<span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">)</span>
-<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span>  TRUE FALSE</tt></pre></div></div>
+<pre><tt>&gt; c(5, 6) + 1
+[1] 6 7
+&gt; c(1, 2) + c(3, 4)
+[1] 4 6
+&gt; c(7, 8, 9, 10) + c(11, 12) <span style="font-style: italic"><span style="color: #9A1900"># vector recycled</span></span>
+[1] 18 20 20 22
+&gt; c(7, 8, 9, 10) + c(11, 12, 13)
+[1] 18 20 22 21
+&gt; c(0, 1) &lt; c(1, 0)
+[1]  TRUE FALSE</tt></pre></div></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_data_frame_operations">data.frame operations</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>&gt; x = data.frame(num=c(1, 2, 3, 4), name=c(<span style="color: #FF0000">"a"</span>, <span style="color: #FF0000">"b"</span>, <span style="color: #FF0000">"c"</span>, <span style="color: #FF0000">"d"</span>))
+&gt; x
+  num name
+1   1    a
+2   2    b
+3   3    c
+4   4    d
+&gt; <span style="font-style: italic"><span style="color: #9A1900"># Extracting subsets of dataframes</span></span>
+&gt; subset(x, num &gt; 2)
+  num name
+3   3    c
+4   4    d
+&gt;
+&gt; <span style="font-style: italic"><span style="color: #9A1900"># x[x\$num &gt; 2, ]</span></span>
+&gt; <span style="font-style: italic"><span style="color: #9A1900"># Have to remember that rows are indexed first and specify x twice</span></span></tt></pre></div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>x = data.frame(num=c(1, 2, 3, 4), name=c(<span style="color: #FF0000">"a"</span>, <span style="color: #FF0000">"b"</span>, <span style="color: #FF0000">"c"</span>, <span style="color: #FF0000">"d"</span>))
+x\$val=runif(nrow(x))</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
 <h1 id="_i_o">I/O</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>File at a time input/output</p></div>
+<div class="paragraph"><p>File contents at a time input/output</p></div>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Lots of graphics systems/packages</p></div>
 <div class="paragraph"><p>&#160;</p></div>
@@ -5472,70 +5544,77 @@ http://www.gnu.org/software/src-highlite -->
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>data=read.csv<span style="color: #990000">(</span><span style="color: #FF0000">"measurements.csv"</span><span style="color: #990000">,</span> as.is=TRUE<span style="color: #990000">)</span>
+<pre><tt>data=read.csv(<span style="color: #FF0000">"measurements.csv"</span>, as.is=TRUE)
 
-data=read.csv<span style="color: #990000">(</span><span style="color: #FF0000">"measurements.csv.xz"</span><span style="color: #990000">,</span> as.is=TRUE<span style="color: #990000">)</span>
+data=read.csv(<span style="color: #FF0000">"measurements.csv.xz"</span>)
 
-data=read.csv<span style="color: #990000">(</span><span style="color: #FF0000">"measurements.csv"</span><span style="color: #990000">,</span> sep=<span style="color: #FF0000">"|"</span><span style="color: #990000">,</span> as.is=TRUE<span style="color: #990000">)</span>
+data=read.csv(<span style="color: #FF0000">"measurements.csv"</span>, sep=<span style="color: #FF0000">"|"</span>)
 
-data=read.csv<span style="color: #990000">(</span><span style="color: #FF0000">"measurements.csv"</span><span style="color: #990000">,</span> as.is=TRUE<span style="color: #990000">,</span>
-                                          header=FALSE<span style="color: #990000">)</span>
+data=read.csv(<span style="color: #FF0000">"measurements.csv"</span>, header=FALSE, allowEscapase=TRUE))
 
-data=read.csv<span style="color: #990000">(</span><span style="color: #FF0000">"https://github.com/Derek-Jones/ESEUR-code-data/blob/master/benchmark/MSTR10-DIMM.csv.xz"</span><span style="color: #990000">)</span></tt></pre></div></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_plotting_keep_it_simple">Plotting: keep it simple</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p><code>plot</code></p></div>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p><code>ggplot</code></p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_plotting">Plotting</h1>
-<div class="sectionbody" style="max-width:45em">
+data=read.csv(<span style="color: #FF0000">"https://github.com/Derek-Jones/ESEUR-code-data/blob/master/benchmark/MSTR10-DIMM.csv.xz"</span>)</tt></pre></div></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>plot<span style="color: #990000">(</span>xvals<span style="color: #990000">,</span> yvals<span style="color: #990000">)</span>
-plot<span style="color: #990000">(</span>yvals<span style="color: #990000">)</span> <span style="font-style: italic"><span style="color: #9A1900"># plot(1:length(yvals), yvals)</span></span>
-
-plot<span style="color: #990000">(</span>xvals<span style="color: #990000">,</span> yvals<span style="color: #990000">,</span> log=<span style="color: #FF0000">"y"</span><span style="color: #990000">)</span>
-plot<span style="color: #990000">(</span>xvals<span style="color: #990000">,</span> yvals<span style="color: #990000">,</span> xlim=c<span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">10</span><span style="color: #990000">))</span>
-plot<span style="color: #990000">(</span>xvals<span style="color: #990000">,</span> yvals<span style="color: #990000">,</span> xlab=<span style="color: #FF0000">"This is X"</span><span style="color: #990000">,</span> ylab=<span style="color: #FF0000">"Y here"</span><span style="color: #990000">)</span>
-
-plot<span style="color: #990000">(</span>xvals<span style="color: #990000">,</span> yvals<span style="color: #990000">,</span> col=<span style="color: #FF0000">"pink"</span><span style="color: #990000">)</span>
-points<span style="color: #990000">(</span>more_x<span style="color: #990000">,</span> more_y<span style="color: #990000">,</span> col=<span style="color: #FF0000">"green"</span><span style="color: #990000">)</span>
-lines<span style="color: #990000">(</span>x_lines<span style="color: #990000">,</span> y_lines<span style="color: #990000">,</span> col=<span style="color: #FF0000">"blue"</span><span style="color: #990000">)</span></tt></pre></div></div>
+<pre><tt>height,width,date
+2.1,3.6,10-9-2011
+4.2,8.5,11-9-2011</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_base_system_functions">Base system functions</h1>
+<h1 id="_plotting">Plotting</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p><code>nrow</code>, <code>ncol</code>, <code>length</code>,
-<code>nchar</code>, &#8230;</p></div>
+<div class="paragraph"><p><code>plot()</code> - built in</p></div>
+<div class="paragraph"><p><code>ggplot()</code> - popular add-on package <code>ggplot2</code></p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>plot(xvals, yvals)
+plot(yvals) <span style="font-style: italic"><span style="color: #9A1900"># plot(1:length(yvals), yvals)</span></span>
+
+plot(xvals, yvals, log=<span style="color: #FF0000">"y"</span>)
+plot(xvals, yvals, xlim=c(1, 10))
+plot(xvals, yvals, xlab=<span style="color: #FF0000">"This is X"</span>, ylab=<span style="color: #FF0000">"Y here"</span>)
+
+plot(xvals, yvals, pch=<span style="color: #FF0000">"+"</span>, col=<span style="color: #FF0000">"pink"</span>)
+points(more_x, more_y, col=<span style="color: #FF0000">"green"</span>)
+lines(x_lines, y_lines, col=<span style="color: #FF0000">"blue"</span>)</tt></pre></div></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_built_in_functions">Built-in functions</h1>
+<div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p><code>diff</code>, <code>grep</code>, <code>order</code>,
-<code>sort</code>, <code>rle</code>, &#8230;</p></div>
+<div class="paragraph"><p><code>nrow(df)</code>, <code>ncol(df)</code>, <code>length(vec)</code>,
+<code>nchar(vec)</code>, &#8230;</p></div>
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p><code>summary</code>, <code>sum</code>, <code>sd</code>,
-<code>max</code>, <code>min</code>, &#8230;</p></div>
+<div class="paragraph"><p><code>summary(model)</code>, <code>sum(vec)</code>, <code>mean(vec)</code>,
+<code>max(vec)</code>, <code>min(vec)</code>, &#8230;</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p><code>diff(vec)</code>, <code>grep(pat, df\$name)</code>, <code>order(vec)</code>,
+<code>sort(vec)</code>, &#8230;</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p><code>log(vec)</code>, <code>sin(vals)</code>,
+<code>runif(100)</code>, <code>rnorm(200, mean=2)</code>,</p></div>
+<div class="paragraph"><p><code>glm(y ~ x, data=df)</code>, <code>predict(model)</code>, &#8230;</p></div>
 </div>
 </div>
 <div class="sect1 slide">
 <h1 id="_useful_functions_for_debugging">Useful functions for debugging</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p><code>str</code></p></div>
+<div class="paragraph"><p><code>str(df)</code></p></div>
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p><code>head</code></p></div>
+<div class="paragraph"><p><code>ls()</code>, <code>rm(x)</code></p></div>
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p><code>table</code></p></div>
+<div class="paragraph"><p><code>head(df, n=6)</code>, <code>tail(df, n=6)</code></p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p><code>table(df\$x)</code></p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5547,17 +5626,19 @@ lines<span style="color: #990000">(</span>x_lines<span style="color: #990000">,<
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>orig_data=read_data<span style="color: #990000">()</span>
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900"># R programs tend to be short</span></span>
 
-interesting_data=reshape_data<span style="color: #990000">(</span>orig_data<span style="color: #990000">)</span>
+orig_data=read_data()
 
-stat_results=appropriate_statistics<span style="color: #990000">(</span>interesting_data<span style="color: #990000">)</span>
+interesting_data=reshape_data(orig_data)
 
-plot_result<span style="color: #990000">(</span>stat_results<span style="color: #990000">)</span></tt></pre></div></div>
+stat_results=appropriate_statistics(interesting_data)
+
+plot_result(stat_results)</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_data_analysis">Data analysis</h1>
+<h1 id="_data_analysis_process">Data analysis process</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Clean data</p></div>
@@ -5568,7 +5649,7 @@ most time spent here
 </span>
 </li>
 </ul>
-<div class="paragraph"><p>Find patterns in data</p></div>
+<div class="paragraph"><p>Specify behavior expected - hypothesis</p></div>
 <ul class="">
 <li>
 <span>
@@ -5577,13 +5658,28 @@ knowledge of the subject
 </li>
 <li>
 <span>
-suggested by the data you have (recursive)
+suggested by the data you have (data dredging, post-hoc analysis, fishing)
 </span>
 </li>
 </ul>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Fit models to the data</p></div>
-<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Find expected patterns</p></div>
+<ul class="">
+<li>
+<span>
+fit regression model
+</span>
+</li>
+<li>
+<span>
+survival analysis
+</span>
+</li>
+<li>
+<span>
+time series
+</span>
+</li>
+</ul>
 <div class="paragraph"><p>Communicate the results</p></div>
 </div>
 </div>
@@ -5591,9 +5687,7 @@ suggested by the data you have (recursive)
 <h1 id="_patterns_in_data">Patterns in data</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Known commonly occurring patterns</p></div>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Derived from domain knowledge</p></div>
+<div class="paragraph"><p>Based on domain knowledge</p></div>
 <ul class="">
 <li>
 <span>
@@ -5607,7 +5701,21 @@ hunches
 </li>
 <li>
 <span>
-suspicious behavior seen
+unexplained behavior experienced
+</span>
+</li>
+</ul>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Known, commonly occurring patterns</p></div>
+<ul class="">
+<li>
+<span>
+linear relationship
+</span>
+</li>
+<li>
+<span>
+distributions: exponential, power law, gaussian, random
 </span>
 </li>
 </ul>
@@ -5617,9 +5725,21 @@ suspicious behavior seen
 <h1 id="_exploration_techniques">Exploration techniques</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Visual patterns</p></div>
+<div class="paragraph"><p>Plot data - visual patterns</p></div>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Suck it and see model building</p></div>
+<ul class="">
+<li>
+<span>
+foolish
+</span>
+</li>
+<li>
+<span>
+data dredging, post-hoc analysis, fishing
+</span>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5631,22 +5751,17 @@ suspicious behavior seen
 </div>
 <div class="title">Figure 1. Plots of sample values having various patterns.</div>
 </div>
-<div class="paragraph"><p>rexample[communicating/data-plot.R]</p></div>
+<div class="paragraph"><p>rexample("examples/data-patterns.R")</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_simple_visualization_options">Simple visualization options</h1>
+<h1 id="_visualization_options">Visualization options</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>Paired relationships</p></div>
 <ul class="">
 <li>
 <span>
 <code>plot</code>, <code>pairs</code>
-</span>
-</li>
-<li>
-<span>
-correlations
 </span>
 </li>
 </ul>
@@ -5682,9 +5797,8 @@ contour plots
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_pairs_function">pairs function</h1>
+<h1 id="_plotting_column_pairs">Plotting column pairs</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>Visualise all paired relationships</p></div>
 <div class="listingblock">
 <div class="content">
 <pre><code>Name,CFP,Haskell,Abstract,C
@@ -5695,6 +5809,14 @@ seL4_ARM_Page_FlushCaches,6,413,211,398
 seL4_IRQHandler_Clear,7,1555,381,1609
 seL4_TCB_SetPriority,7,219,187,121</code></pre>
 </div></div>
+<div class="paragraph"><p>Visualise paired relationships</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>plot( ~ CFP+Haskell+Abstract+C, data=work, col=point_col,
+                                            cex.labels=2.0)</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5706,7 +5828,7 @@ seL4_TCB_SetPriority,7,219,187,121</code></pre>
 </div>
 <div class="title">Figure 2. Various measurements of work performed implementing the same functionality, number of lines of Haskell and C implementing functionality, CFP (COSMIC function points; based on user manual) and length of formal specification.</div>
 </div>
-<div class="paragraph"><p>rexample[communicating/pub-fs-fp.R]</p></div>
+<div class="paragraph"><p>rexample[examples/pub-fs-fp.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5718,19 +5840,16 @@ seL4_TCB_SetPriority,7,219,187,121</code></pre>
 </div>
 <div class="title">Figure 3. Effort, in hours (log scale), spent in various development phases of projects written in Ada (blue) and Fortran (red).</div>
 </div>
-<div class="paragraph"><p>rexample[projects/nasa-ada-fortran.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_pull_request_correlations">Pull request correlations</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="intro-1-pull-req-cor.jpg" alt="intro-1-pull-req-cor.jpg" />
-</div>
-<div class="title">Figure 4. Correlations between pairs of attributes of 12,799 Github pull requests to the Homebrew repo.</div>
-</div>
-<div class="paragraph"><p>rexample[communicating/pull-req-cor.R]</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>panel.language=function(x, y, language)
+{ ... }
+
+pairs(log(nasa[-c(28, 30) , 16:19]), panel = panel.language, language=nasa\$language)</tt></pre></div></div>
+<div class="paragraph"><p>rexample[examples/nasa-ada-fortran.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5739,7 +5858,7 @@ seL4_TCB_SetPriority,7,219,187,121</code></pre>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Values do not always exhibit a discernible direction</p></div>
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Averaging line through data</p></div>
+<div class="paragraph"><p>Averaging line through points</p></div>
 <ul class="">
 <li>
 <span>
@@ -5752,12 +5871,12 @@ running mean, splines, loess (LOcal regrESSion)
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>loess_mod=loess<span style="color: #990000">(</span>y_axis <span style="color: #990000">~</span> x_axis<span style="color: #990000">,</span> span=<span style="color: #993399">0.3</span><span style="color: #990000">)</span>
-loess_pred=predict<span style="color: #990000">(</span>loess_mod<span style="color: #990000">)</span>
-lines<span style="color: #990000">(</span>x_axis<span style="color: #990000">,</span> loess_pred<span style="color: #990000">,</span> col=<span style="color: #FF0000">"brown"</span><span style="color: #990000">)</span>
+<pre><tt>lines(loess.smooth(x_vals, y_vals, span=0.3),
+                                     col=<span style="color: #FF0000">"blue"</span>)
 
-lines<span style="color: #990000">(</span>loess.smooth<span style="color: #990000">(</span>x_vals<span style="color: #990000">,</span> y_vals<span style="color: #990000">,</span> span=<span style="color: #993399">0.3</span><span style="color: #990000">),</span>
-                                     col=<span style="color: #FF0000">"brown"</span><span style="color: #990000">)</span></tt></pre></div></div>
+loess_mod=loess(y_axis ~ x_axis, span=0.3)
+loess_pred=predict(loess_mod)
+lines(x_axis, loess_pred, col=<span style="color: #FF0000">"blue"</span>)</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5767,32 +5886,9 @@ lines<span style="color: #990000">(</span>loess.smooth<span style="color: #99000
 <div class="content">
 <img src="intro-1-NASA_gruhl.jpg" alt="intro-1-NASA_gruhl.jpg" />
 </div>
-<div class="title">Figure 5. Effort invested in project definition (as percentage of original estimate) against cost overrun (as percentage of original estimate).</div>
+<div class="title">Figure 4. Effort invested in project definition (as percentage of original estimate) against cost overrun (as percentage of original estimate).</div>
 </div>
-<div class="paragraph"><p>rexample[regression/NASA_gruhl.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_don_8217_t_have_to_be_half_way_point">Don&#8217;t have to be half-way point</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="intro-1-msr14-floss-survey.jpg" alt="intro-1-msr14-floss-survey.jpg" />
-</div>
-<div class="title">Figure 6. Year and age at which survey respondents started contributing to FLOSS, i.e., made their first FLOSS contribution.</div>
-</div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_densely_packed_measurements">Densely packed measurements</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="intro-1-maint-est.jpg" alt="intro-1-maint-est.jpg" />
-</div>
-<div class="title">Figure 7. Developer estimated effort against actual effort (in hours), for various maintenance tasks, e.g., adaptive, corrective and perfective; left as-is, middle jittered values and right size proportional to the log of the number measurements.</div>
-</div>
-<div class="paragraph"><p>rexample[economics/maint-est.R]</p></div>
+<div class="paragraph"><p>rexample[examples/NASA_gruhl.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5802,9 +5898,9 @@ lines<span style="color: #990000">(</span>loess.smooth<span style="color: #99000
 <div class="content">
 <img src="intro-1-herraiz-projects.jpg" alt="intro-1-herraiz-projects.jpg" />
 </div>
-<div class="title">Figure 8. Number of files and lines of code in 3,782 projects on Sourceforge.</div>
+<div class="title">Figure 5. Number of files and lines of code in 3,782 projects on Sourceforge.</div>
 </div>
-<div class="paragraph"><p>rexample[communicating/herraiz-projects.R]</p></div>
+<div class="paragraph"><p>rexample[examples/herraiz-projects.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5814,9 +5910,9 @@ lines<span style="color: #990000">(</span>loess.smooth<span style="color: #99000
 <div class="content">
 <img src="intro-1-boxplot-10-cscw.jpg" alt="intro-1-boxplot-10-cscw.jpg" />
 </div>
-<div class="title">Figure 9. Boxplot of time between a bug in Eclipse being reported and the first response to the report; right plot is notched.</div>
+<div class="title">Figure 6. Boxplot of time between a bug in Eclipse being reported and the first response to the report; right plot is notched.</div>
 </div>
-<div class="paragraph"><p>rexample[communicating/boxplot-10-cscw.R]</p></div>
+<div class="paragraph"><p>rexample[examples/boxplot-10-cscw.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5835,9 +5931,9 @@ lines<span style="color: #990000">(</span>loess.smooth<span style="color: #99000
 <div class="content">
 <img src="intro-1-heatmap-hotpower.jpg" alt="intro-1-heatmap-hotpower.jpg" />
 </div>
-<div class="title">Figure 10. Intel Sandy Bridge L3 cache bandwidth in GB/s at various clock frequencies and using combinations of cores (0-3 denotes cores zero-through-three, 0,2,4 denotes the three cores zero, two and four).</div>
+<div class="title">Figure 7. Intel Sandy Bridge L3 cache bandwidth in GB/s at various clock frequencies and using combinations of cores (0-3 denotes cores zero-through-three, 0,2,4 denotes the three cores zero, two and four).</div>
 </div>
-<div class="paragraph"><p>rexample[communicating/heatmap-hotpower.R]</p></div>
+<div class="paragraph"><p>rexample[examples/heatmap-hotpower.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5847,9 +5943,61 @@ lines<span style="color: #990000">(</span>loess.smooth<span style="color: #99000
 <div class="content">
 <img src="intro-1-thereska_sipew-procspeed-memsize.jpg" alt="intro-1-thereska_sipew-procspeed-memsize.jpg" />
 </div>
-<div class="title">Figure 11. Contour plot of the number of sessions executed on a computer having a given processor speed and memory capacity.</div>
+<div class="title">Figure 8. Contour plot of the number of sessions executed on a computer having a given processor speed and memory capacity.</div>
 </div>
-<div class="paragraph"><p>rexample[ecosystem/thereska_sipew-procspeed-memsize.R]</p></div>
+<div class="paragraph"><p>rexample[examples/thereska_sipew-procspeed-memsize.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_books">Books</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>Dead trees</p></div>
+<ul class="">
+<li>
+<span>
+The R book by M. Crawley
+</span>
+</li>
+<li>
+<span>
+R in Action by R. Kabacoff
+</span>
+</li>
+<li>
+<span>
+Applied Linear Statistical Models by Kutner, Nachtsheim, Neter, Li
+</span>
+</li>
+<li>
+<span>
+Introduction to Probability Models by S. Ross, mathematical
+</span>
+</li>
+</ul>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Online pdfs</p></div>
+<ul class="">
+<li>
+<span>
+From Algorithms to Z-Scores: Probabilistic and Statistical Modelling in Computer Science by N. Matloff
+</span>
+</li>
+<li>
+<span>
+Grinstead and Snell’s Introduction to Probability by Grinstead and Snell
+</span>
+</li>
+<li>
+<span>
+R for Programmers by N. Matloff
+</span>
+</li>
+<li>
+<span>
+icebreakeR by A. Robinson
+</span>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5857,11 +6005,13 @@ lines<span style="color: #990000">(</span>loess.smooth<span style="color: #99000
 <div class="sectionbody" style="max-width:45em">
 <div class="listingblock">
 <div class="content">
-<pre><code>c_linelen.csv.xz
+<pre><code>C source measurements: c_linelen.csv.xz
 
-c_linetok.csv.xz
+C source measurements: c_linetok.csv.xz
 
-turley_02.csv.xz</code></pre>
+cpu sales: turley_02.csv.xz
+
+debian-src-stats.csv.xz</code></pre>
 </div></div>
 </div>
 </div>

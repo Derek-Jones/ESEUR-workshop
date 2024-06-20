@@ -2,10 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>ESEUR - Probability &amp; Statistics</title>
+<title>ESEUR Workshop - Probability &amp; Statistics</title>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="copyright" content="Copyright &#169; Somebody" />
-<meta name="generator" content="AsciiDoc 8.6.9" />
+<meta name="generator" content="AsciiDoc 10.1.2" />
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
 
@@ -436,7 +436,7 @@ thead, p.table.header {
 p.table {
   margin-top: 0;
 }
-/* Because the table frame attribute is overriden by CSS in most browsers. */
+/* Because the table frame attribute is overridden by CSS in most browsers. */
 div.tableblock > table[frame="void"] {
   border-style: none;
 }
@@ -5061,7 +5061,7 @@ else
 </head>
 <body class="article" style="max-width:45em">
 <div id="header" class="slide">
-<h1>ESEUR - Probability &amp; Statistics</h1>
+<h1>ESEUR Workshop - Probability &amp; Statistics</h1>
 <span id="author">Derek M. Jones</span><br />
 </div>
 <div class="sect1 slide">
@@ -5070,47 +5070,66 @@ else
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Probability makes inferences about individual events based on the
 characteristics of the population</p></div>
-<div class="paragraph"><p>&#160;</p></div>
+<ul class="">
+<li>
+<span>
+makes use of deductive reasoning
+</span>
+</li>
+</ul>
 <div class="paragraph"><p>Statistics makes inferences about the population based on the
 characteristics of a sample of the population</p></div>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Probability makes use of deductive reasoning</p></div>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Statistics makes use of inferential reasoning</p></div>
+<ul class="">
+<li>
+<span>
+makes use of inferential reasoning
+</span>
+</li>
+</ul>
+<div class="imageblock">
+<div class="content">
+<img src="prob-stats-1-pop-sample.jpg" alt="prob-stats-1-pop-sample.jpg" />
+</div>
+</div>
 </div>
 </div>
 <div class="sect1 slide">
 <h1 id="_probability_distributions">Probability distributions</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>Mathematical descriptions of the properties of values obtained by
-following a consistent pattern of behavior</p></div>
+<div class="paragraph"><p>Mathematical description of the pattern of values obtained by
+following a consistent process</p></div>
 <ul class="">
 <li>
 <span>
-the flipping a coin pattern of behavior
+the flipping a coin process
 </span>
 <ul class="">
 <li>
 <span>
-generates one of two results
+generates one of two values
 </span>
 </li>
 <li>
 <span>
-fixed probability of either result
+fixed probability of either value
 </span>
 </li>
 <li>
 <span>
-each result is independent of the previous one
+each value is independent of the previous one
 </span>
 </li>
 </ul>
 </li>
 <li>
 <span>
-a count of the number of heads and tails has a binomial probability
-distribution
+binomial distribution: count of the number of heads and tails
+</span>
+</li>
+<li>
+<span>
+negative binomial distribution: number of heads seen before
+a specified number of tails are seen
 </span>
 </li>
 </ul>
@@ -5130,9 +5149,25 @@ generating values having that particular distribution
 <div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
 <div class="content">
-<img src="../not_R/disc-cont.jpg" alt="../not_R/disc-cont.jpg" />
+<img src="../not_R/disc-cont.jpg" alt="../not_R/disc-cont.jpg" width="800" height="800" />
 </div>
 </div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_common_se_probability_distributions">Common SE probability distributions</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>Normal, Gaussian - bell shaped - talked about: Lognormal</p></div>
+<div class="paragraph"><p>Exponential , 25% , $y=a e^{-b*x}$ - memoryless, percentage inc/dec</p></div>
+<div class="paragraph"><p>Power law/Pareto , 15% , $y=a x^{-b}$</p></div>
+<div class="paragraph"><p>Poisson , $\frac{\lambda^x e^{-\lambda}}{x!}$ - count data</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="prob-stats-1-scaling-exp-pow.jpg" alt="prob-stats-1-scaling-exp-pow.jpg" />
+</div>
+<div class="title">Figure 1. Axis scales for exponential and power law samples.</div>
+</div>
+<div class="paragraph"><p>rexample[examples/scaling-exp-pow.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5142,33 +5177,41 @@ generating values having that particular distribution
 <div class="content">
 <img src="prob-stats-1-3np1.jpg" alt="prob-stats-1-3np1.jpg" />
 </div>
-<div class="title">Figure 1. Number of <code>3n+1</code> programs containing a given number of lines and four distributions fitted to this data.</div>
+<div class="title">Figure 2. Number of <code>3n+1</code> programs containing a given number of lines, and four distributions fitted to this data.</div>
 </div>
-<div class="paragraph"><p>rexample[probability/3np1.R]</p></div>
+<div class="paragraph"><p>rexample[examples/3np1.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
 <h1 id="_cullen_and_frey_graph">Cullen and Frey graph</h1>
 <div class="sectionbody" style="max-width:45em">
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>library(fitdistrplus)
+...
+descdist(n3\$lines, discrete=TRUE, boot=1000)</tt></pre></div></div>
 <div class="imageblock">
 <div class="content">
 <img src="prob-stats-1-3np1-dist.jpg" alt="prob-stats-1-3np1-dist.jpg" />
 </div>
-<div class="title">Figure 2. A Cullen and Frey graph for the $3n+1$ program length data.</div>
+<div class="title">Figure 3. Cullen and Frey graph for the $3n+1$ program LOC.</div>
 </div>
-<div class="paragraph"><p>rexample[probability/3np1-dist.R]</p></div>
+<div class="paragraph"><p>rexample[examples/3np1-dist.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_life_is_rarely_simple">Life is rarely simple</h1>
+<h1 id="_life_can_be_complicated">Life can be complicated</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
 <div class="content">
 <img src="prob-stats-1-mpi_data_fig.jpg" alt="prob-stats-1-mpi_data_fig.jpg" />
 </div>
-<div class="title">Figure 3. Density plot of MPI micro-benchmark runtime performance for calls to <code>MPI_Scan</code> with 10,000 Bytes (left) and to <code>MPI_Allreduce</code> with 1,000 Bytes (right).</div>
+<div class="title">Figure 4. Density plot of MPI micro-benchmark runtime performance for calls to <code>MPI_Scan</code> with 10,000 Bytes (left) and to <code>MPI_Allreduce</code> with 1,000 Bytes (right).</div>
 </div>
-<div class="paragraph"><p>rexample[probability/mpi_data_fig.R]</p></div>
+<div class="paragraph"><p>rexample[examples/mpi_data_fig.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5178,32 +5221,20 @@ generating values having that particular distribution
 <div class="content">
 <img src="prob-stats-1-mpi_data_fit.jpg" alt="prob-stats-1-mpi_data_fit.jpg" />
 </div>
-<div class="title">Figure 4. Mixture model fitted by the <code>normalmixEM</code> function to the performance data from calls to <code>MPI_Allreduce</code>.</div>
+<div class="title">Figure 5. Mixture model fitted by the rfunc[normalmixEM] function to the performance data from calls to <code>MPI_Allreduce</code>.</div>
 </div>
-<div class="paragraph"><p>rexample[probability/mpi_data_fit.R]</p></div>
+<div class="paragraph"><p>rexample[examples/mpi_data_fit.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
 <h1 id="_sampling">Sampling</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-pop-sample.jpg" alt="prob-stats-1-pop-sample.jpg" />
-</div>
-<div class="title">Figure 5. Example of a sample drawn from a population.</div>
-</div>
-<div class="paragraph"><p>rexample[statistics/pop-sample.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_sample_size">Sample size</h1>
-<div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>More measurements</p></div>
+<div class="paragraph"><p>Cost/benefit of more measurements</p></div>
 <ul class="">
 <li>
 <span>
-more accurate analysis: uncertainty &#8594; $\frac{1}{\sqrt{N}}$
+less uncertainty &#8594; $\frac{1}{\sqrt{N}}$
 </span>
 </li>
 <li>
@@ -5216,24 +5247,21 @@ may cost more
 may take longer to obtain
 </span>
 </li>
-<li>
-<span>
-may have to made do with what is available
-</span>
-</li>
 </ul>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Have to make do with what is available</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_small_samples_are_not_smooth">Small samples are not smooth</h1>
+<h1 id="_small_samples_are_irregular">Small samples are irregular</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
 <div class="content">
 <img src="prob-stats-1-two-norm.jpg" alt="prob-stats-1-two-norm.jpg" />
 </div>
-<div class="title">Figure 6. Samples of randomly selected values drawn from the same normal distribution (100 points in each plot in top row, 1,000 in bottom).</div>
+<div class="title">Figure 6. Samples of randomly selected values drawn from the same normal distribution (100 points in each plot in left column, 1,000 in right column).</div>
 </div>
-<div class="paragraph"><p>rexample[group-compare/two-norm.R]</p></div>
+<div class="paragraph"><p>rexample[examples/two-norm.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5245,43 +5273,7 @@ may have to made do with what is available
 </div>
 <div class="title">Figure 7. Mean (red) and standard deviation (grey lines; they are not symmetrical because of the log scaling) of samples of 3 items drawn from a population of 1,000 items (blue line mean, green line standard deviation).</div>
 </div>
-<div class="paragraph"><p>rexample[statistics/sample-3_mean.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_two_value_summaries_can_be_misleading">Two value summaries can be misleading</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-chisq-norm.jpg" alt="prob-stats-1-chisq-norm.jpg" />
-</div>
-<div class="title">Figure 8. A Normal distribution with mean=4 and variance=8 and a Chi-squared distribution with four degrees of freedom having the same mean and variance (the vertical lines are at the distributions' median value).</div>
-</div>
-<div class="paragraph"><p>rexample[group-compare/chisq-norm.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_mixed_populations">Mixed populations</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-strata-sample.jpg" alt="prob-stats-1-strata-sample.jpg" />
-</div>
-<div class="title">Figure 9. A population of items having one of three colors and three strata sampled from it.</div>
-</div>
-<div class="paragraph"><p>rexample[statistics/strata-sample.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_contaminated_normal">Contaminated Normal</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-contam-norm.jpg" alt="prob-stats-1-contam-norm.jpg" />
-</div>
-<div class="title">Figure 10. A contaminated normal, values drawn from two normal distributions with 10% of values drawn from a distribution having a standard deviation five times greater than the other.</div>
-</div>
-<div class="paragraph"><p>rexample[statistics/contam-norm.R]</p></div>
+<div class="paragraph"><p>rexample[examples/sample-3_mean.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5291,9 +5283,33 @@ may have to made do with what is available
 <div class="content">
 <img src="prob-stats-1-SW-check.jpg" alt="prob-stats-1-SW-check.jpg" />
 </div>
-<div class="title">Figure 11. Probability, with 95% confidence, that <code>shapiro.test</code> correctly reports that samples drawn from various distributions are not drawn from a Normal distribution, and probability of an incorrect report when the sample is drawn from a Normal distribution.</div>
+<div class="title">Figure 8. Probability, with 95% confidence, that <code>shapiro.test</code> correctly reports that samples drawn from various distributions are not drawn from a Normal distribution, and probability of an incorrect report when the sample is drawn from a Normal distribution.</div>
 </div>
-<div class="paragraph"><p>rexample[group-compare/SW-check.R]</p></div>
+<div class="paragraph"><p>rexample[examples/SW-check.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_contaminated_normal">Contaminated Normal</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="imageblock">
+<div class="content">
+<img src="prob-stats-1-contam-norm.jpg" alt="prob-stats-1-contam-norm.jpg" />
+</div>
+<div class="title">Figure 9. A contaminated normal, values drawn from two normal distributions with 10% of values drawn from a distribution having a standard deviation five times greater than the other.</div>
+</div>
+<div class="paragraph"><p>rexample[examples/contam-norm.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_impact_of_population_mean_sd">Impact of population mean/sd</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="imageblock">
+<div class="content">
+<img src="prob-stats-1-power-trade-off.jpg" alt="prob-stats-1-power-trade-off.jpg" />
+</div>
+<div class="title">Figure 10. Impact of differences in <code>mean</code>/<code>sd</code> on overlap between two populations ($\alpha$ probability of false positive; $\beta$ probability of false negative).</div>
+</div>
+<div class="paragraph"><p>rexample[examples/power-trade-off.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5305,7 +5321,7 @@ style="margin-left:auto; margin-right:auto;"
 width="65%"
 frame="void"
 cellspacing="0" cellpadding="4">
-<caption class="title">Table 1. The four combinations of circumstances and their outcomes in hypothesis testing.</caption>
+<caption class="title">Table 1. The four combinations of circumstances, and their outcomes in hypothesis testing.</caption>
 <col width="20%" />
 <col width="20%" />
 <col width="30%" />
@@ -5338,6 +5354,117 @@ cellspacing="0" cellpadding="4">
 </tbody>
 </table>
 </div>
+<div class="tableblock">
+<table rules="none"
+style="margin-left:auto; margin-right:auto;"
+width="75%"
+frame="void"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 2. Stop/do-more testing decision, and outcomes based on who incurs loss</caption>
+<col width="20%" />
+<col width="20%" />
+<col width="30%" />
+<col width="30%" />
+<thead>
+<tr>
+<th align="left" valign="top">          </th>
+<th align="left" valign="top"> </th>
+<th colspan="2" align="center" valign="top"> Decision made</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong></strong></p></td>
+<td align="left" valign="top"><p class="table"></p></td>
+<td align="left" valign="top"><p class="table">Stop testing</p></td>
+<td align="left" valign="top"><p class="table">Do more testing</p></td>
+</tr>
+<tr>
+<td rowspan="2" align="left" valign="middle"><p class="table"><strong>Actual</strong></p></td>
+<td align="left" valign="top"><p class="table">More testing needed</p></td>
+<td align="left" valign="middle"><p class="table">Customer loss</p></td>
+<td align="left" valign="middle"><p class="table">OK</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Testing is sufficient</p></td>
+<td align="left" valign="middle"><p class="table">OK</p></td>
+<td align="left" valign="middle"><p class="table">Vendor loss</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_experimental_options">Experimental options</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p><code>pwr.2p.test()</code>, from package <code>pwr</code></p></div>
+<div class="imageblock">
+<div class="content">
+<img src="prob-stats-1-design-power.jpg" alt="prob-stats-1-design-power.jpg" />
+</div>
+<div class="title">Figure 11. The four related quantities in experimental design power analysis.</div>
+</div>
+<div class="paragraph"><p>rexample[examples/design-power.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_statistically_significant">Statistically significant</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>A test statistic is said to be <em>statistically
+significant</em> when it allows the null hypothesis to be rejected</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p><em>statistically significant</em> is often shortened to just <em>significant</em></p></div>
+<ul class="">
+<li>
+<span>
+common usage meaning very different from statistical one
+</span>
+</li>
+</ul>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>A risk based approach, balancing costs and benefits</p></div>
+<ul class="">
+<li>
+<span>
+1 in $20$ , $5$% , $2 \sigma$ , psychology experiments
+</span>
+</li>
+<li>
+<span>
+1 in $770$ , $0.13$% , $3 \sigma$
+</span>
+</li>
+<li>
+<span>
+1 in $3.3\times10^6$ , $3\times10^{-7}$% , $5 \sigma$ , particle physics
+</span>
+</li>
+<li>
+<span>
+1 in $10^9$ , $10^{-9}$% , $6 \sigma$ , genetics
+</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_bonferroni_correction">Bonferroni Correction</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>Correct for multiple, $m$, tests</p></div>
+<ul class="">
+<li>
+<span>
+$1-(1-\alpha)^{\frac{1}{m}} \approx \frac{\alpha}{m}$
+</span>
+</li>
+<li>
+<span>
+$\alpha=0.05 \rightarrow \frac{0.05}{m}$
+</span>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5364,25 +5491,6 @@ http://www.gnu.org/software/src-highlite -->
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_statistically_significant">Statistically significant</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>A test statistic is said to be <em>statistically
-significant</em> when it allows the null hypothesis to be rejected</p></div>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>"statistically significant" is often shortened to just "significant"</p></div>
-<ul class="">
-<li>
-<span>
-common usage meaning very different from statistical one
-</span>
-</li>
-</ul>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Have not rejected the Null hypothesis</p></div>
-</div>
-</div>
-<div class="sect1 slide">
 <h1 id="_effect_size">Effect size</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
@@ -5391,24 +5499,131 @@ common usage meaning very different from statistical one
 </div>
 <div class="title">Figure 12. Examples of the impact of population prevalence, statistical power and p-value on number of false positives and false negatives.</div>
 </div>
-<div class="paragraph"><p>rexample[statistics/true-false-tree.R]</p></div>
+<div class="paragraph"><p>rexample[examples/true-false-tree.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_statistical_power">Statistical power</h1>
+<h1 id="_comparing_two_samples">Comparing two samples</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
 <div class="content">
-<img src="prob-stats-1-design-power.jpg" alt="prob-stats-1-design-power.jpg" />
+<img src="prob-stats-1-UserBenchmark_Nvidia.jpg" alt="prob-stats-1-UserBenchmark_Nvidia.jpg" />
 </div>
-<div class="title">Figure 13. The four related quantities in design power analysis.</div>
+<div class="title">Figure 13. Number of reflection benchmark results achieving a given score, reported for GTX 970 cards from three third-party manufacturers.</div>
 </div>
-<div class="paragraph"><p>rexample[statistics/design-power.R]</p></div>
+<div class="paragraph"><p>rexample[examples/UserBenchmark_Nvidia.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_data_to_play_with">Data to play with</h1>
+<h1 id="_the_bootstrap">The bootstrap</h1>
 <div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>Very general technique</p></div>
+<ul class="">
+<li>
+<span>
+no dependence on the sample distribution
+</span>
+</li>
+<li>
+<span>
+any comparison that can be coded
+</span>
+</li>
+<li>
+<span>
+only practical when using a computer
+</span>
+</li>
+</ul>
+<div class="paragraph"><p>Bootstrap algorithm</p></div>
+<ul class="">
+<li>
+<span>
+assume no difference between the two samples, i.e., items exchangeable
+</span>
+</li>
+<li>
+<span>
+create new samples from aggregate of existing two samples
+</span>
+</li>
+<li>
+<span>
+the <em>empirical distribution</em>
+</span>
+<ol class="arabic">
+<li>
+<span>
+combine both samples into an aggregate sample
+</span>
+</li>
+<li>
+<span>
+randomly sample this aggregate, to create two new samples, $s_1$, $s_2$
+</span>
+</li>
+<li>
+<span>
+compare $s_1$ and $s_2$, save the result, $result_i$
+</span>
+</li>
+<li>
+<span>
+repeat steps 2-3 many times, say 5,000
+</span>
+</li>
+<li>
+<span>
+compare the original two samples, producing $result_{orig}$
+</span>
+</li>
+<li>
+<span>
+order the $result_i$: what percentage are more/less than $result_{orig}$
+</span>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_bootstrap_example">Bootstrap example</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>library(<span style="color: #FF0000">"boot"</span>)
+
+mean_diff=function(res, indices)
+{
+t=res[indices]
+return(mean(t[1:num_MSI])-mean(t[(num_MSI+1):total_reps]))
+}
+
+<span style="font-style: italic"><span style="color: #9A1900"># MSI_refl   # sample s1</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"># Giga_refl  # sample s2</span></span>
+
+num_MSI=length(MSI_refl)    <span style="font-style: italic"><span style="color: #9A1900"># Length of sample s1</span></span>
+num_Giga=length(Giga_refl)  <span style="font-style: italic"><span style="color: #9A1900"># Length of sample s2</span></span>
+total_reps=num_MSI+num_Giga <span style="font-style: italic"><span style="color: #9A1900"># Length of Aggregate sample</span></span>
+
+GTX_boot=boot(c(MSI_refl, Giga_refl), mean_diff, R = 4999)
+
+refl_mean_diff=mean(MSI_refl)-mean(Giga_refl) <span style="font-style: italic"><span style="color: #9A1900"># Diff sample means</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"># Two-sided test</span></span>
+E=length(which(abs(GTX_boot\$t) &gt;= abs(refl_mean_diff)))
+<span style="font-style: italic"><span style="color: #9A1900"># likelihood= (E+1)/(4999+1)</span></span></tt></pre></div></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_data_to_try">Data to try</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>UserBenchmark_Nvidia-GTX-970.htm.xz</p></div>
+<div class="paragraph"><p>Planning poker: 16_1.csv.xz, 16_2.csv.xz</p></div>
+<div class="paragraph"><p>Typos in serif and sans-serif text: tb104veytsman-typo_data.csv.xz</p></div>
 </div>
 </div>
 </body>

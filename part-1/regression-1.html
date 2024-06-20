@@ -2,10 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>ESEUR Workshop - Regression modeling</title>
+<title>ESEUR Workshop - Regression modelling</title>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="copyright" content="Copyright &#169; Somebody" />
-<meta name="generator" content="AsciiDoc 8.6.9" />
+<meta name="generator" content="AsciiDoc 10.1.2" />
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
 
@@ -436,7 +436,7 @@ thead, p.table.header {
 p.table {
   margin-top: 0;
 }
-/* Because the table frame attribute is overriden by CSS in most browsers. */
+/* Because the table frame attribute is overridden by CSS in most browsers. */
 div.tableblock > table[frame="void"] {
   border-style: none;
 }
@@ -5061,19 +5061,25 @@ else
 </head>
 <body class="article" style="max-width:45em">
 <div id="header" class="slide">
-<h1>ESEUR Workshop - Regression modeling</h1>
+<h1>ESEUR Workshop - Regression modelling</h1>
 <span id="author">Derek M. Jones</span><br />
 </div>
 <div class="sect1 slide">
-<h1 id="_regression_modeling">Regression modeling</h1>
+<h1 id="_regression_modelling">Regression modelling</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Today&#8217;s hammer</p></div>
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>&#8216;All models are wrong, but some are useful&#8217;</p></div>
-<div class="paragraph"><p>We are using a computer</p></div>
+<div class="paragraph"><p>Fits an equation to data</p></div>
+<ul class="">
+<li>
+<span>
+you decide which equation to fit
+</span>
+</li>
+</ul>
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Main reasons for building a regression model:</p></div>
+<div class="paragraph"><p>Reasons for building a regression model</p></div>
 <ul class="">
 <li>
 <span>
@@ -5083,21 +5089,18 @@ simplicity
 </li>
 <li>
 <span>
-prediction: willingness to trade-off understanding for greater
-accuracy
+prediction: willingness to trade-off understanding for better fit
 </span>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_what_is_regression_modeling">What is regression modeling?</h1>
+<h1 id="_updating_from_a_pre_computer_world">Updating from a pre-computer world</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>Fits an equation to data</p></div>
-<div class="paragraph"><p>You decide what equations to fit</p></div>
 <div class="imageblock">
 <div class="content">
-<img src="../not_R/reg-models.jpg" alt="../not_R/reg-models.jpg" />
+<img src="linear_tests_cheat_sheet.png" alt="linear_tests_cheat_sheet.png" />
 </div>
 </div>
 </div>
@@ -5105,6 +5108,7 @@ accuracy
 <div class="sect1 slide">
 <h1 id="_generalized_linear_model">Generalized linear model</h1>
 <div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p><code>glm</code> a general solution</p></div>
 <ul class="">
 <li>
@@ -5114,44 +5118,45 @@ less restrictive requirements on data characteristics
 </li>
 <li>
 <span>
-can change defaults to handle other error distributions
+can change default Normal to handle other error distributions
 </span>
 </li>
 </ul>
-<div class="paragraph"><p>Overkill for many real-life problems: who cares</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Overkill for many real-life problems</p></div>
 <ul class="">
 <li>
 <span>
-uses more cpu time than <code>lm</code>
+who cares, we are using a computer
 </span>
 </li>
 <li>
 <span>
-uses more memory than <code>lm</code>
+maths is more complicated than ordinary linear regression, <code>lm</code>
 </span>
 </li>
 <li>
 <span>
-maths is more complicated
+uses more memory/cpu time than <code>lm</code>
 </span>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_freebsd_sloc_over_time">FreeBSD sloc over time</h1>
+<h1 id="_straightforward_case">Straightforward case</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
 <div class="content">
-<img src="regression-1-BSD-x.jpg" alt="regression-1-BSD-x.jpg" />
+<img src="regression-1-Herraiz-BSD-x.jpg" alt="regression-1-Herraiz-BSD-x.jpg" />
 </div>
 <div class="title">Figure 1. Total lines of source code in FreeBSD by days elapsed since the project started.</div>
 </div>
-<div class="paragraph"><p>rexample[regression/Herraiz-BSD.R]</p></div>
+<div class="paragraph"><p>rexample[examples/Herraiz-BSD.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_groovy_compiler_classes_over_time">Groovy compiler classes over time</h1>
+<h1 id="_importance_of_domain_knowledge">Importance of domain knowledge</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
 <div class="content">
@@ -5159,28 +5164,28 @@ maths is more complicated
 </div>
 <div class="title">Figure 2. Number of classes in the Groovy compiler at each release, in days since version 1.0.</div>
 </div>
-<div class="paragraph"><p>rexample[regression/Groovy_change-prop2.R]</p></div>
+<div class="paragraph"><p>rexample[examples/Groovy_change-prop2.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
 <h1 id="_how_it_works">How it works</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>Linear model: simplest form of regression</p></div>
-<div class="paragraph"><p>$y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n + \epsilon$</p></div>
+<div class="paragraph"><p>$\qquad y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n + \epsilon$</p></div>
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>response variable, $y$, modeled as a linear combination of</p></div>
+<div class="paragraph"><p><em>response variable</em>, $y$, modelled as a linear combination of</p></div>
 <ul class="">
 <li>
 <span>
-explanatory variables, $x_n$ (prediction variable or
-predictor are terms used when emphasizing prediction)
+<em>explanatory variables</em>, $x_n$ (<em>prediction variable</em> or
+<em>predictor</em> are terms used when emphasizing prediction)
 </span>
 </li>
 <li>
 <span>
 additive error, $\epsilon$, behavior not accounted for by
-explanatory variables, assumed to be independent, identically
-distributed
+explanatory variables, assumed to be independent, Normal
+distribution
 </span>
 </li>
 </ul>
@@ -5201,7 +5206,13 @@ $y = \alpha + \beta x^2 + \epsilon$
 $y = \alpha + \beta \log(x) + \epsilon$
 </span>
 </li>
+<li>
+<span>
+$y = \alpha + \beta_1 x + \beta_2 x^2 + \epsilon$
+</span>
+</li>
 </ul>
+<div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>The most commonly used regression model</p></div>
 <ul class="">
 <li>
@@ -5212,29 +5223,30 @@ approximation to it for practical purposes, over their input range
 </li>
 <li>
 <span>
-much easier to fit manually than more sophisticated models
+much easier to fit than non-linear models
+</span>
+<ul class="">
+<li>
+<span>
+can usually be built with minimal input from the user
 </span>
 </li>
 <li>
 <span>
-until recently software to build other kinds of models not widely
-available
+will converge to the unique solution
 </span>
 </li>
-<li>
-<span>
-can generally be built with minimal input from the user
-</span>
+</ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_basic_technicalities">Basic technicalities</h1>
+<h1 id="_code_for_linear_regression">Code for linear regression</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>The equation:</p></div>
-<div class="paragraph"><p>$E[\mathit{sloc}] = \alpha + \beta\times\mathit{Number{_}days}$</p></div>
+<div class="paragraph"><p>$\qquad E[\mathit{sloc}] = \alpha + \beta\times\mathit{Number{_}days}$</p></div>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>is coded as:</p></div>
 <div class="listingblock">
@@ -5242,7 +5254,7 @@ can generally be built with minimal input from the user
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>BSD_mod=glm<span style="color: #990000">(</span>sloc <span style="color: #990000">~</span> Number_days<span style="color: #990000">,</span> data=bsd_info<span style="color: #990000">)</span></tt></pre></div></div>
+<pre><tt>BSD_mod=glm(sloc ~ Number_days, data=bsd_info)</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5253,7 +5265,7 @@ http://www.gnu.org/software/src-highlite -->
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>summary<span style="color: #990000">(</span>BSD_mod<span style="color: #990000">)</span></tt></pre></div></div>
+<pre><tt>summary(BSD_mod)</tt></pre></div></div>
 <div class="listingblock">
 <div class="content">
 <pre><code>Call:
@@ -5281,10 +5293,11 @@ Number of Fisher Scoring iterations: 2</code></pre>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_in_mathematics">In mathematics</h1>
+<h1 id="_fitted_equation">Fitted equation</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>The fitted equation is:</p></div>
-<div class="paragraph"><p>$\mathit{sloc} = 1.139\times10^5 + 3.937\times10^2 \mathit{Number{_}days}$</p></div>
+<div class="paragraph"><p>$\qquad \mathit{sloc} = 1.139\times10^5 + 3.937\times10^2 \mathit{Number{_}days}$</p></div>
+<div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Not a perfect fit between the model and data</p></div>
 <ul class="">
 <li>
@@ -5308,7 +5321,7 @@ $\qquad \qquad \qquad               \pm4.071\times10^4$</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_using_a_model_to_predict">Using a model to predict</h1>
+<h1 id="_predicting_from_a_fitted_model">Predicting from a fitted model</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
 <div class="listingblock">
@@ -5316,12 +5329,15 @@ $\qquad \qquad \qquad               \pm4.071\times10^4$</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>BSD_pred=predict<span style="color: #990000">(</span>BSD_mod<span style="color: #990000">)</span>
-<span style="font-style: italic"><span style="color: #9A1900"># or</span></span>
-BSD_pred=predict<span style="color: #990000">(</span>BSD_mod<span style="color: #990000">,</span>
-                 newdata=list<span style="color: #990000">(</span>Number_days=<span style="color: #993399">0</span><span style="color: #990000">:</span><span style="color: #993399">4000</span><span style="color: #990000">))</span>
+<pre><tt>BSD_pred=predict(BSD_mod)
+lines(bsd_info\$Number_days, BSD_pred, col=<span style="color: #FF0000">"red"</span>)
 
-lines<span style="color: #990000">(</span>BSD_pred<span style="color: #990000">,</span> col=<span style="color: #FF0000">"red"</span><span style="color: #990000">)</span></tt></pre></div></div>
+<span style="font-style: italic"><span style="color: #9A1900"># or</span></span>
+
+BSD_pred=predict(BSD_mod,
+                 newdata=list(Number_days=0:4000))
+
+lines(0:4000, BSD_pred, col=<span style="color: #FF0000">"red"</span>)</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5329,11 +5345,11 @@ lines<span style="color: #990000">(</span>BSD_pred<span style="color: #990000">,
 <div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
 <div class="content">
-<img src="regression-1-BSD-x.jpg" alt="regression-1-BSD-x.jpg" />
+<img src="regression-1-Herraiz-BSD-x.jpg" alt="regression-1-Herraiz-BSD-x.jpg" />
 </div>
 <div class="title">Figure 3. Total lines of source code in FreeBSD by days elapsed since the project started.</div>
 </div>
-<div class="paragraph"><p>rexample[regression/Herraiz-BSD.R]</p></div>
+<div class="paragraph"><p>rexample[examples/Herraiz-BSD.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5345,7 +5361,7 @@ lines<span style="color: #990000">(</span>BSD_pred<span style="color: #990000">,
 </div>
 <div class="title">Figure 4. Estimated cost and duration of 73 large Dutch federal IT projects.</div>
 </div>
-<div class="paragraph"><p>rexample[regression/federal_IT-cost_dur.R]</p></div>
+<div class="paragraph"><p>rexample[examples/federal_IT-cost_dur.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5358,30 +5374,30 @@ lines<span style="color: #990000">(</span>BSD_pred<span style="color: #990000">,
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>fed_pred=predict<span style="color: #990000">(</span>fed_mod<span style="color: #990000">,</span> newdata=list<span style="color: #990000">(</span>log.IT=<span style="color: #993399">1</span><span style="color: #990000">:</span><span style="color: #993399">7</span><span style="color: #990000">),</span>
-                                        se.fit=TRUE<span style="color: #990000">)</span>
-lines<span style="color: #990000">(</span>fed_pred<span style="color: #990000">\$</span>fit<span style="color: #990000">,</span> col=<span style="color: #FF0000">"red"</span><span style="color: #990000">)</span>
+<pre><tt>fed_pred=predict(fed_mod, newdata=list(log.IT=1:7),
+                                se.fit=TRUE)
+lines(fed_pred\$fit, col=<span style="color: #FF0000">"red"</span>)
 
 <span style="font-style: italic"><span style="color: #9A1900"># 2.5% above and below the fit</span></span>
-lines<span style="color: #990000">(</span>fed_pred<span style="color: #990000">\$</span>fit<span style="color: #990000">+</span>qnorm<span style="color: #990000">(</span><span style="color: #993399">0.975</span><span style="color: #990000">)*</span>fed_pred<span style="color: #990000">\$</span>se.fit<span style="color: #990000">,</span>
-                                        col=<span style="color: #FF0000">"green"</span><span style="color: #990000">)</span>
-lines<span style="color: #990000">(</span>fed_pred<span style="color: #990000">\$</span>fit<span style="color: #990000">+</span>qnorm<span style="color: #990000">(</span><span style="color: #993399">0.025</span><span style="color: #990000">)*</span>fed_pred<span style="color: #990000">\$</span>se.fit<span style="color: #990000">,</span>
-                                        col=<span style="color: #FF0000">"green"</span><span style="color: #990000">)</span>
+lines(fed_pred\$fit+qnorm(0.975)*fed_pred\$se.fit,
+                                        col=<span style="color: #FF0000">"green"</span>)
+lines(fed_pred\$fit+qnorm(0.025)*fed_pred\$se.fit,
+                                        col=<span style="color: #FF0000">"green"</span>)
 
-<span style="font-style: italic"><span style="color: #9A1900"># qnorm(0.975) == 1.96   qnorm(0.025) == -1.96</span></span></tt></pre></div></div>
+<span style="font-style: italic"><span style="color: #9A1900"># qnorm(0.975) == 1.96,  qnorm(0.025) == -1.96</span></span></tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_prediction_intervals">Prediction intervals</h1>
+<h1 id="_two_confidence_bounds">Two confidence bounds</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>What is the likely value of a new measurement?</p></div>
+<div class="paragraph"><p>What is the likely range of values for a new measurement?</p></div>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Two sources of uncertainty need to be combined</p></div>
 <ul class="">
 <li>
 <span>
-uncertainty in the model parameters (i.e., the confidence interval)
+uncertainty in the model parameters, i.e., the confidence interval
 </span>
 </li>
 <li>
@@ -5395,25 +5411,33 @@ variance in the data not explained by the fitted model
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>MSE=sum<span style="color: #990000">(</span>fed_mod<span style="color: #990000">\$</span>residuals<span style="color: #990000">^</span><span style="color: #993399">2</span><span style="color: #990000">)/(</span>length<span style="color: #990000">(</span>fed_mod<span style="color: #990000">\$</span>residuals<span style="color: #990000">)-</span><span style="color: #993399">2</span><span style="color: #990000">)</span>
+<pre><tt>MSE=sum(fed_mod\$residuals^2)/(length(fed_mod\$residuals)-2)
 
-pred_se=sqrt<span style="color: #990000">(</span>fed_pred<span style="color: #990000">\$</span>se.fit<span style="color: #990000">^</span><span style="color: #993399">2</span><span style="color: #990000">+</span>MSE<span style="color: #990000">)</span>
+pred_se=sqrt(fed_pred\$se.fit^2+MSE)
 
 
-lines<span style="color: #990000">(</span>fed_pred<span style="color: #990000">\$</span>fit<span style="color: #990000">+</span><span style="color: #993399">1.96</span><span style="color: #990000">*</span>pred_se<span style="color: #990000">,</span> col=<span style="color: #FF0000">"blue"</span><span style="color: #990000">)</span>
-lines<span style="color: #990000">(</span>fed_pred<span style="color: #990000">\$</span>fit<span style="color: #990000">-</span><span style="color: #993399">1.96</span><span style="color: #990000">*</span>pred_se<span style="color: #990000">,</span> col=<span style="color: #FF0000">"blue"</span><span style="color: #990000">)</span></tt></pre></div></div>
+lines(fed_pred\$fit+1.96*pred_se, col=<span style="color: #FF0000">"blue"</span>)
+lines(fed_pred\$fit-1.96*pred_se, col=<span style="color: #FF0000">"blue"</span>)</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_visualizing_general_trend">Visualizing general trend</h1>
+<h1 id="_checking_visual_trend">Checking visual trend</h1>
 <div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>Visual trend can be deceptive</p></div>
+<ul class="">
+<li>
+<span>
+use local regression, <code>loess()</code>, to check visual trend
+</span>
+</li>
+</ul>
 <div class="imageblock">
 <div class="content">
 <img src="regression-1-langpop-corger-nl.jpg" alt="regression-1-langpop-corger-nl.jpg" />
 </div>
 <div class="title">Figure 5. For each distinct language, the number of lines committed on Github and the number of questions tagged with that language.</div>
 </div>
-<div class="paragraph"><p>rexample[regression/langpop-corger-nl.R]</p></div>
+<div class="paragraph"><p>rexample[examples/langpop-corger-nl.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5425,7 +5449,7 @@ lines<span style="color: #990000">(</span>fed_pred<span style="color: #990000">\
 </div>
 <div class="title">Figure 6. Percentage of vulnerabilities detected by developers working a given number of years in security.</div>
 </div>
-<div class="paragraph"><p>rexample[regression/acc-sec-experience.R]</p></div>
+<div class="paragraph"><p>rexample[examples/acc-sec-experience.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5437,13 +5461,13 @@ lines<span style="color: #990000">(</span>fed_pred<span style="color: #990000">\
 </div>
 <div class="title">Figure 7. Number of updates and fixes in each Linux release between version 2.6.11 and 3.2.</div>
 </div>
-<div class="paragraph"><p>rexample[regression/linux-stable]</p></div>
+<div class="paragraph"><p>rexample[examples/linux-stable]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_updates_code_summary_code_output">Updates <code>summary</code> output</h1>
+<h1 id="_updates_code_summary_code_output">Updates: <code>summary</code> output</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p><code>Pr(>|t|)</code> the p-value for the hypothesis that the
+<div class="paragraph"><p><code>Pr(&gt;|t|)</code> the p-value for the hypothesis that the
 coefficient in the corresponding row is zero,</p></div>
 <div class="listingblock">
 <div class="content">
@@ -5474,6 +5498,14 @@ Number of Fisher Scoring iterations: 2</code></pre>
 <div class="sect1 slide">
 <h1 id="_nominal_data">Nominal data</h1>
 <div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>Non-numeric data</p></div>
+<ul class="">
+<li>
+<span>
+compiler flags: <code>O0</code>, <code>O2</code>, <code>O3</code>
+</span>
+</li>
+</ul>
 <div class="paragraph"><p>Impact of compiler optimization flags on ability to continue
 operating correctly when subject to random bit-flips</p></div>
 <div class="paragraph"><p>Fitted model has:</p></div>
@@ -5489,13 +5521,13 @@ explanatory variable: optimization level as the explanatory variable
 </span>
 </li>
 </ul>
-<div class="paragraph"><p>Call to <code>glm</code>:</p></div>
+<div class="paragraph"><p>Call to <code>glm</code></p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>bitflip_mod=glm<span style="color: #990000">(</span>pass.masked <span style="color: #990000">~</span> opt_level<span style="color: #990000">,</span> data=bitflip<span style="color: #990000">)</span></tt></pre></div></div>
+<pre><tt>bitflip_mod=glm(pass.masked ~ opt_level, data=bitflip)</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5530,18 +5562,19 @@ Number of Fisher Scoring iterations: 2</code></pre>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_in_mathematics_2">In mathematics</h1>
+<h1 id="_as_an_equation">As an equation</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>Fitted equation is:</p></div>
-<div class="paragraph"><p>$\mathit{pass.masked} = 28.6 + 9.2\times D_2 + 7.4\times D_2 + 11.6\times D_{osf}$</p></div>
-<div class="paragraph"><p>$D_i$ is known as dummy variables or indicator variable and
+<div class="paragraph"><p>$\qquad \mathit{pass.masked} = 28.6 + 9.2\times \mathit{D_{O2}} + 7.4\times \mathit{D_{O3}} + 11.6\times \mathit{D_{osf}}$</p></div>
+<div class="paragraph"><p>$\mathit{D_i}$ is known as dummy variables or indicator variable and
 has one of two values:</p></div>
 <div class="paragraph"><p>$\qquad \qquad 1\quad\mathrm{optimization flag used}$</p></div>
-<div class="paragraph"><p>$D  =$</p></div>
+<div class="paragraph"><p>$\qquad \mathit{D_i} =$</p></div>
 <div class="paragraph"><p>$\qquad \qquad 0\quad\mathrm{optimization flag not used}$</p></div>
-<div class="paragraph"><p><code>O0</code> value is implicit</p></div>
-<div class="paragraph"><p>Standard errors in <code>O2</code>/<code>O3</code> large
-enough for their respective <code>Estimate</code>s to overlap</p></div>
+<div class="paragraph"><p><code>O0</code> value is implicit, i.e., factored into intercept: 28.6</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Standard errors in <code>O2</code>/<code>O3</code> large enough
+for their respective <code>Estimate</code> coefficients to overlap</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5552,24 +5585,24 @@ enough for their respective <code>Estimate</code>s to overlap</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>linux_mod=glm<span style="color: #990000">(</span>sloc <span style="color: #990000">~</span> Number_days<span style="color: #990000">,</span>
-                                        data=linux_info<span style="color: #990000">)</span>
-linux_mod=glm<span style="color: #990000">(</span>sloc <span style="color: #990000">~</span> Number_days<span style="color: #990000">+</span>I<span style="color: #990000">(</span>Number_days<span style="color: #990000">^</span><span style="color: #993399">2</span><span style="color: #990000">),</span>
-                                        data=linux_info<span style="color: #990000">)</span></tt></pre></div></div>
-<div class="paragraph"><p>How much better is a quadratic equation fit, a cubic fit, &#8230;?</p></div>
+<pre><tt>linux_mod=glm(sloc ~ Number_days,
+                                        data=linux_info)
+linux_mod=glm(sloc ~ Number_days+I(Number_days^2),
+                                        data=linux_info)</tt></pre></div></div>
+<div class="paragraph"><p>How much better is a fitted quadratic equation, a fitted cubic, &#8230;?</p></div>
 <div class="imageblock">
 <div class="content">
 <img src="regression-1-linux-DAYLOC.jpg" alt="regression-1-linux-DAYLOC.jpg" />
 </div>
 <div class="title">Figure 8. Lines of code in every initial release of the Linux kernel since version 1.0.</div>
 </div>
-<div class="paragraph"><p>rexample[regression/Linux-DAYLOC.R]</p></div>
+<div class="paragraph"><p>rexample[examples/Linux-DAYLOC.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
 <h1 id="_aic">AIC</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>AIC Akaiki Information criteria takes into account:</p></div>
+<div class="paragraph"><p>Akaiki Information Criteria, <code>AIC()</code>, takes into account:</p></div>
 <ul class="">
 <li>
 <span>
@@ -5643,6 +5676,78 @@ Number of Fisher Scoring iterations: 2</code></pre>
 </div>
 </div>
 <div class="sect1 slide">
+<h1 id="_fitting_exponential_response_variable">Fitting exponential response variable</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="imageblock">
+<div class="content">
+<img src="regression-1-koomeycomputertrends.jpg" alt="regression-1-koomeycomputertrends.jpg" />
+</div>
+</div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>A_mod=glm(log(Watts) ~ Year, data=koomey)</tt></pre></div></div>
+<div class="paragraph"><p>Fitted equation can be written as:</p></div>
+<ul class="">
+<li>
+<span>
+$\log(\mathit{Watts}) = \alpha + \beta \mathit{Year} + \epsilon$
+</span>
+</li>
+<li>
+<span>
+$\mathit{Watts} = e^{\alpha + \beta \mathit{Year} + \epsilon}$
+</span>
+</li>
+<li>
+<span>
+$\mathit{Watts} = e^{\alpha}\times e^{\beta \mathit{Year} \times e^{\epsilon}$
+</span>
+</li>
+</ul>
+<div class="paragraph"><p>rexample[examples/koomeycomputertrendsreleaseversion-v36.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_fitting_power_law_response_variable">Fitting power law response variable</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="imageblock">
+<div class="content">
+<img src="regression-1-li2018_app_number.jpg" alt="regression-1-li2018_app_number.jpg" />
+</div>
+</div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>A_mod=glm(log(Apps) ~ log(Releases), data=li)
+A_mod=glm(log(Apps) ~ log(Releases), data=li,
+                                 subset=(Releases &lt;= 20))</tt></pre></div></div>
+<div class="paragraph"><p>Fitted equation can be written as:</p></div>
+<ul class="">
+<li>
+<span>
+$\log(\mathit{Apps}) = \alpha + \beta \log(\mathit{Releases}) + \epsilon$
+</span>
+</li>
+<li>
+<span>
+$\mathit{Apps} = e^{\alpha + \beta \log(\mathit{Releases}) + \epsilon}$
+</span>
+</li>
+<li>
+<span>
+$\mathit{Apps} = e^{\alpha}\times \mathit{Releases}^{\beta} \times e^{\epsilon}$
+</span>
+</li>
+</ul>
+<div class="paragraph"><p>rexample[examples/li2018_app_number.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
 <h1 id="_influential_observations_and_outliers">Influential observations and Outliers</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
@@ -5651,19 +5756,26 @@ Number of Fisher Scoring iterations: 2</code></pre>
 </div>
 <div class="title">Figure 9. Hours to develop software for 29 embedded consumer products and the amount of code they contain.</div>
 </div>
-<div class="paragraph"><p>rexample[regression/lines-per-hour.R]</p></div>
+<div class="paragraph"><p>rexample[examples/lines-per-hour.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_ignoring_sample_size">Ignoring sample size</h1>
+<h1 id="_model_diagnostics">Model diagnostics</h1>
 <div class="sectionbody" style="max-width:45em">
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>embed_mod=glm(sloc ~ Effort, data=embedded_info)
+plot(embed_mod)</tt></pre></div></div>
 <div class="imageblock">
 <div class="content">
-<img src="regression-1-lines-hour-mininf.jpg" alt="regression-1-lines-hour-mininf.jpg" />
+<img src="regression-1-lines-hour-diagnostic.jpg" alt="regression-1-lines-hour-diagnostic.jpg" />
 </div>
-<div class="title">Figure 10. After removal of overly influential observations.  Left takes into account the Bonferroni p-value of the Studentized residuals while the right plot does not.</div>
+<div class="title">Figure 10. Diagnostics of fitted model</div>
 </div>
-<div class="paragraph"><p>rexample[regression/lines-hour-mininf.R]</p></div>
+<div class="paragraph"><p>rexample[examples/lines-hour-diagnostic.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5671,11 +5783,11 @@ Number of Fisher Scoring iterations: 2</code></pre>
 <div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
 <div class="content">
-<img src="regression-1-lines-influence.jpg" alt="regression-1-lines-influence.jpg" />
+<img src="regression-1-lines-hour-influence.jpg" alt="regression-1-lines-hour-influence.jpg" />
 </div>
 <div class="title">Figure 11. <code>influenceIndexPlot</code> for the data.</div>
 </div>
-<div class="paragraph"><p>rexample[regression/lines-hour-influence.R]</p></div>
+<div class="paragraph"><p>rexample[examples/lines-hour-influence.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5685,9 +5797,9 @@ Number of Fisher Scoring iterations: 2</code></pre>
 <div class="content">
 <img src="regression-1-Alemzadeh-Recalls.jpg" alt="regression-1-Alemzadeh-Recalls.jpg" />
 </div>
-<div class="title">Figure 12. Number of medical devices reported recalled by the US Food and Drug Administration, in two week bins.  Fitted straight regression line (red, with blue confidence bounds) and loess fit (green).</div>
+<div class="title">Figure 12. Number of medical devices recalled by the US Food and Drug Administration, in two week bins.  Fitted straight regression line (red, with green confidence bounds) and loess fit (green).</div>
 </div>
-<div class="paragraph"><p>rexample[regression/Alemzadeh-Recalls.R]</p></div>
+<div class="paragraph"><p>rexample[examples/Alemzadeh-Recalls.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5699,7 +5811,15 @@ Number of Fisher Scoring iterations: 2</code></pre>
 </div>
 <div class="title">Figure 13. Fitted model after two observations replaced by mean value (left) and two fitted lines, one up to the end of 2010 and one after 2010.</div>
 </div>
-<div class="paragraph"><p>rexample[regression/Alemzadeh-mininf.R]</p></div>
+<div class="paragraph"><p>rexample[examples/Alemzadeh-mininf.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_data_to_try">Data to try</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>Project duration/effort: CSA-duration.csv.xz</p></div>
+<div class="paragraph"><p>C source measurements: c_linelen.csv.xz</p></div>
+<div class="paragraph"><p>C source measurements: c_linetok.csv.xz</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5708,11 +5828,14 @@ Number of Fisher Scoring iterations: 2</code></pre>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Multiple - more than one explanatory variable:</p></div>
 <div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>$y = \alpha + \beta_1 x_1 + \epsilon$</p></div>
 <div class="paragraph"><p>$y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n + \epsilon$</p></div>
+<div class="paragraph"><p>$y = \alpha + \beta_1 x_1 \times x_2 + \epsilon$</p></div>
+<div class="paragraph"><p>$y = \alpha + \beta_1 \log (x_1) + \beta_2 x_2 + \cdots + \beta_n \sqrt{x_n} + \epsilon$</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_specint_2006">SPECint 2006</h1>
+<h1 id="_processor_amp_memory_speed">Processor &amp; Memory speed</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
 <div class="content">
@@ -5720,11 +5843,11 @@ Number of Fisher Scoring iterations: 2</code></pre>
 </div>
 <div class="title">Figure 14. SPECint 2006 performance results for processors running at various clock rates, memory chip frequencies and processor family.</div>
 </div>
-<div class="paragraph"><p>rexample[benchmark/SPEC-Mhz.R]</p></div>
+<div class="paragraph"><p>rexample[examples/SPEC-Mhz.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_the_more_the_merrier">The more the merrier</h1>
+<h1 id="_more_the_merrier">More the merrier?</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>SPECint results contain 36 columns</p></div>
@@ -5741,9 +5864,11 @@ can specify all columns in the sample as explanatory variables
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>spec_mod=glm<span style="color: #990000">(</span>Result <span style="color: #990000">~</span> .<span style="color: #990000">,</span> data=cint<span style="color: #990000">)</span></tt></pre></div></div>
-<div class="paragraph"><p>Information in <code>Processor</code> column to create an almost
-perfect model</p></div>
+<pre><tt>spec_mod=glm(Result ~ ., data=cint)</tt></pre></div></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Learn nothing</p></div>
+<div class="paragraph"><p>Overfitting reduces out of band prediction accuracy</p></div>
+<div class="paragraph"><p>Information in <code>Processor</code> column to create an almost perfect model</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5755,13 +5880,13 @@ perfect model</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>spec_mod=glm<span style="color: #990000">(</span>Result <span style="color: #990000">~</span> Processor.MHz <span style="color: #990000">+</span> mem_rate <span style="color: #990000">+</span> mem_freq<span style="color: #990000">,</span>
-                                                data=cint<span style="color: #990000">)</span></tt></pre></div></div>
+<pre><tt>spec_mod=glm(Result ~ Processor.MHz + mem_rate + mem_freq,
+                                                data=cint)</tt></pre></div></div>
 <div class="paragraph"><p><code>+</code> operator specifies that explanatory variables are
 added</p></div>
 <div class="paragraph"><p>Equation fitted:</p></div>
-<div class="paragraph"><p>$\mathit{Result}=-2.4\times 10^1+\mathit{Processor.MHz}7.3\times 10^{-3}+$
-$\qquad \qquad \qquad \mathit{mem{_}rate}2.5\times 10^{-3} + \mathit{mem{_}freq}1.0\times 10^{-2}$</p></div>
+<div class="paragraph"><p>$\qquad \mathit{Result}=-2.4\times 10^1+\mathit{Processor.MHz}7.3\times 10^{-3}+$
+$\qquad \qquad \qquad \qquad \mathit{mem{_}rate}2.5\times 10^{-3} + \mathit{mem{_}freq}1.0\times 10^{-2}$</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5802,9 +5927,9 @@ Number of Fisher Scoring iterations: 2</code></pre>
 <div class="content">
 <img src="regression-1-SPEC-ind-MHz-DDR.jpg" alt="regression-1-SPEC-ind-MHz-DDR.jpg" />
 </div>
-<div class="title">Figure 15. Individual contribution of each explanatory variable to the response variable in the model of SPECint performance fitted above.</div>
+<div class="title">Figure 15. Individual contribution of each explanatory variable to the response variable in the fitted model of SPECint performance.</div>
 </div>
-<div class="paragraph"><p>rexample[benchmark/SPEC-ind-MHz-DDR.R]</p></div>
+<div class="paragraph"><p>rexample[examples/SPEC-ind-MHz-DDR.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5814,9 +5939,9 @@ Number of Fisher Scoring iterations: 2</code></pre>
 <div class="content">
 <img src="regression-1-SPEC-resid-MHz-DDR.jpg" alt="regression-1-SPEC-resid-MHz-DDR.jpg" />
 </div>
-<div class="title">Figure 16. Residual of the model of SPECint performance fitted above.</div>
+<div class="title">Figure 16. Residual of the fitted model of SPECint performance.</div>
 </div>
-<div class="paragraph"><p>rexample[benchmark/SPEC-resid-MHz-DDR.R]</p></div>
+<div class="paragraph"><p>rexample[examples/SPEC-resid-MHz-DDR.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5827,33 +5952,31 @@ Number of Fisher Scoring iterations: 2</code></pre>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>spec_mod=glm<span style="color: #990000">(</span>Result <span style="color: #990000">~</span> Processor.MHz <span style="color: #990000">+</span> I<span style="color: #990000">(</span>Processor.MHz<span style="color: #990000">^</span><span style="color: #993399">2</span><span style="color: #990000">)+</span>
-                        mem_rate <span style="color: #990000">+</span> I<span style="color: #990000">(</span>mem_rate<span style="color: #990000">^</span><span style="color: #993399">2</span><span style="color: #990000">)+</span>
+<pre><tt>spec_mod=glm(Result ~ Processor.MHz + I(Processor.MHz^2)+
+                        mem_rate + I(mem_rate^2)+
                           mem_freq
-                        <span style="color: #990000">,</span> data=cint<span style="color: #990000">)</span></tt></pre></div></div>
+                        , data=cint)</tt></pre></div></div>
 <div class="imageblock">
 <div class="content">
 <img src="regression-1-SPEC-quad-MHz-DDR.jpg" alt="regression-1-SPEC-quad-MHz-DDR.jpg" />
 </div>
 <div class="title">Figure 17. Individual contribution of each explanatory variable to the response variable in a quadratic model of SPECint performance.</div>
 </div>
-<div class="paragraph"><p>rexample[benchmark/SPEC-quad-MHz-DDR.R]</p></div>
+<div class="paragraph"><p>rexample[examples/SPEC-quad-MHz-DDR.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_updating_fitted_models">Updating fitted models</h1>
+<h1 id="_updating_a_fitted_model">Updating a fitted model</h1>
 <div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>Add/remove a new column to/from an existing model</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>ecc_spec_mod=update<span style="color: #990000">(</span>spec_mod<span style="color: #990000">,</span> . <span style="color: #990000">~</span> . <span style="color: #990000">+</span> ecc<span style="color: #990000">)</span></tt></pre></div></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_data_to_try">Data to try</h1>
-<div class="sectionbody" style="max-width:45em">
+<pre><tt>ecc_spec_mod=update(spec_mod, . ~ . + ecc)
+
+ecc_spec_mod=update(spec_mod, . ~ . - mem_freq)</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5921,7 +6044,7 @@ cellspacing="0" cellpadding="4">
 </div>
 <div class="title">Figure 18. Diagram illustrating shared and non-shared contributions made by two variables in explaining Y.</div>
 </div>
-<div class="paragraph"><p>rexample[regression/shared-contrib.R]</p></div>
+<div class="paragraph"><p>rexample[examples/shared-contrib.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5933,7 +6056,7 @@ cellspacing="0" cellpadding="4">
 </div>
 <div class="title">Figure 19. Estimated and actual effort broken down by communication frequency, along with individually straight fitted lines.</div>
 </div>
-<div class="paragraph"><p>rexample[projects/simula_0a.R]</p></div>
+<div class="paragraph"><p>rexample[examples/simula_0a.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5945,13 +6068,13 @@ cellspacing="0" cellpadding="4">
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>sim_mod=glm<span style="color: #990000">(</span>Actual <span style="color: #990000">~</span> Estimated<span style="color: #990000">+</span>Estimated<span style="color: #990000">:</span>Communication<span style="color: #990000">,</span>
-                                                data=sim<span style="color: #990000">)</span></tt></pre></div></div>
+<pre><tt>sim_mod=glm(Actual ~ Estimated+Estimated:Communication,
+                                                data=sim)</tt></pre></div></div>
 <div class="paragraph"><p>Fitted equation:</p></div>
-<div class="paragraph"><p>$\mathit{Actual} = -270.1+1.18\mathit{Estimated}+0.51\mathit{Estimated}\times D$
-$\qquad \qquad =  -270.1+(1.18+0.51 D)\mathit{Estimated}$</p></div>
+<div class="paragraph"><p>$\qquad \mathit{Actual} = -270.1+1.18\mathit{Estimated}+0.51\mathit{Estimated}\times \mathit{D}$
+$\qquad \qquad \qquad =  -270.1+(1.18+0.51 \mathit{D})\mathit{Estimated}$</p></div>
 <div class="paragraph"><p>$\qquad \qquad 1\quad\mathrm{daily communication}$</p></div>
-<div class="paragraph"><p>$D  =$</p></div>
+<div class="paragraph"><p>$\qquad \mathit{D} =$</p></div>
 <div class="paragraph"><p>$\qquad \qquad 0\quad\mathrm{not daily communication}$</p></div>
 </div>
 </div>
@@ -5963,12 +6086,12 @@ $\qquad \qquad =  -270.1+(1.18+0.51 D)\mathit{Estimated}$</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>library<span style="color: #990000">(</span>MASS<span style="color: #990000">)</span>
+<pre><tt>library(MASS)
 
-sim_mod=glm<span style="color: #990000">(</span>Actual <span style="color: #990000">~</span> <span style="color: #990000">(</span>Estimated<span style="color: #990000">+</span>Communication<span style="color: #990000">+</span>
-                                Contract<span style="color: #990000">+</span>Complexity<span style="color: #990000">)^</span><span style="color: #993399">2</span><span style="color: #990000">,</span>
-                                                data=sim<span style="color: #990000">)</span>
-simple_sim=stepAIC<span style="color: #990000">(</span>sim_mod<span style="color: #990000">)</span></tt></pre></div></div>
+sim_mod=glm(Actual ~ (Estimated+Communication+
+                                Contract+Complexity)^2,
+                                                data=sim)
+simple_sim=stepAIC(sim_mod)</tt></pre></div></div>
 <div class="listingblock">
 <div class="content">
 <pre><code>Analysis of Deviance Table (Type II tests)
@@ -5995,28 +6118,28 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>sim_mod=glm<span style="color: #990000">(</span>Actual <span style="color: #990000">~</span> Estimated<span style="color: #990000">+</span>Communication<span style="color: #990000">+</span>
-                                Communication<span style="color: #990000">:</span>Contract<span style="color: #990000">,</span>
-                                        data=sim<span style="color: #990000">)</span></tt></pre></div></div>
+<pre><tt>sim_mod=glm(Actual ~ Estimated+Communication+
+                                Communication:Contract,
+                                        data=sim)</tt></pre></div></div>
 <div class="paragraph"><p>Fitted equation is:</p></div>
-<div class="paragraph"><p>$\mathit{Actual} = -274.8+1.21\mathit{Estimated} + 2625\times !D +$
-$\qquad \qquad \qquad \qquad C_{fp}(1862\times !D - 197.6\times D) +$
-$\qquad \qquad \qquad \qquad C_{tp}(-2270\times !D - 462.2\times D) +$
-$\qquad \qquad \qquad \qquad C_{ot}(-2298\times !D - 234.3\times D)$</p></div>
+<div class="paragraph"><p>$\mathit{Actual} = -274.8+1.21\mathit{Estimated} + 2625\times !\mathit{D} +$
+$\qquad \qquad \qquad \qquad \mathit{C_{fp}}(1862\times !\mathit{D} - 197.6\times \mathit{D}) +$
+$\qquad \qquad \qquad \qquad \mathit{C_{tp}}(-2270\times !\mathit{D} - 462.2\times \mathit{D}) +$
+$\qquad \qquad \qquad \qquad \mathit{C_{ot}}(-2298\times !\mathit{D} - 234.3\times \mathit{D})$</p></div>
 <ul class="">
 <li>
 <span>
-$C_{fp}$ 0/1 is a fixed price contract
+$\mathit{C_{fp}}$ 0/1 is a fixed price contract
 </span>
 </li>
 <li>
 <span>
-$C_{tp}$ 0/1 is a target price contract
+$\mathit{C_{tp}}$ 0/1 is a target price contract
 </span>
 </li>
 <li>
 <span>
-$C_{ot}$ 0/1 other kind of contract
+$\mathit{C_{ot}}$ 0/1 other kind of contract
 </span>
 </li>
 </ul>
@@ -6025,6 +6148,8 @@ $C_{ot}$ 0/1 other kind of contract
 <div class="sect1 slide">
 <h1 id="_data_to_try_2">Data to try</h1>
 <div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>Growth of PC-Lint: pclint.csv.xz</p></div>
+<div class="paragraph"><p>Byte benchmark: byte-dos-app-benchmark.csv</p></div>
 </div>
 </div>
 </body>

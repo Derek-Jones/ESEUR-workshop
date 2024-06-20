@@ -17,14 +17,14 @@ library("visreg")
 plot_layout(1, 3)
 
 
-cpu2006=read.csv(paste0(ESEUR_dir, "benchmark/cpu2006-results-20140206.csv.xz"), as.is=TRUE)
+cpu2006=read.csv(paste0(ESEUR_dir, "../examples/cpu2006-results-20140206.csv.xz"), as.is=TRUE)
 
 # Memory numbers may be suffixed by:
 # E unbuffered ecc memory
 # F fully buffered ecc memory
 # P parity, i.e., ecc memory
 # R registered, i.e., ecc memory
-mem2006=read.csv(paste0(ESEUR_dir, "benchmark/cpu2006-memory.csv.xz"), as.is=TRUE)
+mem2006=read.csv(paste0(ESEUR_dir, "../examples/cpu2006-memory.csv.xz"), as.is=TRUE)
 mem2006$ecc=substr(mem2006$mem_rate, nchar(mem2006$mem_rate), 100)
 mem2006$mem_rate=as.numeric(sub("(E|F|P|R|U)$", "", x=mem2006$mem_rate))
 # 8600 and 16000 are not supported rates, assume a typo

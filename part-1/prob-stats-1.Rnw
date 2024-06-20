@@ -1,5 +1,5 @@
-ESEUR - Probability & Statistics
-================================
+ESEUR Workshop - Probability & Statistics
+=========================================
 :author:    Derek M. Jones
 :copyright: Somebody
 :backend:   slidy
@@ -13,32 +13,31 @@ Probability vs. Statistics
 Probability makes inferences about individual events based on the
 characteristics of the population
 
-{nbsp}
+* makes use of deductive reasoning
 
 Statistics makes inferences about the population based on the
 characteristics of a sample of the population
 
-{nbsp}
+* makes use of inferential reasoning
 
-Probability makes use of deductive reasoning
-
-{nbsp}
-
-Statistics makes use of inferential reasoning
+<<echo=FALSE,results=hide,label=pop-sample,fig=TRUE,align="center">>=
+source("../examples/pop-sample.R")
+@
 
 Probability distributions
 -------------------------
 
-Mathematical descriptions of the properties of values obtained by
-following a consistent pattern of behavior
+Mathematical description of the pattern of values obtained by
+following a consistent process
 
-* the flipping a coin pattern of behavior
-** generates one of two results
-** fixed probability of either result
-** each result is independent of the previous one
+* the flipping a coin process
+** generates one of two values
+** fixed probability of either value
+** each value is independent of the previous one
 
-* a count of the number of heads and tails has a binomial probability
-distribution
+* binomial distribution: count of the number of heads and tails
+* negative binomial distribution: number of heads seen before
+a specified number of tails are seen
 
 Fit a sample of measurements to a known probability distribution
 
@@ -48,47 +47,72 @@ generating values having that particular distribution
 Relationships between distributions
 ----------------------------------
 
-image::../not_R/disc-cont.jpg[]
+image::../not_R/disc-cont.jpg[width=800, height=800]
+
+Common SE probability distributions
+-----------------------------------
+
+Normal, Gaussian - bell shaped - talked about: Lognormal
+
+Exponential , 25% , <equ>y=a e^{-b*x}</equ> - memoryless, percentage inc/dec
+
+Power law/Pareto , 15% , <equ>y=a x^{-b}</equ>
+
+Poisson , <equ>\frac{\lambda^x e^{-\lambda}}{x!}</equ> - count data
+
+.Axis scales for exponential and power law samples.
+<<echo=FALSE,results=hide,label=scaling-exp-pow,fig=TRUE,align="center">>=
+source("../examples/scaling-exp-pow.R")
+@
+
+rexample[examples/scaling-exp-pow.R]
 
 3n+1 Program length
 -------------------
 
-.Number of <code>3n+1</code> programs containing a given number of lines and four distributions fitted to this data.
+.Number of <code>3n+1</code> programs containing a given number of lines, and four distributions fitted to this data.
 <<echo=FALSE,results=hide,label=3np1,fig=TRUE,align="center">>=
-source("ESEUR/probability/3np1.R")
+source("../examples/3np1.R")
 @
 
-rexample[probability/3np1.R]
+rexample[examples/3np1.R]
 
 Cullen and Frey graph
 ---------------------
 
-.A Cullen and Frey graph for the <equ>3n+1</equ> program length data.
+[source,R]
+----------
+library(fitdistrplus)
+...
+descdist(n3\$lines, discrete=TRUE, boot=1000)
+----------
+
+.Cullen and Frey graph for the <equ>3n+1</equ> program LOC.
 <<echo=FALSE,results=hide,label=3np1-dist,fig=TRUE,align="center">>=
-source("ESEUR/probability/3np1-dist.R")
+source("../examples/3np1-dist.R")
 @
 
-rexample[probability/3np1-dist.R]
+rexample[examples/3np1-dist.R]
 
-Life is rarely simple
----------------------
+Life can be complicated
+-----------------------
 
 .Density plot of MPI micro-benchmark runtime performance for calls to <code>MPI_Scan</code> with 10,000 Bytes (left) and to <code>MPI_Allreduce</code> with 1,000 Bytes (right).
 <<echo=FALSE,results=hide,label=mpi_data_fig,fig=TRUE,align="center">>=
-source("ESEUR/probability/mpi_data_fig.R")
+source("../examples/mpi_data_fig.R")
 @
 
-rexample[probability/mpi_data_fig.R]
+rexample[examples/mpi_data_fig.R]
 
 Fit multiple distributions
 --------------------------
 
 .Mixture model fitted by the rfunc[normalmixEM] function to the performance data from calls to <code>MPI_Allreduce</code>.
 <<echo=FALSE,results=hide,label=mpi_data_fit,fig=TRUE,align="center">>=
-source("ESEUR/probability/mpi_data_fit.R")
+source("../examples/mpi_data_fit.R")
 @
 
-rexample[probability/mpi_data_fit.R]
+rexample[examples/mpi_data_fit.R]
 
 /////////////////
 Measurement scales
@@ -150,92 +174,74 @@ event <equ>D</equ>.
 Sampling
 --------
 
-.Example of a sample drawn from a population.
-<<echo=FALSE,label=pop-sample,fig=TRUE,align="center">>=
-source("ESEUR/statistics/pop-sample.R")
-@
-
-rexample[statistics/pop-sample.R]
-
-Sample size
------------
-
 {nbsp}
 
-More measurements
+Cost/benefit of more measurements
 
-* more accurate analysis: uncertainty -> <equ>\frac{1}{\sqrt{N}}</equ>
+* less uncertainty -> <equ>\frac{1}{\sqrt{N}}</equ>
 
 * may cost more
 
 * may take longer to obtain
 
-* may have to made do with what is available
+{nbsp}
 
-Small samples are not smooth
-----------------------------
+Have to make do with what is available
 
-.Samples of randomly selected values drawn from the same normal distribution (100 points in each plot in top row, 1,000 in bottom).
+Small samples are irregular
+---------------------------
+
+.Samples of randomly selected values drawn from the same normal distribution (100 points in each plot in left column, 1,000 in right column).
 <<echo=FALSE,results=hide,label=two-norm,fig=TRUE,align="center">>=
-source("ESEUR/group-compare/two-norm.R")
+source("../examples/two-norm.R")
 @
 
-rexample[group-compare/two-norm.R]
+rexample[examples/two-norm.R]
 
 Sampling SPEC CPU2006
 ---------------------
 
 .Mean (red) and standard deviation (grey lines; they are not symmetrical because of the log scaling) of samples of 3 items drawn from a population of 1,000 items (blue line mean, green line standard deviation).
 <<echo=FALSE,results=hide,label=sample-3_mean,fig=TRUE,align="center">>=
-source("ESEUR/statistics/sample-3_mean.R")
+source("../examples/sample-3_mean.R")
 @
 
-rexample[statistics/sample-3_mean.R]
+rexample[examples/sample-3_mean.R]
 
-Two value summaries can be misleading
--------------------------------------
+Testing small samples
+---------------------
 
-.A Normal distribution with mean=4 and variance=8 and a Chi-squared distribution with four degrees of freedom having the same mean and variance (the vertical lines are at the distributions' median value).
-<<echo=FALSE,results=hide,label=chisq-norm,fig=TRUE,align="center">>=
-source("ESEUR/group-compare/chisq-norm.R")
+.Probability, with 95% confidence, that <rcode>shapiro.test</rcode> correctly reports that samples drawn from various distributions are not drawn from a Normal distribution, and probability of an incorrect report when the sample is drawn from a Normal distribution.
+<<echo=FALSE,results=hide,label=SW-check,fig=TRUE,align="center">>=
+source("../examples/SW-check.R")
 @
 
-rexample[group-compare/chisq-norm.R]
-
-Mixed populations
------------------
-
-.A population of items having one of three colors and three strata sampled from it.
-<<echo=FALSE,label=strata-sample,fig=TRUE,align="center">>=
-source("ESEUR/statistics/strata-sample.R")
-@
-
-rexample[statistics/strata-sample.R]
+rexample[examples/SW-check.R]
 
 Contaminated Normal
 -------------------
 
 .A contaminated normal, values drawn from two normal distributions with 10% of values drawn from a distribution having a standard deviation five times greater than the other.
 <<echo=FALSE,results=hide,label=contam-norm,fig=TRUE,align="center">>=
-source("ESEUR/statistics/contam-norm.R")
+source("../examples/contam-norm.R")
 @
 
-rexample[statistics/contam-norm.R]
+rexample[examples/contam-norm.R]
 
-Testing small samples
----------------------
+Impact of population mean/sd
+----------------------------
 
-.Probability, with 95% confidence, that rfunc[shapiro.test] correctly reports that samples drawn from various distributions are not drawn from a Normal distribution, and probability of an incorrect report when the sample is drawn from a Normal distribution.
-<<echo=FALSE,results=hide,label=SW-check,fig=TRUE,align="center">>=
-source("ESEUR/group-compare/SW-check.R")
+.Impact of differences in <rcode>mean</rcode>/<rcode>sd</rcode> on overlap between two populations ($\alpha$ probability of false positive; $\beta$ probability of false negative).
+<<echo=FALSE,results=hide,label=power-trade-off,fig=TRUE,align="center">>=
+source("../examples/power-trade-off.R")
 @
 
-rexample[group-compare/SW-check.R]
+rexample[examples/power-trade-off.R]
 
 Statistical error
 -----------------
 
-.The four combinations of circumstances and their outcomes in hypothesis testing.
+.The four combinations of circumstances, and their outcomes in hypothesis testing.
 [label="null-hypoth-table", width="65%", cols="<2s,<2d,2*<3d"]
 [options="header", frame="none", grid="none", align="center"]
 |===============================
@@ -244,6 +250,59 @@ Statistical error
 .2+.^s| Actual |<equ>H</equ> true  | Type I error | Correct
               |<equ>H</equ> false | Correct      | Type II error
 |===============================
+
+.Stop/do-more testing decision, and outcomes based on who incurs loss
+[label="test-hypoth-table", width="75%", cols="<2s,<2d,2*<3d"]
+[options="header", frame="none", grid="none", align="center"]
+|===============================
+|          | 2+^s| Decision made
+|          |                   | Stop testing | Do more testing
+.2+.^s| Actual |More testing needed  .^| Customer loss .^| OK
+              |Testing is sufficient .^| OK            .^| Vendor loss
+|===============================
+
+Experimental options
+--------------------
+
+<rcode>pwr.2p.test()</rcode>, from package <rcode>pwr</rcode>
+
+.The four related quantities in experimental design power analysis.
+<<echo=FALSE,results=hide,label=design-power,fig=TRUE,align="center">>=
+source("../examples/design-power.R")
+@
+
+rexample[examples/design-power.R]
+
+Statistically significant
+-------------------------
+
+{nbsp}
+
+A test statistic is said to be <phrase>statistically
+significant</phrase> when it allows the null hypothesis to be rejected
+
+{nbsp}
+
+<phrase>statistically significant</phrase> is often shortened to just <phrase>significant</phrase>
+
+* common usage meaning very different from statistical one
+
+{nbsp}
+
+A risk based approach, balancing costs and benefits
+
+* 1 in <equ>20</equ> , <equ>5</equ>% , <equ>2 \sigma</equ> , psychology experiments
+* 1 in <equ>770</equ> , <equ>0.13</equ>% , <equ>3 \sigma</equ>
+* 1 in <equ>3.3\times10^6</equ> , <equ>3\times10^{-7}</equ>% , <equ>5 \sigma</equ> , particle physics
+* 1 in <equ>10^9</equ> , <equ>10^{-9}</equ>% , <equ>6 \sigma</equ> , genetics
+
+Bonferroni Correction
+---------------------
+
+Correct for multiple, <equ>m</equ>, tests
+
+* <equ>1-(1-\alpha)^{\frac{1}{m}} \approx \frac{\alpha}{m}</equ>
+* <equ>\alpha=0.05 \rightarrow \frac{0.05}{m}</equ>
 
 Null hypothesis
 ---------------
@@ -266,44 +325,82 @@ else
 null_hypothesis_test(run_experiment(), 0.05);
 ----------
 
-Statistically significant
--------------------------
-
-{nbsp}
-
-A test statistic is said to be <phrase>statistically
-significant</phrase> when it allows the null hypothesis to be rejected
-
-{nbsp}
-
-"statistically significant" is often shortened to just "significant"
-
-* common usage meaning very different from statistical one
-
-{nbsp}
-
-Have not rejected the Null hypothesis
-
 Effect size
 -----------
 
 .Examples of the impact of population prevalence, statistical power and p-value on number of false positives and false negatives.
 <<echo=FALSE,results=hide,label=true-false-tree,fig=TRUE,align="center">>=
-source("ESEUR/statistics/true-false-tree.R")
+source("../examples/true-false-tree.R")
 @
 
-rexample[statistics/true-false-tree.R]
+rexample[examples/true-false-tree.R]
 
-Statistical power
------------------
+Comparing two samples
+---------------------
 
-.The four related quantities in design power analysis.
-<<echo=FALSE,results=hide,label=design-power,fig=TRUE,align="center">>=
-source("ESEUR/statistics/design-power.R")
+.Number of reflection benchmark results achieving a given score, reported for GTX 970 cards from three third-party manufacturers.
+<<echo=FALSE,results=hide,label=UserBenchmark_Nvidia,fig=TRUE,align="center">>=
+source("../examples/UserBenchmark_Nvidia.R")
 @
 
-rexample[statistics/design-power.R]
+rexample[examples/UserBenchmark_Nvidia.R]
 
-Data to play with
+The bootstrap
+-------------
+
+Very general technique
+
+* no dependence on the sample distribution
+* any comparison that can be coded
+* only practical when using a computer
+
+Bootstrap algorithm
+
+* assume no difference between the two samples, i.e., items exchangeable
+* create new samples from aggregate of existing two samples
+* the <phrase>empirical distribution</phrase>
+
+. combine both samples into an aggregate sample
+. randomly sample this aggregate, to create two new samples, <equ>s_1</equ>, <equ>s_2</equ>
+. compare <equ>s_1</equ> and <equ>s_2</equ>, save the result, <equ>result_i</equ>
+. repeat steps 2-3 many times, say 5,000
+. compare the original two samples, producing <equ>result_{orig}</equ>
+. order the <equ>result_i</equ>: what percentage are more/less than <equ>result_{orig}</equ>
+
+Bootstrap example
 -----------------
+
+[source,R]
+----------
+library("boot")
+
+mean_diff=function(res, indices)
+{
+t=res[indices]
+return(mean(t[1:num_MSI])-mean(t[(num_MSI+1):total_reps]))
+}
+
+# MSI_refl   # sample s1
+# Giga_refl  # sample s2
+
+num_MSI=length(MSI_refl)    # Length of sample s1
+num_Giga=length(Giga_refl)  # Length of sample s2
+total_reps=num_MSI+num_Giga # Length of Aggregate sample
+
+GTX_boot=boot(c(MSI_refl, Giga_refl), mean_diff, R = 4999)
+
+refl_mean_diff=mean(MSI_refl)-mean(Giga_refl) # Diff sample means
+# Two-sided test
+E=length(which(abs(GTX_boot\$t) >= abs(refl_mean_diff)))
+# likelihood= (E+1)/(4999+1)
+----------
+
+Data to try
+-----------
+
+UserBenchmark_Nvidia-GTX-970.htm.xz
+
+Planning poker: 16_1.csv.xz, 16_2.csv.xz 
+
+Typos in serif and sans-serif text: tb104veytsman-typo_data.csv.xz
 

@@ -18,7 +18,7 @@ Possible response values are:
 Binary response data
 --------------------
 
-.Modeling 0/1 data with a straight line and logistic equation.
+.Modeling 0/1 data with a straight line and a logistic equation.
 [caption="Figure ", label=binomial-data]
 <<echo=FALSE,results=hide,label=binomial-data,fig=TRUE,align="center">>=
 source("ESEUR_WORK/binomial-data.R")
