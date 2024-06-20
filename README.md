@@ -1,7 +1,7 @@
 
 Slides for two workshops based on the book [Evidence-based Software Engineering: based on the publicly available data](https://github.com/Derek-Jones/ESEUR-book)
 
-[Asciidoc](4cwhttps://github.com/asciidoc-py/asciidoc-py) is used to create a slidy presentation.
+[Asciidoc](https://github.com/asciidoc-py/asciidoc-py) is used to create a slidy presentation.
 
 To build the html files:
 
