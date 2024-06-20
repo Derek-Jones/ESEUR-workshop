@@ -13,11 +13,15 @@ To build the html files:
 
 * Start R and type (assuming you have the required packages installed):
 
+```
     source("../ascii-slides.R")
     quit()
+```
 
 * At the Linux command line:
 
+```
     ./mkallslides.sh
     ./image-crop.sh
+```
 
