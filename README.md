@@ -1,7 +1,7 @@
 
 Slides for two workshops based on the book [Evidence-based Software Engineering: based on the publicly available data](https://github.com/Derek-Jones/ESEUR-book)
 
-[Asciidoc](https://github.com/asciidoc-py/asciidoc-py) is used to create a slidy presentation.
+[Asciidoc](4cwhttps://github.com/asciidoc-py/asciidoc-py) is used to create a slidy presentation.
 
 To build the html files:
 
@@ -14,14 +14,20 @@ To build the html files:
 * Start R and type (assuming you have the required packages installed):
 
 ```
-    source("../ascii-slides.R")
-    quit()
+ source("../ascii-slides.R")
+ quit()
 ```
 
 * At the Linux command line:
 
 ```
-    ./mkallslides.sh
-    ./image-crop.sh
+ ./mkallslides.sh
+ ./image-crop.sh
+```
+
+To generate the cheat sheet use, to treat it as markdown:
+
+```
+pandoc --from=markdown --to=pdf cheat-sheet.Rnw -V geometry:a4paper,margin=1cm > cheat-sheet.pdf
 ```
 
