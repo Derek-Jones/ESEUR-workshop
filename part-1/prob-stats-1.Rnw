@@ -299,6 +299,8 @@ A risk based approach, balancing costs and benefits
 Bonferroni Correction
 ---------------------
 
+{nbsp}
+
 Correct for multiple, <equ>m</equ>, tests
 
 * <equ>1-(1-\alpha)^{\frac{1}{m}} \approx \frac{\alpha}{m}</equ>
@@ -398,7 +400,12 @@ E=length(which(abs(GTX_boot\$t) >= abs(refl_mean_diff)))
 Data to try
 -----------
 
-UserBenchmark_Nvidia-GTX-970.htm.xz
+Byte benchmark: byte-dos-app-benchmark.csv
+
+* WP - word processing
+* SS - spreadsheet
+* Sci.Eng - scientific/engineering
+* Cmplr - compiling
 
 Planning poker: 16_1.csv.xz, 16_2.csv.xz 
 

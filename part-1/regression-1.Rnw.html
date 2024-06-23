@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>ESEUR Workshop - Probability &amp; Statistics</title>
+<title>ESEUR Workshop - Regression modeling</title>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="copyright" content="Copyright &#169; Somebody" />
 <meta name="generator" content="AsciiDoc 10.1.2" />
@@ -5061,592 +5061,784 @@ else
 </head>
 <body class="article" style="max-width:45em">
 <div id="header" class="slide">
-<h1>ESEUR Workshop - Probability &amp; Statistics</h1>
+<h1>ESEUR Workshop - Regression modeling</h1>
 <span id="author">Derek M. Jones</span><br />
 </div>
 <div class="sect1 slide">
-<h1 id="_probability_vs_statistics">Probability vs. Statistics</h1>
+<h1 id="_regression_modeling">Regression modeling</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Probability makes inferences about individual events based on the
-characteristics of the population</p></div>
+<div class="paragraph"><p>Today&#8217;s hammer</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Fits an equation to data</p></div>
 <ul class="">
 <li>
 <span>
-makes use of deductive reasoning
+you decide which equation to fit
 </span>
 </li>
 </ul>
-<div class="paragraph"><p>Statistics makes inferences about the population based on the
-characteristics of a sample of the population</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Main reasons for building a regression model:</p></div>
 <ul class="">
 <li>
 <span>
-makes use of inferential reasoning
+understanding: willingness to trade-off prediction accuracy for
+simplicity
+</span>
+</li>
+<li>
+<span>
+prediction: willingness to trade-off understanding for greater
+accuracy
 </span>
 </li>
 </ul>
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-pop-sample.jpg" alt="prob-stats-1-pop-sample.jpg" />
-</div>
-</div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_probability_distributions">Probability distributions</h1>
+<h1 id="_generalized_linear_model">Generalized linear model</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>Mathematical description of the pattern of values obtained by
-following a consistent process</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p><code>glm</code> a general solution</p></div>
 <ul class="">
 <li>
 <span>
-the flipping a coin process
-</span>
-<ul class="">
-<li>
-<span>
-generates one of two values
+less restrictive requirements on data characteristics
 </span>
 </li>
 <li>
 <span>
-fixed probability of either value
-</span>
-</li>
-<li>
-<span>
-each value is independent of the previous one
+can change defaults to handle other error distributions
 </span>
 </li>
 </ul>
-</li>
-<li>
-<span>
-binomial distribution: count of the number of heads and tails
-</span>
-</li>
-<li>
-<span>
-negative binomial distribution: number of heads seen before
-a specified number of tails are seen
-</span>
-</li>
-</ul>
-<div class="paragraph"><p>Fit a sample of measurements to a known probability distribution</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Overkill for many real-life problems: who cares</p></div>
 <ul class="">
 <li>
 <span>
-infer behavior of underlying process based on what is known about
-generating values having that particular distribution
+we are using a computer
+</span>
+</li>
+<li>
+<span>
+uses more cpu time than <code>lm</code>
+</span>
+</li>
+<li>
+<span>
+uses more memory than <code>lm</code>
+</span>
+</li>
+<li>
+<span>
+maths is more complicated
 </span>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_relationships_between_distributions">Relationships between distributions</h1>
+<h1 id="_straightforward_case">Straightforward case</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="../not_R/disc-cont.jpg" alt="../not_R/disc-cont.jpg" width="800" height="800" />
-</div>
-</div>
+<div class="paragraph"><div class="title">Total lines of source code in FreeBSD by days elapsed since the project started.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/Herraiz-BSD.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/Herraiz-BSD.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_common_se_probability_distributions">Common SE probability distributions</h1>
+<h1 id="_importance_of_domain_knowledge">Importance of domain knowledge</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>Normal, Gaussian - bell shaped - talked about: Lognormal</p></div>
-<div class="paragraph"><p>Exponential , 25% , $y=a e^{-b*x}$ - memoryless, percentage inc/dec</p></div>
-<div class="paragraph"><p>Power law/Pareto , 15% , $y=a x^{-b}$</p></div>
-<div class="paragraph"><p>Poisson , $\frac{\lambda^x e^{-\lambda}}{x!}$ - count data</p></div>
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-scaling-exp-pow.jpg" alt="prob-stats-1-scaling-exp-pow.jpg" />
-</div>
-<div class="title">Figure 1. Axis scales for exponential and power law samples.</div>
-</div>
-<div class="paragraph"><p>rexample[examples/scaling-exp-pow.R]</p></div>
+<div class="paragraph"><div class="title">Number of classes in the Groovy compiler at each release, in days since version 1.0.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/Groovy_change-prop2.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/Groovy_change-prop2.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_3n_1_program_length">3n+1 Program length</h1>
+<h1 id="_how_it_works">How it works</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-3np1.jpg" alt="prob-stats-1-3np1.jpg" />
-</div>
-<div class="title">Figure 2. Number of <code>3n+1</code> programs containing a given number of lines, and four distributions fitted to this data.</div>
-</div>
-<div class="paragraph"><p>rexample[examples/3np1.R]</p></div>
+<div class="paragraph"><p>Linear model: simplest form of regression</p></div>
+<div class="paragraph"><p>$y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n + \epsilon$</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p><em>response variable</em>, $y$, modeled as a linear combination of</p></div>
+<ul class="">
+<li>
+<span>
+<em>explanatory variables</em>, $x_n$ (<em>prediction variable</em> or
+<em>predictor</em> are terms used when emphasizing prediction)
+</span>
+</li>
+<li>
+<span>
+additive error, $\epsilon$, behavior not accounted for by
+explanatory variables, assumed to be independent, identically
+distributed
+</span>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_cullen_and_frey_graph">Cullen and Frey graph</h1>
+<h1 id="_linear_regression">Linear regression</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>Linear refers to the model parameters, i.e., $\beta$</p></div>
+<ul class="">
+<li>
+<span>
+$y = \alpha + \beta x^2 + \epsilon$
+</span>
+</li>
+<li>
+<span>
+$y = \alpha + \beta \log(x) + \epsilon$
+</span>
+</li>
+</ul>
+<div class="paragraph"><p>The most commonly used regression model</p></div>
+<ul class="">
+<li>
+<span>
+many real world problems exhibit linear behavior, or a good enough
+approximation to it for practical purposes, over their input range
+</span>
+</li>
+<li>
+<span>
+much easier to fit manually than more sophisticated models
+</span>
+</li>
+<li>
+<span>
+until recently software to build other kinds of models not widely
+available
+</span>
+</li>
+<li>
+<span>
+can generally be built with minimal input from the user
+</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_code_for_linear_regression">Code for linear regression</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>The equation:</p></div>
+<div class="paragraph"><p>$E[\mathit{sloc}] = \alpha + \beta\times\mathit{Number{_}days}$</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>is coded as:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>BSD_mod=glm(sloc ~ Number_days, data=bsd_info)</tt></pre></div></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_fitted_model_details">Fitted model details</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>library(fitdistrplus)
-...
-descdist(n3\$lines, discrete=TRUE, boot=1000)</tt></pre></div></div>
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-3np1-dist.jpg" alt="prob-stats-1-3np1-dist.jpg" />
-</div>
-<div class="title">Figure 3. Cullen and Frey graph for the $3n+1$ program LOC.</div>
-</div>
-<div class="paragraph"><p>rexample[examples/3np1-dist.R]</p></div>
+<pre><tt>summary(BSD_mod)</tt></pre></div></div>
+<div class="paragraph"><p><a href="#echo=FALSE">label=summary_linear</a>=
+source("../examples/summary_BSD-linear.R")
+@</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_life_can_be_complicated">Life can be complicated</h1>
+<h1 id="_fitted_equation">Fitted equation</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-mpi_data_fig.jpg" alt="prob-stats-1-mpi_data_fig.jpg" />
-</div>
-<div class="title">Figure 4. Density plot of MPI micro-benchmark runtime performance for calls to <code>MPI_Scan</code> with 10,000 Bytes (left) and to <code>MPI_Allreduce</code> with 1,000 Bytes (right).</div>
-</div>
-<div class="paragraph"><p>rexample[examples/mpi_data_fig.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_fit_multiple_distributions">Fit multiple distributions</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-mpi_data_fit.jpg" alt="prob-stats-1-mpi_data_fit.jpg" />
-</div>
-<div class="title">Figure 5. Mixture model fitted by the rfunc[normalmixEM] function to the performance data from calls to <code>MPI_Allreduce</code>.</div>
-</div>
-<div class="paragraph"><p>rexample[examples/mpi_data_fit.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_sampling">Sampling</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Cost/benefit of more measurements</p></div>
+<div class="paragraph"><p>The fitted equation is:</p></div>
+<div class="paragraph"><p>$\mathit{sloc} = 1.139\times10^5 + 3.937\times10^2 \mathit{Number{_}days}$</p></div>
+<div class="paragraph"><p>Not a perfect fit between the model and data</p></div>
 <ul class="">
 <li>
 <span>
-less uncertainty &#8594; $\frac{1}{\sqrt{N}}$
+Uncertainty in the values of the model parameters:
 </span>
-</li>
-<li>
-<span>
-may cost more
-</span>
-</li>
-<li>
-<span>
-may take longer to obtain
-</span>
+<div class="paragraph"><p>$\mathit{sloc}  =  (1.139\times10^5\pm1.171\times10^3) +$
+$\qquad \qquad \qquad (3.937\times10^2\pm4.205\times10^{-1}) \mathit{Number{_}days}$</p></div>
 </li>
 </ul>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Have to make do with what is available</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_small_samples_are_irregular">Small samples are irregular</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-two-norm.jpg" alt="prob-stats-1-two-norm.jpg" />
-</div>
-<div class="title">Figure 6. Samples of randomly selected values drawn from the same normal distribution (100 points in each plot in left column, 1,000 in right column).</div>
-</div>
-<div class="paragraph"><p>rexample[examples/two-norm.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_sampling_spec_cpu2006">Sampling SPEC CPU2006</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-sample-3_mean.jpg" alt="prob-stats-1-sample-3_mean.jpg" />
-</div>
-<div class="title">Figure 7. Mean (red) and standard deviation (grey lines; they are not symmetrical because of the log scaling) of samples of 3 items drawn from a population of 1,000 items (blue line mean, green line standard deviation).</div>
-</div>
-<div class="paragraph"><p>rexample[examples/sample-3_mean.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_testing_small_samples">Testing small samples</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-SW-check.jpg" alt="prob-stats-1-SW-check.jpg" />
-</div>
-<div class="title">Figure 8. Probability, with 95% confidence, that <code>shapiro.test</code> correctly reports that samples drawn from various distributions are not drawn from a Normal distribution, and probability of an incorrect report when the sample is drawn from a Normal distribution.</div>
-</div>
-<div class="paragraph"><p>rexample[examples/SW-check.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_contaminated_normal">Contaminated Normal</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-contam-norm.jpg" alt="prob-stats-1-contam-norm.jpg" />
-</div>
-<div class="title">Figure 9. A contaminated normal, values drawn from two normal distributions with 10% of values drawn from a distribution having a standard deviation five times greater than the other.</div>
-</div>
-<div class="paragraph"><p>rexample[examples/contam-norm.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_impact_of_population_mean_sd">Impact of population mean/sd</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-power-trade-off.jpg" alt="prob-stats-1-power-trade-off.jpg" />
-</div>
-<div class="title">Figure 10. Impact of differences in <code>mean</code>/<code>sd</code> on overlap between two populations ($\alpha$ probability of false positive; $\beta$ probability of false negative).</div>
-</div>
-<div class="paragraph"><p>rexample[examples/power-trade-off.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_statistical_error">Statistical error</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="tableblock">
-<table rules="none"
-style="margin-left:auto; margin-right:auto;"
-width="65%"
-frame="void"
-cellspacing="0" cellpadding="4">
-<caption class="title">Table 1. The four combinations of circumstances, and their outcomes in hypothesis testing.</caption>
-<col width="20%" />
-<col width="20%" />
-<col width="30%" />
-<col width="30%" />
-<thead>
-<tr>
-<th align="left" valign="top">          </th>
-<th align="left" valign="top"> </th>
-<th colspan="2" align="center" valign="top"> Decision made</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left" valign="top"><p class="table"><strong></strong></p></td>
-<td align="left" valign="top"><p class="table"></p></td>
-<td align="left" valign="top"><p class="table">Reject $H$</p></td>
-<td align="left" valign="top"><p class="table">Fail to reject $H$</p></td>
-</tr>
-<tr>
-<td rowspan="2" align="left" valign="middle"><p class="table"><strong>Actual</strong></p></td>
-<td align="left" valign="top"><p class="table">$H$ true</p></td>
-<td align="left" valign="top"><p class="table">Type I error</p></td>
-<td align="left" valign="top"><p class="table">Correct</p></td>
-</tr>
-<tr>
-<td align="left" valign="top"><p class="table">$H$ false</p></td>
-<td align="left" valign="top"><p class="table">Correct</p></td>
-<td align="left" valign="top"><p class="table">Type II error</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tableblock">
-<table rules="none"
-style="margin-left:auto; margin-right:auto;"
-width="75%"
-frame="void"
-cellspacing="0" cellpadding="4">
-<caption class="title">Table 2. Stop/do-more testing decision, and outcomes based on who incurs loss</caption>
-<col width="20%" />
-<col width="20%" />
-<col width="30%" />
-<col width="30%" />
-<thead>
-<tr>
-<th align="left" valign="top">          </th>
-<th align="left" valign="top"> </th>
-<th colspan="2" align="center" valign="top"> Decision made</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left" valign="top"><p class="table"><strong></strong></p></td>
-<td align="left" valign="top"><p class="table"></p></td>
-<td align="left" valign="top"><p class="table">Stop testing</p></td>
-<td align="left" valign="top"><p class="table">Do more testing</p></td>
-</tr>
-<tr>
-<td rowspan="2" align="left" valign="middle"><p class="table"><strong>Actual</strong></p></td>
-<td align="left" valign="top"><p class="table">More testing needed</p></td>
-<td align="left" valign="middle"><p class="table">Customer loss</p></td>
-<td align="left" valign="middle"><p class="table">OK</p></td>
-</tr>
-<tr>
-<td align="left" valign="top"><p class="table">Testing is sufficient</p></td>
-<td align="left" valign="middle"><p class="table">OK</p></td>
-<td align="left" valign="middle"><p class="table">Vendor loss</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_experimental_options">Experimental options</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p><code>pwr.2p.test()</code>, from package <code>pwr</code></p></div>
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-design-power.jpg" alt="prob-stats-1-design-power.jpg" />
-</div>
-<div class="title">Figure 11. The four related quantities in experimental design power analysis.</div>
-</div>
-<div class="paragraph"><p>rexample[examples/design-power.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_statistically_significant">Statistically significant</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>A test statistic is said to be <em>statistically
-significant</em> when it allows the null hypothesis to be rejected</p></div>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p><em>statistically significant</em> is often shortened to just <em>significant</em></p></div>
 <ul class="">
 <li>
 <span>
-common usage meaning very different from statistical one
+Uncertainty caused by the inability of the explanatory variable
+used in the model to explain everything:
 </span>
-</li>
-</ul>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>A risk based approach, balancing costs and benefits</p></div>
-<ul class="">
-<li>
-<span>
-1 in $20$ , $5$% , $2 \sigma$ , psychology experiments
-</span>
-</li>
-<li>
-<span>
-1 in $770$ , $0.13$% , $3 \sigma$
-</span>
-</li>
-<li>
-<span>
-1 in $3.3\times10^6$ , $3\times10^{-7}$% , $5 \sigma$ , particle physics
-</span>
-</li>
-<li>
-<span>
-1 in $10^9$ , $10^{-9}$% , $6 \sigma$ , genetics
-</span>
+<div class="paragraph"><p>$\mathit{sloc} = 1.139\times10^5 + 3.937\times10^2 \mathit{Number{_}days}$
+$\qquad \qquad \qquad               \pm4.071\times10^4$</p></div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_bonferroni_correction">Bonferroni Correction</h1>
+<h1 id="_predicting_from_a_fitted_model">Predicting from a fitted model</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Correct for multiple, $m$, tests</p></div>
-<ul class="">
-<li>
-<span>
-$1-(1-\alpha)^{\frac{1}{m}} \approx \frac{\alpha}{m}$
-</span>
-</li>
-<li>
-<span>
-$\alpha=0.05 \rightarrow \frac{0.05}{m}$
-</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_null_hypothesis">Null hypothesis</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>Black box function</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">null_hypothesis_test</span></span><span style="color: #990000">(</span><span style="color: #009900">void</span> <span style="color: #990000">*</span>result_data<span style="color: #990000">,</span> <span style="color: #009900">float</span> p_value<span style="color: #990000">)</span>
-<span style="color: #FF0000">{</span>
-<span style="font-style: italic"><span style="color: #9A1900">// H set by reality, only accessible by running experiment</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">((</span><span style="font-weight: bold"><span style="color: #000000">probability_of_seeing_data_when_H_true</span></span><span style="color: #990000">(</span>result_data<span style="color: #990000">)</span>
-                                            <span style="color: #990000">&lt;</span> p_value<span style="color: #990000">)</span> <span style="color: #990000">||</span>
-     <span style="color: #990000">!</span>H<span style="color: #990000">)</span>
-   <span style="font-weight: bold"><span style="color: #000000">printf</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"Willing to assume that H is false</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
-<span style="font-weight: bold"><span style="color: #0000FF">else</span></span>
-   <span style="font-weight: bold"><span style="color: #000000">printf</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"H might be true</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
-<span style="color: #FF0000">}</span>
+<pre><tt>BSD_pred=predict(BSD_mod)
+lines(bsd_info\$Number_days, BSD_pred, col=<span style="color: #FF0000">"red"</span>)
 
-<span style="font-weight: bold"><span style="color: #000000">null_hypothesis_test</span></span><span style="color: #990000">(</span><span style="font-weight: bold"><span style="color: #000000">run_experiment</span></span><span style="color: #990000">(),</span> <span style="color: #993399">0.05</span><span style="color: #990000">);</span></tt></pre></div></div>
+<span style="font-style: italic"><span style="color: #9A1900"># or</span></span>
+
+BSD_pred=predict(BSD_mod,
+                 newdata=list(Number_days=0:4000))
+
+lines(0:4000, BSD_pred, col=<span style="color: #FF0000">"red"</span>)</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_effect_size">Effect size</h1>
+<h1 id="_the_bsd_data">The BSD data</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-true-false-tree.jpg" alt="prob-stats-1-true-false-tree.jpg" />
-</div>
-<div class="title">Figure 12. Examples of the impact of population prevalence, statistical power and p-value on number of false positives and false negatives.</div>
-</div>
-<div class="paragraph"><p>rexample[examples/true-false-tree.R]</p></div>
+<div class="paragraph"><div class="title">Total lines of source code in FreeBSD by days elapsed since the project started.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/Herraiz-BSD.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/Herraiz-BSD.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_comparing_two_samples">Comparing two samples</h1>
+<h1 id="_scattered_measurement_points">Scattered measurement points</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="prob-stats-1-UserBenchmark_Nvidia.jpg" alt="prob-stats-1-UserBenchmark_Nvidia.jpg" />
-</div>
-<div class="title">Figure 13. Number of reflection benchmark results achieving a given score, reported for GTX 970 cards from three third-party manufacturers.</div>
-</div>
-<div class="paragraph"><p>rexample[examples/UserBenchmark_Nvidia.R]</p></div>
+<div class="paragraph"><div class="title">Estimated cost and duration of 73 large Dutch federal IT projects.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/federal_IT-cost_dur.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/federal_IT-cost_dur.R]</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_the_bootstrap">The bootstrap</h1>
+<h1 id="_confidence_intervals">Confidence intervals</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>Very general technique</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>What is the actual fitted model likely to be?</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>fed_pred=predict(fed_mod, newdata=list(log.IT=1:7),
+                                se.fit=TRUE)
+lines(fed_pred\$fit, col=<span style="color: #FF0000">"red"</span>)
+
+<span style="font-style: italic"><span style="color: #9A1900"># 2.5% above and below the fit</span></span>
+lines(fed_pred\$fit+qnorm(0.975)*fed_pred\$se.fit,
+                                      col=<span style="color: #FF0000">"green"</span>)
+lines(fed_pred\$fit+qnorm(0.025)*fed_pred\$se.fit,
+                                col=<span style="color: #FF0000">"green"</span>)
+
+<span style="font-style: italic"><span style="color: #9A1900"># qnorm(0.975) == 1.96   qnorm(0.025) == -1.96</span></span></tt></pre></div></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_two_confidence_bounds">Two confidence bounds</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>What is the likely range of values of a new measurement?</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Two sources of uncertainty need to be combined</p></div>
 <ul class="">
 <li>
 <span>
-no dependence on the sample distribution
+uncertainty in the model parameters (i.e., the confidence interval)
 </span>
 </li>
 <li>
 <span>
-any comparison that can be coded
-</span>
-</li>
-<li>
-<span>
-only practical when using a computer
+variance in the data not explained by the fitted model
 </span>
 </li>
 </ul>
-<div class="paragraph"><p>Bootstrap algorithm</p></div>
-<ul class="">
-<li>
-<span>
-assume no difference between the two samples, i.e., items exchangeable
-</span>
-</li>
-<li>
-<span>
-create new samples from aggregate of existing two samples
-</span>
-</li>
-<li>
-<span>
-the <em>empirical distribution</em>
-</span>
-<ol class="arabic">
-<li>
-<span>
-combine both samples into an aggregate sample
-</span>
-</li>
-<li>
-<span>
-randomly sample this aggregate, to create two new samples, $s_1$, $s_2$
-</span>
-</li>
-<li>
-<span>
-compare $s_1$ and $s_2$, save the result, $result_i$
-</span>
-</li>
-<li>
-<span>
-repeat steps 2-3 many times, say 5,000
-</span>
-</li>
-<li>
-<span>
-compare the original two samples, producing $result_{orig}$
-</span>
-</li>
-<li>
-<span>
-order the $result_i$: what percentage are more/less than $result_{orig}$
-</span>
-</li>
-</ol>
-</li>
-</ul>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>MSE=sum(fed_mod\$residuals^2)/(length(fed_mod\$residuals)-2)
+
+pred_se=sqrt(fed_pred\$se.fit^2+MSE)
+
+
+lines(fed_pred\$fit+1.96*pred_se, col=<span style="color: #FF0000">"blue"</span>)
+lines(fed_pred\$fit-1.96*pred_se, col=<span style="color: #FF0000">"blue"</span>)</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_bootstrap_example">Bootstrap example</h1>
+<h1 id="_visualizing_general_trend">Visualizing general trend</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title">For each distinct language, the number of lines committed on Github and the number of questions tagged with that language.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/langpop-corger-nl.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/langpop-corger-nl.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_trend_changes_later">Trend changes later</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title">Percentage of vulnerabilities detected by developers working a given number of years in security.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/acc-sec-experience.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/acc-sec-experience.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_almost_any_data_can_be_fitted">Almost any data can be fitted</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title">Number of updates and fixes in each Linux release between version 2.6.11 and 3.2.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/linux-stable.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/linux-stable]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_updates_code_summary_code_output">Updates <code>summary</code> output</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p><code>Pr(&gt;|t|)</code> the p-value for the hypothesis that the
+coefficient in the corresponding row is zero,</p></div>
+<div class="paragraph"><p><a href="#echo=FALSE">label=summary_linux-stable</a>=
+source("../examples/summary_linux-stable.R")
+@</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_nominal_data">Nominal data</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>Impact of compiler optimization flags on ability to continue
+operating correctly when subject to random bit-flips</p></div>
+<div class="paragraph"><p>Fitted model has:</p></div>
+<ul class="">
+<li>
+<span>
+response variable: percentage of correct benchmark program execution
+</span>
+</li>
+<li>
+<span>
+explanatory variable: optimization level as the explanatory variable
+</span>
+</li>
+</ul>
+<div class="paragraph"><p>Call to <code>glm</code></p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>bitflip_mod=glm(pass.masked ~ opt_level, data=bitflip)</tt></pre></div></div>
+<div class="paragraph"><p><code>summary</code> output</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>&lt;&lt;echo=FALSE,label=comp-mask&gt;&gt;=
+source("../examples/comp-mask.R")
+@
+
+In mathematics</code></pre>
+</div></div>
+<div class="paragraph"><p>Fitted equation is:</p></div>
+<div class="paragraph"><p>$\mathit{pass.masked} = 28.6 + 9.2\times D_2 + 7.4\times D_3 + 11.6\times D_{osf}$</p></div>
+<div class="paragraph"><p>$D_i$ is known as dummy variables or indicator variable and
+has one of two values:</p></div>
+<div class="paragraph"><p>$\qquad \qquad 1\quad\mathrm{optimization flag used}$</p></div>
+<div class="paragraph"><p>$D  =$</p></div>
+<div class="paragraph"><p>$\qquad \qquad 0\quad\mathrm{optimization flag not used}$</p></div>
+<div class="paragraph"><p><code>O0</code> value is implicit</p></div>
+<div class="paragraph"><p>Standard errors in <code>O2</code>/<code>O3</code> large
+enough for their respective <code>Estimate</code>s to overlap</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_curved_data">Curved data</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>library(<span style="color: #FF0000">"boot"</span>)
-
-mean_diff=function(res, indices)
-{
-t=res[indices]
-return(mean(t[1:num_MSI])-mean(t[(num_MSI+1):total_reps]))
-}
-
-<span style="font-style: italic"><span style="color: #9A1900"># MSI_refl   # sample s1</span></span>
-<span style="font-style: italic"><span style="color: #9A1900"># Giga_refl  # sample s2</span></span>
-
-num_MSI=length(MSI_refl)    <span style="font-style: italic"><span style="color: #9A1900"># Length of sample s1</span></span>
-num_Giga=length(Giga_refl)  <span style="font-style: italic"><span style="color: #9A1900"># Length of sample s2</span></span>
-total_reps=num_MSI+num_Giga <span style="font-style: italic"><span style="color: #9A1900"># Length of Aggregate sample</span></span>
-
-GTX_boot=boot(c(MSI_refl, Giga_refl), mean_diff, R = 4999)
-
-refl_mean_diff=mean(MSI_refl)-mean(Giga_refl) <span style="font-style: italic"><span style="color: #9A1900"># Diff sample means</span></span>
-<span style="font-style: italic"><span style="color: #9A1900"># Two-sided test</span></span>
-E=length(which(abs(GTX_boot\$t) &gt;= abs(refl_mean_diff)))
-<span style="font-style: italic"><span style="color: #9A1900"># likelihood= (E+1)/(4999+1)</span></span></tt></pre></div></div>
+<pre><tt>linux_mod=glm(sloc ~ Number_days,
+                                        data=linux_info)
+linux_mod=glm(sloc ~ Number_days+I(Number_days^2),
+                                        data=linux_info)</tt></pre></div></div>
+<div class="paragraph"><p>How much better is a quadratic equation fit, a cubic fit, &#8230;?</p></div>
+<div class="paragraph"><div class="title">Lines of code in every initial release of the Linux kernel since version 1.0.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/Linux-DAYLOC.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/Linux-DAYLOC.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_aic">AIC</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>AIC Akaiki Information criteria takes into account:</p></div>
+<ul class="">
+<li>
+<span>
+a measure of how well a model fits the data
+</span>
+</li>
+<li>
+<span>
+free parameters have to pay their way by providing enough
+improvement in a model&#8217;s fit to the data
+</span>
+</li>
+</ul>
+<div class="paragraph"><p><a href="#echo=FALSE">label=Linux-DAYLOC-AIC</a>=
+source("../examples/Linux-DAYLOC-AIC.R")
+@</p></div>
+<div class="paragraph"><p>When AIC of two models differ by:</p></div>
+<ul class="">
+<li>
+<span>
+less than 2: more or less equivalent
+</span>
+</li>
+<li>
+<span>
+between 4 and 7: clearly distinguishable
+</span>
+</li>
+<li>
+<span>
+more than 10: definitely different
+</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_cubic_model">Cubic model</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p><a href="#echo=FALSE">label=Linux-DAYLOC-cubic</a>=
+source("../examples/Linux-DAYLOC-cubic.R")
+@</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_influential_observations_and_outliers">Influential observations and Outliers</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title">Hours to develop software for 29 embedded consumer products and the amount of code they contain.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/lines-per-hour.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/lines-per-hour.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_ignoring_sample_size">Ignoring sample size</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title">After removal of overly influential observations.  Left takes into account the Bonferroni p-value of the Studentized residuals while the right plot does not.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/lines-hour-mininf.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/lines-hour-mininf.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_influenceindexplot">influenceIndexPlot</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title"><code>influenceIndexPlot</code> for the data.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/lines-hour-influence.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/lines-hour-influence.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_outlier_or_changepoint">Outlier or changepoint?</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title">Number of medical devices reported recalled by the US Food and Drug Administration, in two week bins.  Fitted straight regression line (red, with blue confidence bounds) and loess fit (green).</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/Alemzadeh-Recalls.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/Alemzadeh-Recalls.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_after_2010_is_different">After 2010 is different</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title">Fitted model after two observations replaced by mean value (left) and two fitted lines, one up to the end of 2010 and one after 2010.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/Alemzadeh-mininf.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/Alemzadeh-mininf.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_multiple_regression">Multiple regression</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>Multiple - more than one explanatory variable:</p></div>
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>$y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n + \epsilon$</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_specint_2006">SPECint 2006</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title">SPECint 2006 performance results for processors running at various clock rates, memory chip frequencies and processor family.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/SPEC-Mhz.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/SPEC-Mhz.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_the_more_the_merrier">The more the merrier</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>&#160;</p></div>
+<div class="paragraph"><p>SPECint results contain 36 columns</p></div>
+<div class="paragraph"><p>R formula notation</p></div>
+<ul class="">
+<li>
+<span>
+can specify all columns in the sample as explanatory variables
+</span>
+</li>
+</ul>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>spec_mod=glm(Result ~ ., data=cint)</tt></pre></div></div>
+<div class="paragraph"><p>Information in <code>Processor</code> column to create an almost
+perfect model</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_just_the_important_variables">Just the important variables</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>80% of the variance in the data is explained by:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>spec_mod=glm(Result ~ Processor.MHz + mem_rate + mem_freq,
+                                                data=cint)</tt></pre></div></div>
+<div class="paragraph"><p><code>+</code> operator specifies that explanatory variables are
+added</p></div>
+<div class="paragraph"><p>Equation fitted:</p></div>
+<div class="paragraph"><p>$\mathit{Result}=-2.4\times 10^1+\mathit{Processor.MHz}7.3\times 10^{-3}+$
+$\qquad \qquad \qquad \mathit{mem{_}rate}2.5\times 10^{-3} + \mathit{mem{_}freq}1.0\times 10^{-2}$</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_spec_summary_output">SPEC summary output</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p><a href="#echo=FALSE">label=summary_SPEC-straight</a>=
+source("../R/summary_SPEC-straight.R")
+@</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_individual_variable_contribution">Individual variable contribution</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title">Individual contribution of each explanatory variable to the response variable in the model of SPECint performance fitted above.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/SPEC-ind-MHz-DDR.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/SPEC-ind-MHz-DDR.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_residuals">Residuals</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title">Residual of the model of SPECint performance fitted above.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/SPEC-resid-MHz-DDR.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/SPEC-resid-MHz-DDR.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_quadratic_spec_model">Quadratic SPEC model</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>spec_mod=glm(Result ~ Processor.MHz + I(Processor.MHz^2)+
+                        mem_rate + I(mem_rate^2)+
+                          mem_freq
+                        , data=cint)</tt></pre></div></div>
+<div class="paragraph"><div class="title">Individual contribution of each explanatory variable to the response variable in a quadratic model of SPECint performance.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/SPEC-quad-MHz-DDR.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/SPEC-quad-MHz-DDR.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_updating_fitted_models">Updating fitted models</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>ecc_spec_mod=update(spec_mod, . ~ . + ecc)</tt></pre></div></div>
 </div>
 </div>
 <div class="sect1 slide">
 <h1 id="_data_to_try">Data to try</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>Byte benchmark: byte-dos-app-benchmark.csv</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_formula_notation">Formula notation</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="tableblock">
+<table rules="none"
+style="margin-left:auto; margin-right:auto;"
+width="75%"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 1. Symbols that can be used within a formula to express relationships between explanatory variables.</caption>
+<col width="14%" />
+<col width="85%" />
+<thead>
+<tr>
+<th align="center" valign="top">Operator</th>
+<th align="left" valign="top"> Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" valign="top"><p class="table"><strong>+</strong></p></td>
+<td align="left" valign="top"><p class="table">causes both of its operands to be included in the equation.</p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table"><strong>:</strong></p></td>
+<td align="left" valign="top"><p class="table">denotes an interaction between its operands, e.g., <code>a:b</code> or  <code>a:b:c</code>.</p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table"><strong>*</strong></p></td>
+<td align="left" valign="top"><p class="table">denotes all possible combinations of <code>+</code> and <code>:</code> operators, e.g., <code>a*b</code> is equivalent to  <code>a+b+a:b</code>.</p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table"><strong>^</strong></p></td>
+<td align="left" valign="top"><p class="table">denotes all interactions to a specific degree, e.g., <code>(a+b+c)^2</code> is equivalent to  <code>a+b+c+a:b+a:c+b:c</code>.</p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table"><strong>.</strong></p></td>
+<td align="left" valign="top"><p class="table">denotes all variables in the data-frame specified in the <code>data</code> argument except the response variable.</p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table"><strong>-</strong></p></td>
+<td align="left" valign="top"><p class="table">specifies that the right operand is removed from the equation, e.g., <code>a*b-a</code> is equivalent to  <code>b+a:b</code>.</p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table"><strong>-1</strong></p></td>
+<td align="left" valign="top"><p class="table">specifies that an intercept is not to be fitted (many regression fitting functions implicitly include an intercept)</p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table"><strong>I()</strong></p></td>
+<td align="left" valign="top"><p class="table">&#8230;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_interaction_and_shared_contribution">Interaction and shared contribution</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title">Diagram illustrating shared and non-shared contributions made by two variables in explaining Y.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/shared-contrib.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/shared-contrib.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_two_models_or_one">Two models or one?</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><div class="title">Estimated and actual effort broken down by communication frequency, along with individually straight fitted lines.</div><p><a href="#echo=FALSE">results=hide</a>=
+source("../examples/simula_0a.R")
+@</p></div>
+<div class="paragraph"><p>rexample[examples/simula_0a.R]</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_interacting_variables">Interacting variables</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="paragraph"><p>Simultaneously fit two straight lines to the data</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>sim_mod=glm(Actual ~ Estimated+Estimated:Communication,
+                                                data=sim)</tt></pre></div></div>
+<div class="paragraph"><p>Fitted equation:</p></div>
+<div class="paragraph"><p>$\mathit{Actual} = -270.1+1.18\mathit{Estimated}+0.51\mathit{Estimated}\times D$
+$\qquad \qquad =  -270.1+(1.18+0.51 D)\mathit{Estimated}$</p></div>
+<div class="paragraph"><p>$\qquad \qquad 1\quad\mathrm{daily communication}$</p></div>
+<div class="paragraph"><p>$D  =$</p></div>
+<div class="paragraph"><p>$\qquad \qquad 0\quad\mathrm{not daily communication}$</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_start_complicated">Start complicated</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>library(MASS)
+
+sim_mod=glm(Actual ~ (Estimated+Communication+
+                                Contract+Complexity)^2,
+                                                data=sim)
+simple_sim=stepAIC(sim_mod)</tt></pre></div></div>
+<div class="paragraph"><p><a href="#echo=FALSE">label=simula_0a-Anova</a>=
+source("../examples/simula_0a-Anova.R")
+@</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_after_following_the_numbers">After following the numbers</h1>
+<div class="sectionbody" style="max-width:45em">
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>sim_mod=glm(Actual ~ Estimated+Communication+
+                                Communication:Contract,
+                                        data=sim)</tt></pre></div></div>
+<div class="paragraph"><p>Fitted equation is:</p></div>
+<div class="paragraph"><p>$\mathit{Actual} = -274.8+1.21\mathit{Estimated} + 2625\times !D +$
+$\qquad \qquad \qquad \qquad C_{fp}(1862\times !D - 197.6\times D) +$
+$\qquad \qquad \qquad \qquad C_{tp}(-2270\times !D - 462.2\times D) +$
+$\qquad \qquad \qquad \qquad C_{ot}(-2298\times !D - 234.3\times D)$</p></div>
 <ul class="">
 <li>
 <span>
-WP - word processing
+$C_{fp}$ 0/1 is a fixed price contract
 </span>
 </li>
 <li>
 <span>
-SS - spreadsheet
+$C_{tp}$ 0/1 is a target price contract
 </span>
 </li>
 <li>
 <span>
-Sci.Eng - scientific/engineering
-</span>
-</li>
-<li>
-<span>
-Cmplr - compiling
+$C_{ot}$ 0/1 other kind of contract
 </span>
 </li>
 </ul>
-<div class="paragraph"><p>Planning poker: 16_1.csv.xz, 16_2.csv.xz</p></div>
-<div class="paragraph"><p>Typos in serif and sans-serif text: tb104veytsman-typo_data.csv.xz</p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_data_to_try_2">Data to try</h1>
+<div class="sectionbody" style="max-width:45em">
 </div>
 </div>
 </body>

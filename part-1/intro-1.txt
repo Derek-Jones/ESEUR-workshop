@@ -151,7 +151,7 @@ Fortran parentage
 
 * arrays start at 1, not 0
 * row-column order (not column-row) <rcode>df[row, column]</rcode>
-* operator precedence: <rcode>!x == y</rcode>
+* operator precedence: in R <rcode>!(x == y)</rcode>, in other languages <rcode>(!x) == y</rcode>
 
 Identifiers
 
@@ -159,6 +159,8 @@ Identifiers
 * <rcode>names.can.contain...</rcode>
 
 Semantic view of code, not a machine representation view
+
+{nbsp}
 
 <rcode><<-</rcode> operator to assign to global variables
 
@@ -198,7 +200,7 @@ boolean, character, integer (32-bit), reals (64-bit), raw
 
 array, data.table, list, function, formula, expression
 
-<rcode>as.character</rcode>, <rcode>as.numeric</rcode>, <rcode>as.integer</rcode>, <rcode>as.array</rcode>, <rcode>as.Date</rcode>, ...
+<rcode>as.character</rcode>, <rcode>as.numeric</rcode>, <rcode>as.integer</rcode>, <rcode>as.Date</rcode>, ...
 
 {nbsp}
 
@@ -209,7 +211,9 @@ Driven by semantics, not underlying representation
 
 {nbsp}
 
-<rcode>NA</rcode>, <rcode>NULL</rcode>
+<rcode>NA</rcode>, <rcode>is.na(x)</rcode>
+
+<rcode>NULL</rcode>
 
 Expressions
 -----------
@@ -319,6 +323,14 @@ Lots of graphics systems/packages
 
 {nbsp}
 
+[source,R]
+-----
+getwd()			# get working directory
+setwd("/someplace/ESEUR-workshop/data-to-try/")  # set working directory
+-----
+
+{nbsp}
+
 <rcode>cat</rcode>, simpler and more flexible than <rcode>print</rcode>
 
 read.csv
@@ -393,6 +405,8 @@ Built-in functions
 <rcode>runif(100)</rcode>, <rcode>rnorm(200, mean=2)</rcode>,
 
 <rcode>glm(y ~ x, data=df)</rcode>, <rcode>predict(model)</rcode>, ...
+
+<rcode>install.packages()</rcode>, <rcode>library</rcode>
 
 Useful functions for debugging
 ------------------------------
@@ -544,6 +558,7 @@ image::intro-1-pub-fs-fp.jpg[]
 
 rexample[examples/pub-fs-fp.R]
 
+////////////
 Ada vs. Fortran
 ---------------
 
@@ -582,6 +597,7 @@ loess_mod=loess(y_axis ~ x_axis, span=0.3)
 loess_pred=predict(loess_mod)
 lines(x_axis, loess_pred, col="blue")
 -----
+////////////
 
 NASA effort/cost pattern
 ------------------------
@@ -609,6 +625,9 @@ Density of points
 
 .Number of files and lines of code in 3,782 projects on Sourceforge.
 image::intro-1-herraiz-projects.jpg[]
+
+
+<rcode>smoothScatter()</rcode> function
 
 
 rexample[examples/herraiz-projects.R]
@@ -639,6 +658,10 @@ Heatmaps
 .Intel Sandy Bridge L3 cache bandwidth in GB/s at various clock frequencies and using combinations of cores (0-3 denotes cores zero-through-three, 0,2,4 denotes the three cores zero, two and four).
 image::intro-1-heatmap-hotpower.jpg[]
 
+
+<rcode>library("lattice")</rcode>, <rcode>levelplot()</rcode>
+
+<rcode>contour()</rcode>
 
 rexample[examples/heatmap-hotpower.R]
 
@@ -674,11 +697,16 @@ Data to try
 -----------
 
 --------
+Byte benchmark: byte-dos-app-benchmark.csv
+
+* WP - word processing
+* SS - spreadsheet
+* Sci.Eng - scientific/engineering
+* Cmplr - compiling
+
 C source measurements: c_linelen.csv.xz
 
 C source measurements: c_linetok.csv.xz
-
-cpu sales: turley_02.csv.xz
 
 debian-src-stats.csv.xz
 --------

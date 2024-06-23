@@ -5338,7 +5338,7 @@ row-column order (not column-row) <code>df[row, column]</code>
 </li>
 <li>
 <span>
-operator precedence: <code>!x == y</code>
+operator precedence: in R <code>!(x == y)</code>, in other languages <code>(!x) == y</code>
 </span>
 </li>
 </ul>
@@ -5356,6 +5356,7 @@ Case is significant, <code>A_var != a_var</code>
 </li>
 </ul>
 <div class="paragraph"><p>Semantic view of code, not a machine representation view</p></div>
+<div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p><code><<-</code> operator to assign to global variables</p></div>
 </div>
 </div>
@@ -5390,7 +5391,7 @@ x=function(p1, p2=2) { return(p1+p2) }</tt></pre></div></div>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>boolean, character, integer (32-bit), reals (64-bit), raw</p></div>
 <div class="paragraph"><p>array, data.table, list, function, formula, expression</p></div>
-<div class="paragraph"><p><code>as.character</code>, <code>as.numeric</code>, <code>as.integer</code>, <code>as.array</code>, <code>as.Date</code>, &#8230;</p></div>
+<div class="paragraph"><p><code>as.character</code>, <code>as.numeric</code>, <code>as.integer</code>, <code>as.Date</code>, &#8230;</p></div>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Driven by semantics, not underlying representation</p></div>
 <ul class="">
@@ -5406,7 +5407,8 @@ x=function(p1, p2=2) { return(p1+p2) }</tt></pre></div></div>
 </li>
 </ul>
 <div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p><code>NA</code>, <code>NULL</code></p></div>
+<div class="paragraph"><p><code>NA</code>, <code>is.na(x)</code></p></div>
+<div class="paragraph"><p><code>NULL</code></p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5532,6 +5534,14 @@ x\$val=runif(nrow(x))</tt></pre></div></div>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>Lots of graphics systems/packages</p></div>
 <div class="paragraph"><p>&#160;</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>getwd()                 <span style="font-style: italic"><span style="color: #9A1900"># get working directory</span></span>
+setwd(<span style="color: #FF0000">"/someplace/ESEUR-workshop/data-to-try/"</span>)  <span style="font-style: italic"><span style="color: #9A1900"># set working directory</span></span></tt></pre></div></div>
+<div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p><code>cat</code>, simpler and more flexible than <code>print</code></p></div>
 </div>
 </div>
@@ -5602,6 +5612,7 @@ lines(x_lines, y_lines, col=<span style="color: #FF0000">"blue"</span>)</tt></pr
 <div class="paragraph"><p><code>log(vec)</code>, <code>sin(vals)</code>,
 <code>runif(100)</code>, <code>rnorm(200, mean=2)</code>,</p></div>
 <div class="paragraph"><p><code>glm(y ~ x, data=df)</code>, <code>predict(model)</code>, &#8230;</p></div>
+<div class="paragraph"><p><code>install.packages()</code>, <code>library</code></p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5832,61 +5843,13 @@ http://www.gnu.org/software/src-highlite -->
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_ada_vs_fortran">Ada vs. Fortran</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="imageblock">
-<div class="content">
-<img src="intro-1-nasa-ada-fortran.jpg" alt="intro-1-nasa-ada-fortran.jpg" />
-</div>
-<div class="title">Figure 3. Effort, in hours (log scale), spent in various development phases of projects written in Ada (blue) and Fortran (red).</div>
-</div>
-<div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight
-by Lorenzo Bettini
-http://www.lorenzobettini.it
-http://www.gnu.org/software/src-highlite -->
-<pre><tt>panel.language=function(x, y, language)
-{ ... }
-
-pairs(log(nasa[-c(28, 30) , 16:19]), panel = panel.language, language=nasa\$language)</tt></pre></div></div>
-<div class="paragraph"><p>rexample[examples/nasa-ada-fortran.R]</p></div>
-</div>
-</div>
-<div class="sect1 slide">
-<h1 id="_trend_line">Trend line</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Values do not always exhibit a discernible direction</p></div>
-<div class="paragraph"><p>&#160;</p></div>
-<div class="paragraph"><p>Averaging line through points</p></div>
-<ul class="">
-<li>
-<span>
-running mean, splines, loess (LOcal regrESSion)
-</span>
-</li>
-</ul>
-<div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight
-by Lorenzo Bettini
-http://www.lorenzobettini.it
-http://www.gnu.org/software/src-highlite -->
-<pre><tt>lines(loess.smooth(x_vals, y_vals, span=0.3),
-                                     col=<span style="color: #FF0000">"blue"</span>)
-
-loess_mod=loess(y_axis ~ x_axis, span=0.3)
-loess_pred=predict(loess_mod)
-lines(x_axis, loess_pred, col=<span style="color: #FF0000">"blue"</span>)</tt></pre></div></div>
-</div>
-</div>
-<div class="sect1 slide">
 <h1 id="_nasa_effort_cost_pattern">NASA effort/cost pattern</h1>
 <div class="sectionbody" style="max-width:45em">
 <div class="imageblock">
 <div class="content">
 <img src="intro-1-NASA_gruhl.jpg" alt="intro-1-NASA_gruhl.jpg" />
 </div>
-<div class="title">Figure 4. Effort invested in project definition (as percentage of original estimate) against cost overrun (as percentage of original estimate).</div>
+<div class="title">Figure 3. Effort invested in project definition (as percentage of original estimate) against cost overrun (as percentage of original estimate).</div>
 </div>
 <div class="paragraph"><p>rexample[examples/NASA_gruhl.R]</p></div>
 </div>
@@ -5898,8 +5861,9 @@ lines(x_axis, loess_pred, col=<span style="color: #FF0000">"blue"</span>)</tt></
 <div class="content">
 <img src="intro-1-herraiz-projects.jpg" alt="intro-1-herraiz-projects.jpg" />
 </div>
-<div class="title">Figure 5. Number of files and lines of code in 3,782 projects on Sourceforge.</div>
+<div class="title">Figure 4. Number of files and lines of code in 3,782 projects on Sourceforge.</div>
 </div>
+<div class="paragraph"><p><code>smoothScatter()</code> function</p></div>
 <div class="paragraph"><p>rexample[examples/herraiz-projects.R]</p></div>
 </div>
 </div>
@@ -5910,7 +5874,7 @@ lines(x_axis, loess_pred, col=<span style="color: #FF0000">"blue"</span>)</tt></
 <div class="content">
 <img src="intro-1-boxplot-10-cscw.jpg" alt="intro-1-boxplot-10-cscw.jpg" />
 </div>
-<div class="title">Figure 6. Boxplot of time between a bug in Eclipse being reported and the first response to the report; right plot is notched.</div>
+<div class="title">Figure 5. Boxplot of time between a bug in Eclipse being reported and the first response to the report; right plot is notched.</div>
 </div>
 <div class="paragraph"><p>rexample[examples/boxplot-10-cscw.R]</p></div>
 </div>
@@ -5931,8 +5895,10 @@ lines(x_axis, loess_pred, col=<span style="color: #FF0000">"blue"</span>)</tt></
 <div class="content">
 <img src="intro-1-heatmap-hotpower.jpg" alt="intro-1-heatmap-hotpower.jpg" />
 </div>
-<div class="title">Figure 7. Intel Sandy Bridge L3 cache bandwidth in GB/s at various clock frequencies and using combinations of cores (0-3 denotes cores zero-through-three, 0,2,4 denotes the three cores zero, two and four).</div>
+<div class="title">Figure 6. Intel Sandy Bridge L3 cache bandwidth in GB/s at various clock frequencies and using combinations of cores (0-3 denotes cores zero-through-three, 0,2,4 denotes the three cores zero, two and four).</div>
 </div>
+<div class="paragraph"><p><code>library("lattice")</code>, <code>levelplot()</code></p></div>
+<div class="paragraph"><p><code>contour()</code></p></div>
 <div class="paragraph"><p>rexample[examples/heatmap-hotpower.R]</p></div>
 </div>
 </div>
@@ -5943,7 +5909,7 @@ lines(x_axis, loess_pred, col=<span style="color: #FF0000">"blue"</span>)</tt></
 <div class="content">
 <img src="intro-1-thereska_sipew-procspeed-memsize.jpg" alt="intro-1-thereska_sipew-procspeed-memsize.jpg" />
 </div>
-<div class="title">Figure 8. Contour plot of the number of sessions executed on a computer having a given processor speed and memory capacity.</div>
+<div class="title">Figure 7. Contour plot of the number of sessions executed on a computer having a given processor speed and memory capacity.</div>
 </div>
 <div class="paragraph"><p>rexample[examples/thereska_sipew-procspeed-memsize.R]</p></div>
 </div>
@@ -6005,11 +5971,16 @@ icebreakeR by A. Robinson
 <div class="sectionbody" style="max-width:45em">
 <div class="listingblock">
 <div class="content">
-<pre><code>C source measurements: c_linelen.csv.xz
+<pre><code>Byte benchmark: byte-dos-app-benchmark.csv
+
+* WP - word processing
+* SS - spreadsheet
+* Sci.Eng - scientific/engineering
+* Cmplr - compiling
+
+C source measurements: c_linelen.csv.xz
 
 C source measurements: c_linetok.csv.xz
-
-cpu sales: turley_02.csv.xz
 
 debian-src-stats.csv.xz</code></pre>
 </div></div>

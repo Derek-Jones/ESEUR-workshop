@@ -5817,9 +5817,32 @@ plot(embed_mod)</tt></pre></div></div>
 <div class="sect1 slide">
 <h1 id="_data_to_try">Data to try</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>Project duration/effort: CSA-duration.csv.xz</p></div>
+<div class="paragraph"><p>Byte benchmark: byte-dos-app-benchmark.csv</p></div>
+<ul class="">
+<li>
+<span>
+WP - word processing
+</span>
+</li>
+<li>
+<span>
+SS - spreadsheet
+</span>
+</li>
+<li>
+<span>
+Sci.Eng - scientific/engineering
+</span>
+</li>
+<li>
+<span>
+Cmplr - compiling
+</span>
+</li>
+</ul>
 <div class="paragraph"><p>C source measurements: c_linelen.csv.xz</p></div>
 <div class="paragraph"><p>C source measurements: c_linetok.csv.xz</p></div>
+<div class="paragraph"><p>Project duration/effort: CSA-duration.csv.xz</p></div>
 </div>
 </div>
 <div class="sect1 slide">
@@ -5929,6 +5952,15 @@ Number of Fisher Scoring iterations: 2</code></pre>
 </div>
 <div class="title">Figure 15. Individual contribution of each explanatory variable to the response variable in the fitted model of SPECint performance.</div>
 </div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>library(<span style="color: #FF0000">"visreg"</span>)
+...
+t=visreg(spec_mod, plot=FALSE)
+plot(t)</tt></pre></div></div>
 <div class="paragraph"><p>rexample[examples/SPEC-ind-MHz-DDR.R]</p></div>
 </div>
 </div>
@@ -6148,8 +6180,30 @@ $\mathit{C_{ot}}$ 0/1 other kind of contract
 <div class="sect1 slide">
 <h1 id="_data_to_try_2">Data to try</h1>
 <div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p>Growth of PC-Lint: pclint.csv.xz</p></div>
 <div class="paragraph"><p>Byte benchmark: byte-dos-app-benchmark.csv</p></div>
+<ul class="">
+<li>
+<span>
+WP - word processing
+</span>
+</li>
+<li>
+<span>
+SS - spreadsheet
+</span>
+</li>
+<li>
+<span>
+Sci.Eng - scientific/engineering
+</span>
+</li>
+<li>
+<span>
+Cmplr - compiling
+</span>
+</li>
+</ul>
+<div class="paragraph"><p>Growth of PC-Lint: pclint.csv.xz</p></div>
 </div>
 </div>
 </body>

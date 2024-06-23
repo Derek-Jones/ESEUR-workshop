@@ -36,12 +36,12 @@ predict(x_mod)               # predict values based on existing measurements
 predict(x_mod, newdata=data.frame(num=-5:10)) # Specify point to predict at
 
 # include standard error in prediction
-x_p=predict(x_mod, newdata=data.frame(num=1:7), se.fit=TRUE)
-lines(x_p$fit, col="red")  # show fitted points
+x_p=predict(x_mod, se.fit=TRUE)
+lines(x$num, x_p$fit, col="red")  # show fitted points
 
 # show two confidence bounds at 2.5% above and below the fit
-lines(x_p$fit+qnorm(0.975)*x_p$se.fit, col="green")
-lines(x_p$fit+qnorm(0.025)*x_p$se.fit, col="green")
+lines(x$num, x_p$fit+qnorm(0.975)*x_p$se.fit, col="green")
+lines(x$num, x_p$fit+qnorm(0.025)*x_p$se.fit, col="green")
 
 y=subset(x, num > 2) # Extract subset of dataframe
 
@@ -51,8 +51,8 @@ library("boot")           # load a package
 mean(x$val); median(x$val); sd(x$val)
 sum(x$val); min(x$val); max(x$val); range(x$val)
 
-data=read.csv("measurements.csv.xz")
-data=read.csv("measurements.csv", sep="|")
+data=read.csv("measurements.csv.xz")       # default is comma separator
+data=read.csv("measurements.csv", sep="|") # use | as column separator
 
 plot(xvals, yvals)
 plot(yvals) # equivalent to plot(1:length(yvals), yvals)

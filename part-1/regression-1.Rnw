@@ -512,11 +512,18 @@ rexample[examples/Alemzadeh-mininf.R]
 Data to try
 -----------
 
-Project duration/effort: CSA-duration.csv.xz
+Byte benchmark: byte-dos-app-benchmark.csv
+
+* WP - word processing
+* SS - spreadsheet
+* Sci.Eng - scientific/engineering
+* Cmplr - compiling
 
 C source measurements: c_linelen.csv.xz
 
 C source measurements: c_linetok.csv.xz
+
+Project duration/effort: CSA-duration.csv.xz
 
 Multiple regression
 -------------------
@@ -606,6 +613,14 @@ Individual variable contribution
 <<echo=FALSE,results=hide,label=SPEC-ind-MHz-DDR,fig=TRUE,align="center">>=
 source("../examples/SPEC-ind-MHz-DDR.R")
 @
+
+[source,R]
+-----
+library("visreg")
+...
+t=visreg(spec_mod, plot=FALSE)
+plot(t)
+-----
 
 rexample[examples/SPEC-ind-MHz-DDR.R]
 
@@ -767,7 +782,12 @@ Fitted equation is:
 Data to try
 -----------
 
-Growth of PC-Lint: pclint.csv.xz
-
 Byte benchmark: byte-dos-app-benchmark.csv
+
+* WP - word processing
+* SS - spreadsheet
+* Sci.Eng - scientific/engineering
+* Cmplr - compiling
+
+Growth of PC-Lint: pclint.csv.xz
 
